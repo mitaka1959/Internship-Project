@@ -7,7 +7,7 @@ using EasyStays.Application.UseCases.Hotels.Commands;
 using EasyStays.Application.Mappings;
 using EasyStays.Presentation.Middleware;
 using EasyStays.Application.Behaviors;
-
+using Serilog;
 
 
 
@@ -35,6 +35,8 @@ builder.Services.AddScoped(
     typeof(IPipelineBehavior<,>),
     typeof(LoggingPipelineBehavior<,>)
 );
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 
 var app = builder.Build();
@@ -46,7 +48,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseSerilogRequestLogging();
 app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers(); 
