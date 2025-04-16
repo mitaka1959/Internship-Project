@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using MediatR;
 using EasyStays.Application.UseCases.Hotels.Commands;
 using EasyStays.Application.Mappings;
+using EasyStays.Presentation.Middleware;
 
 
 
@@ -21,8 +22,8 @@ builder.Services.AddAutoMapper(typeof(HotelProfile).Assembly);
 
 
 builder.Services.AddControllers();
-
-
+builder.Services.AddLogging();
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -42,7 +43,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers(); 
 
 app.Run();
