@@ -6,6 +6,7 @@ using MediatR;
 using EasyStays.Application.UseCases.Hotels.Commands;
 using EasyStays.Application.Mappings;
 using EasyStays.Presentation.Middleware;
+using EasyStays.Application.Behaviors;
 
 
 
@@ -30,6 +31,10 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+builder.Services.AddScoped(
+    typeof(IPipelineBehavior<,>),
+    typeof(LoggingPipelineBehavior<,>)
+);
 
 
 var app = builder.Build();
