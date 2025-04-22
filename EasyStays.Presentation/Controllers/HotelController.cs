@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using EasyStays.Application.UseCases.Hotels.Commands;
+using EasyStays.Application.UseCases.Hotels;
 using EasyStays.Application.UseCases.Hotels.Querie;
 
 namespace EasyStays.Presentation.Controllers
@@ -10,10 +10,12 @@ namespace EasyStays.Presentation.Controllers
     public class HotelsController: ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<HotelsController> _logger;
 
-        public HotelsController(IMediator mediator)
+        public HotelsController(IMediator mediator, ILogger<HotelsController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateHotelCommand command)
@@ -22,6 +24,8 @@ namespace EasyStays.Presentation.Controllers
             {
                 return BadRequest(ModelState);
             }
+            _logger.LogInformation(" Hotel creation endpoint hit at {Time}", DateTime.UtcNow);
+
             var hotelId = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = hotelId }, hotelId);

@@ -2,6 +2,7 @@
 using EasyStays.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace EasyStays.Infrastructure.Persistence
 {
 
@@ -100,6 +101,21 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasForeignKey(r => r.HotelId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<User>().HasData(
+    new User
+    {
+        Id = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+        Name = "Test Owner",
+        Email = "test@example.com",
+        PasswordHash = "hashedpassword123",
+        Role = "Owner",
+        PhoneNumber = "1234567890",
+        ProfilePictureUrl = null,
+        IsEmailVerified = true,
+        DateOfBirth = new DateTime(1990, 1, 1),
+        CreatedAt = DateTime.UtcNow
+    }
+);
 
         }
 

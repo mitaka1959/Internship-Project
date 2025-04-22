@@ -1,45 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EasyStays.Application.Interfaces.Repositories;
 using EasyStays.Domain.Entities;
-using EasyStays.Application.Interfaces.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System.Threading;
 using MediatR;
 
-
-namespace EasyStays.Application.UseCases.Hotels.Commands
+public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Guid>
 {
-    public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Guid>
+    private readonly IApplicationDbContext _context;
+
+    public CreateHotelCommandHandler(IApplicationDbContext context)
     {
-        private readonly IApplicationDbContext _context;
-
-        public CreateHotelCommandHandler(IApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<Guid> Handle(CreateHotelCommand request, CancellationToken cancellationToken)
-        {
-            var hotel = new Hotel
-            {
-                Name = request.Name,
-                City = request.City,
-                Country = request.Country,
-                Description = request.Description,
-                NumberOfRooms = request.NumberOfRooms,
-                Stars = request.Stars
-            };
-
-
-            _context.Hotels.Add(hotel);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return hotel.Id;
-        }
+        _context = context;
     }
 
+    public async Task<Guid> Handle(CreateHotelCommand request, CancellationToken cancellationToken)
+    {
+        var hotel = new Hotel
+        {
+            Id = Guid.NewGuid(),
+            Name = request.Name,
+            Description = request.Description,
+            City = request.City,
+            Country = request.Country,
+            AddressLine = request.AddressLine,
+            NumberOfRooms = request.NumberOfRooms,
+            Stars = request.Stars,
+            PricePerNight = request.PricePerNight,
+            IsApproved = false,
+            OwnerId = request.OwnerId
+        };
 
+        _context.Hotels.Add(hotel);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return hotel.Id;
+    }
 }

@@ -6,23 +6,30 @@ using System.Threading.Tasks;
 using MediatR;
 using EasyStays.Domain.Entities;
 using EasyStays.Application.Interfaces.Repositories;
-using EasyStays.Application.UseCases.Hotels.Commands;
+using EasyStays.Application.UseCases.Hotels;
+using AutoMapper;
+using EasyStays.Application.UseCases.Hotels.DTOs;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace EasyStays.Application.UseCases.Hotels.Querie
 {
-    internal class GetAllHotelsQueryHandler: IRequestHandler<GetAllHotelsQuery, List<Hotel>>
+    public class GetAllHotelsQueryHandler : IRequestHandler<GetAllHotelsQuery, List<HotelDto>>
     {
-        private readonly IHotelRepository _repository;
+        private readonly IApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public GetAllHotelsQueryHandler(IHotelRepository repository)
+        public GetAllHotelsQueryHandler(IApplicationDbContext context, IMapper mapper)
         {
-            _repository = repository;
+            _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<List<Hotel>> Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+        public async Task<List<HotelDto>> Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetAllAsync();
+            var hotels = await _context.Hotels.ToListAsync(cancellationToken);
+            return _mapper.Map<List<HotelDto>>(hotels);
         }
-
     }
+
 }
