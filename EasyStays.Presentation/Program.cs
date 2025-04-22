@@ -8,6 +8,8 @@ using EasyStays.Application.Mappings;
 using EasyStays.Presentation.Middleware;
 using EasyStays.Application.Behaviors;
 using Serilog;
+using Microsoft.AspNetCore.Identity;
+using EasyStays.Infrastructure.Identity;
 
 
 
@@ -36,10 +38,13 @@ builder.Services.AddScoped(
 );
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 
 var app = builder.Build();
-Console.WriteLine(" Built the app");
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -52,6 +57,23 @@ app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
-Console.WriteLine(" Reached app.Run()");
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string[] roles = { "Admin", "Host", "Guest" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+            Console.WriteLine($"Seeded role: {role}");
+        }
+    }
+}
 
 app.Run();

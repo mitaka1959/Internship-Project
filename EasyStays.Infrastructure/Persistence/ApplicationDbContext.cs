@@ -1,15 +1,17 @@
 ﻿using EasyStays.Application.Interfaces.Repositories;
 using EasyStays.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using EasyStays.Infrastructure.Identity;
 
 
 namespace EasyStays.Infrastructure.Persistence
 {
 
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<HotelImage> HotelImages { get; set; }
         public DbSet<Room> Rooms { get; set; } 
         public DbSet<Amenity> Amenities { get; set; }
@@ -32,10 +34,11 @@ namespace EasyStays.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Hotel>()
-            .HasOne(h => h.Owner)
-            .WithMany(u => u.HotelsOwned)
-            .HasForeignKey(h => h.OwnerId)
-            .OnDelete(DeleteBehavior.Restrict);
+                .HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(h => h.OwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder.Entity<HotelAmenity>()
                 .HasKey(ha => new { ha.HotelId, ha.AmenityId });
@@ -82,16 +85,17 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasForeignKey(r => r.HotelId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
-            modelBuilder.Entity<Reservation>()
-                .HasOne(r => r.User)
-                .WithMany(u => u.Reservations)
+
+            modelBuilder.Entity<Reservation>()  
+                .HasOne<ApplicationUser>()
+                .WithMany()
                 .HasForeignKey(r => r.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder.Entity<Review>()
-                .HasOne(r => r.User)
-                .WithMany(u => u.Reviews)
+                .HasOne<ApplicationUser>()
+                .WithMany()
                 .HasForeignKey(r => r.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
@@ -101,21 +105,7 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasForeignKey(r => r.HotelId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<User>().HasData(
-    new User
-    {
-        Id = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
-        Name = "Test Owner",
-        Email = "test@example.com",
-        PasswordHash = "hashedpassword123",
-        Role = "Owner",
-        PhoneNumber = "1234567890",
-        ProfilePictureUrl = null,
-        IsEmailVerified = true,
-        DateOfBirth = new DateTime(1990, 1, 1),
-        CreatedAt = DateTime.UtcNow
-    }
-);
+        
 
         }
 

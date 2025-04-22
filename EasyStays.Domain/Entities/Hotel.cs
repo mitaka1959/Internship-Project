@@ -18,9 +18,8 @@ namespace EasyStays.Domain.Entities
         public float Stars { get; set; }
         public decimal PricePerNight { get; set; }
         public bool IsApproved { get; set; }
-
-        public Guid OwnerId { get; set; }
-        public User Owner { get; set; }
+        
+        public string OwnerId { get; set; } = string.Empty;
 
         public ICollection<HotelImage> Images { get; set; } = new List<HotelImage>();
         public ICollection<HotelAmenity> HotelAmenities { get; set; } = new List<HotelAmenity>();

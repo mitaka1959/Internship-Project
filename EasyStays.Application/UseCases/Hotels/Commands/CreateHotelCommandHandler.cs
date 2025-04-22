@@ -25,7 +25,7 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
             Stars = request.Stars,
             PricePerNight = request.PricePerNight,
             IsApproved = false,
-            OwnerId = request.OwnerId
+            OwnerId = request.OwnerId.ToString()
         };
 
         _context.Hotels.Add(hotel);

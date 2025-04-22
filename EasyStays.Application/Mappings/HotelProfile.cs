@@ -10,7 +10,6 @@ namespace EasyStays.Application.Mappings
         {
             CreateMap<CreateHotelDTO, Hotel>()
                 .ForMember(dest => dest.IsApproved, opt => opt.Ignore())
-                .ForMember(dest => dest.Owner, opt => opt.Ignore())
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest => dest.HotelAmenities, opt => opt.Ignore())
                 .ForMember(dest => dest.Rooms, opt => opt.Ignore())

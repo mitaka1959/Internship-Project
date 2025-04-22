@@ -11,8 +11,7 @@ namespace EasyStays.Domain.Entities
         public Guid Id { get; set; }
         public Guid HotelId { get; set; }
         public Hotel Hotel { get; set; }
-        public Guid UserId { get; set; }
-        public User User { get; set; }
+        public string UserId { get; set; } = string.Empty;
         public string Body { get; set; }
         public float Rating { get; set; }
     }
