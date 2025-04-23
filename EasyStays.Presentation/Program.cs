@@ -10,6 +10,9 @@ using EasyStays.Application.Behaviors;
 using Serilog;
 using Microsoft.AspNetCore.Identity;
 using EasyStays.Infrastructure.Identity;
+using EasyStays.Application.Interfaces.Auth;
+using EasyStays.Infrastructure.Auth;
+
 
 
 
@@ -32,6 +35,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped(
     typeof(IPipelineBehavior<,>),
     typeof(LoggingPipelineBehavior<,>)
@@ -41,7 +45,24 @@ builder.Host.UseSerilog((context, configuration) =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+builder.Services.AddAuthorization(options =>
+{   
+    options.AddPolicy("RequireHostRole",
+         policy => policy.RequireRole("Host"));
+});
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.User.RequireUniqueEmail = false;
+});
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 6;
+});
 
 var app = builder.Build();
 

@@ -3,10 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EasyStays.Application.Interfaces.Auth;
+using EasyStays.Application.Interfaces.Repositories;
+using MediatR;
+
 
 namespace EasyStays.Application.UseCases.Users.Commands
 {
-    internal class RegisterCommandHandler
-    {
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, String>
+    { 
+        private readonly IAuthService _authService;  
+
+        public RegisterCommandHandler(IAuthService authService)
+        { 
+             _authService = authService;
+        }
+        public async Task<String> Handle(RegisterCommand command, CancellationToken cancellation)
+        {
+            return await _authService.RegisterAsync(
+                   command.UserName,
+                   command.Password,
+                   command.Email,
+                   command.Role
+                );
+        }
     }
 }
