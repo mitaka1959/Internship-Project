@@ -1,7 +1,9 @@
 ﻿using EasyStays.Application.Interfaces.Auth;
 using EasyStays.Application.UseCases.Users.DTOs;
+using EasyStays.Domain.Entities;
 using EasyStays.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+
 
 namespace EasyStays.Infrastructure.Auth
 {
@@ -50,14 +52,17 @@ namespace EasyStays.Infrastructure.Auth
 
             await _userManager.AddToRoleAsync(newUser, role);
 
-            var token = _jwtProvider.Generate(newUser.Id, newUser.UserName, newUser.Email, role);
+            var tokens = _jwtProvider.GenerateTokens(newUser.Id, newUser.UserName, newUser.Email, role);
+            var accessToken = tokens.AccessToken;
+            var refreshToken = tokens.RefreshToken;
 
             return new AuthResponse
             {
                 UserName = newUser.UserName,
                 Email = newUser.Email,
                 Role = role,
-                Token = token
+                Token = accessToken,
+                RefreshToken = refreshToken
             };
         }
 
@@ -76,15 +81,19 @@ namespace EasyStays.Infrastructure.Auth
             }
 
             var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault() ?? string.Empty;
-            var token = _jwtProvider.Generate(user.Id, user.UserName, user.Email, role);
+            var tokens = _jwtProvider.GenerateTokens(user.Id, user.UserName, user.Email, role);
+            var accessToken = tokens.AccessToken;
+            var refreshToken = tokens.RefreshToken;
 
             return new AuthResponse
             {
                 UserName = user.UserName,
                 Email = user.Email,
                 Role = role,
-                Token = token
+                Token = accessToken,
+                RefreshToken = refreshToken
             };
+
         }
     }
 }

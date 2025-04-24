@@ -10,9 +10,12 @@ using System.Threading.Tasks;
 
 namespace EasyStays.Application.Interfaces.Auth
 {
-    public interface IJwtProvider
-    {
-        string Generate(IEnumerable<Claim> claims);
-    }
+     public interface IJwtProvider
+        {
+            (string AccessToken, string RefreshToken) GenerateTokens(string userId, string userName, string email, string role);
+            string Generate(IEnumerable<Claim> claims);
+        }
+
+    
 
 }
