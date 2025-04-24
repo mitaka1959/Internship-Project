@@ -10,6 +10,6 @@ namespace EasyStays.Infrastructure.Identity
 {
     public class ApplicationUser : IdentityUser
     {
-
+        
     }
 }

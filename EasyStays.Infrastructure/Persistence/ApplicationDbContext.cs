@@ -21,6 +21,7 @@ namespace EasyStays.Infrastructure.Persistence
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Payment> Payments { get; set; }    
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken) =>
        base.SaveChangesAsync(cancellationToken);
@@ -106,8 +107,10 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasForeignKey(r => r.HotelId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-        
-
+            modelBuilder.Entity<RefreshToken>()
+                .HasOne<ApplicationUser>() 
+                .WithMany()                
+                .HasForeignKey(rt => rt.UserId);
         }
 
     }

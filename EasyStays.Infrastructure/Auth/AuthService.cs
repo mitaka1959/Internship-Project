@@ -12,15 +12,18 @@ namespace EasyStays.Infrastructure.Auth
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IJwtProvider _jwtProvider;
+        private readonly RefreshTokenService _refreshTokenService;
 
         public AuthService(
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IJwtProvider jwtProvider)
+            IJwtProvider jwtProvider,
+            RefreshTokenService refreshTokenService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _jwtProvider = jwtProvider;
+            _refreshTokenService = refreshTokenService;
         }
 
         public async Task<AuthResponse> RegisterAsync(string userName, string password, string email, string role)
@@ -55,6 +58,8 @@ namespace EasyStays.Infrastructure.Auth
             var tokens = _jwtProvider.GenerateTokens(newUser.Id, newUser.UserName, newUser.Email, role);
             var accessToken = tokens.AccessToken;
             var refreshToken = tokens.RefreshToken;
+            await _refreshTokenService.SaveRefreshTokenAsync(newUser.Id, refreshToken);
+
 
             return new AuthResponse
             {
@@ -64,6 +69,8 @@ namespace EasyStays.Infrastructure.Auth
                 Token = accessToken,
                 RefreshToken = refreshToken
             };
+            
+
         }
 
         public async Task<AuthResponse> LoginAsync(string userName, string password)
@@ -84,6 +91,8 @@ namespace EasyStays.Infrastructure.Auth
             var tokens = _jwtProvider.GenerateTokens(user.Id, user.UserName, user.Email, role);
             var accessToken = tokens.AccessToken;
             var refreshToken = tokens.RefreshToken;
+            await _refreshTokenService.SaveRefreshTokenAsync(user.Id, refreshToken);
+
 
             return new AuthResponse
             {
