@@ -1,9 +1,7 @@
 ﻿using EasyStays.Application.Interfaces.Auth;
-using EasyStays.Domain.Entities;
+using EasyStays.Application.UseCases.Users.DTOs;
 using EasyStays.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-
-
 
 namespace EasyStays.Infrastructure.Auth
 {
@@ -11,20 +9,25 @@ namespace EasyStays.Infrastructure.Auth
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private IJwtProvider _jwtProvider;
-        public AuthService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IJwtProvider jwtProvider)
+        private readonly IJwtProvider _jwtProvider;
+
+        public AuthService(
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            IJwtProvider jwtProvider)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _jwtProvider = jwtProvider;
         }
 
-
-        public async Task<string> RegisterAsync(string userName, string password, string email, string role)
+        public async Task<AuthResponse> RegisterAsync(string userName, string password, string email, string role)
         {
             var existingUser = await _userManager.FindByNameAsync(userName);
             if (existingUser != null)
-                return "User already exists.";
+            {
+                return new AuthResponse { Token = "User already exists." };
+            }
 
             var newUser = new ApplicationUser
             {
@@ -37,7 +40,7 @@ namespace EasyStays.Infrastructure.Auth
             if (!result.Succeeded)
             {
                 var errorMessages = string.Join("; ", result.Errors.Select(e => e.Description));
-                return $"Failed to create user: {errorMessages}";
+                return new AuthResponse { Token = $"Failed to create user: {errorMessages}" };
             }
 
             if (!await _roleManager.RoleExistsAsync(role))
@@ -47,30 +50,41 @@ namespace EasyStays.Infrastructure.Auth
 
             await _userManager.AddToRoleAsync(newUser, role);
 
-          
-                return "User registered successfully.";
+            var token = _jwtProvider.Generate(newUser.Id, newUser.UserName, newUser.Email, role);
+
+            return new AuthResponse
+            {
+                UserName = newUser.UserName,
+                Email = newUser.Email,
+                Role = role,
+                Token = token
+            };
         }
-        public async Task<string> LoginAsync(string userName, string password)
+
+        public async Task<AuthResponse> LoginAsync(string userName, string password)
         {
             var user = await _userManager.FindByNameAsync(userName);
             if (user == null)
             {
-                return "There is no such user";
+                return new AuthResponse { Token = "There is no such user." };
             }
 
             var result = await _userManager.CheckPasswordAsync(user, password);
             if (!result)
             {
-                return "Invalid email or password.";
+                return new AuthResponse { Token = "Invalid username or password." };
             }
 
-            var roles = await _userManager.GetRolesAsync(user);
-            var role = roles.FirstOrDefault() ?? string.Empty;
-
-            
+            var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault() ?? string.Empty;
             var token = _jwtProvider.Generate(user.Id, user.UserName, user.Email, role);
 
-            return token;
+            return new AuthResponse
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                Role = role,
+                Token = token
+            };
         }
-
     }
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyStays.Application.UseCases.Users.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace EasyStays.Application.Interfaces.Auth
 {
     public interface IAuthService
     {
-        Task<string> RegisterAsync(string userName,string email, string password, string role);
-        Task<string> LoginAsync(string userName, string password);
+        Task<AuthResponse> RegisterAsync(string userName,string email, string password, string role);
+        Task<AuthResponse> LoginAsync(string userName, string password);
+
     }
 }

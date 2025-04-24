@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
+using EasyStays.Application.UseCases.Users.DTOs;
 
 namespace EasyStays.Application.UseCases.Users.Commands
 {
-    public class RegisterCommand : IRequest<string>
+    public class RegisterCommand : IRequest<AuthResponse>
     {
         public string UserName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;

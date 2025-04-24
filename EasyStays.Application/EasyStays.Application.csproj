@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="UseCases\Reservations\" />
-    <Folder Include="UseCases\Users\DTOs\" />
     <Folder Include="UseCases\Users\Queries\" />
 	<ProjectReference Include="..\EasyStays.Domain\EasyStays.Domain.csproj" />
   </ItemGroup>

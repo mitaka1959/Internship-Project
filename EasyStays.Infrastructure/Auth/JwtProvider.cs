@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace EasyStays.Infrastructure.Auth
 {
-    internal sealed class JwtProvider : IJwtProvider
+    public class JwtProvider : IJwtProvider
     {
         private readonly IConfiguration _configuration;
         public JwtProvider(IConfiguration configuration) 
