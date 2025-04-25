@@ -10,10 +10,10 @@ using EasyStays.Application.Behaviors;
 using Serilog;
 using Microsoft.AspNetCore.Identity;
 using EasyStays.Infrastructure.Identity;
-using EasyStays.Application.Interfaces.Auth;
 using EasyStays.Infrastructure.Auth;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using EasyStays.Application.Interfaces.Auth;
 
 
 
@@ -34,6 +34,8 @@ builder.Services.AddLogging();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();

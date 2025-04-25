@@ -5,10 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EasyStays.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using EasyStays.Application.Interfaces.Auth;
+
 
 namespace EasyStays.Infrastructure.Auth
 {
-    public class RefreshTokenService
+    public class RefreshTokenService : IRefreshTokenService
     {
         private readonly ApplicationDbContext _context;
 
@@ -19,8 +22,7 @@ namespace EasyStays.Infrastructure.Auth
 
         public async Task<RefreshToken> GetRefreshTokenAsync(string token)
         {
-            return await _context.RefreshTokens
-                    .FirstOrDefaultAsync(r => r.Token == token);
+            return await _context.RefreshTokens.FirstOrDefaultAsync(r => r.Token == token);
         }
 
         public async Task SaveRefreshTokenAsync(string UserId, string refreshToken)

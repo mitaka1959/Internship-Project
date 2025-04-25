@@ -21,13 +21,12 @@ namespace EasyStays.Infrastructure.Auth
             _configuration = configuration; 
         }
 
-        public (string AccessToken, string RefreshToken) GenerateTokens(string userId, string userName, string email, string role)
+        public (string AccessToken, string RefreshToken) GenerateTokens(string userId, string userName, string role)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userId),
                 new Claim(JwtRegisteredClaimNames.UniqueName, userName),
-                new Claim(JwtRegisteredClaimNames.Email, email),
                 new Claim(ClaimTypes.Role, role)
             };
             var accessToken = Generate(claims);

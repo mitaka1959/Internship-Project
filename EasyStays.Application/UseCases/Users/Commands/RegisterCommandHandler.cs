@@ -24,7 +24,6 @@ namespace EasyStays.Application.UseCases.Users.Commands
             return await _authService.RegisterAsync(
                    command.UserName,
                    command.Password,
-                   command.Email,
                    command.Role
                 );
         }

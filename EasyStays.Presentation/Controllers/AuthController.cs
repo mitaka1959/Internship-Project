@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using EasyStays.Application.UseCases.Users.Commands;
+using Azure;
 
 namespace EasyStays.Presentation.Controllers
 {
@@ -27,6 +28,12 @@ namespace EasyStays.Presentation.Controllers
         {
             var result = await _mediator.Send(command);
             return Ok(new { message = result });
+        }
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh([FromBody] RefreshTokenCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
     }
 }

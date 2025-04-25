@@ -9,7 +9,7 @@ namespace EasyStays.Application.Interfaces.Auth
 {
     public interface IAuthService
     {
-        Task<AuthResponse> RegisterAsync(string userName,string email, string password, string role);
+        Task<AuthResponse> RegisterAsync(string userName, string password, string role);
         Task<AuthResponse> LoginAsync(string userName, string password);
 
     }
