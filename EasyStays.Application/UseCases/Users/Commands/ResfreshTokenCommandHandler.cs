@@ -34,7 +34,7 @@ namespace EasyStays.Application.UseCases.Users.Commands
             {
                 return new AuthResponse { Token = "User not found." };
             }
-            var (accessToken, newRefreshToken) = _jwtProvider.GenerateTokens(user.Id, user.userName, user.Role);
+            var (accessToken, newRefreshToken) = _jwtProvider.GenerateTokens(user.Id, user.userName,user.Email, user.Role);
             await _refreshTokenService.SaveRefreshTokenAsync(user.Id, newRefreshToken);
 
             return new AuthResponse

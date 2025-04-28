@@ -21,28 +21,37 @@ namespace EasyStays.Infrastructure.Auth
             _configuration = configuration; 
         }
 
-        public (string AccessToken, string RefreshToken) GenerateTokens(string userId, string userName, string role)
+        public (string AccessToken, string RefreshToken) GenerateTokens(string userId, string userName, string? email, string role)
         {
+            email ??= string.Empty;
+
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userId),
-                new Claim(JwtRegisteredClaimNames.UniqueName, userName),
-                new Claim(ClaimTypes.Role, role)
+                  new Claim(ClaimTypes.NameIdentifier, userId),
+                  new Claim(ClaimTypes.Name, userName),
+                  new Claim(ClaimTypes.Email, email),
+                  new Claim(ClaimTypes.Role, role)
             };
+
             var accessToken = Generate(claims);
             var refreshToken = GenerateRefreshToken();
 
-            return (accessToken, refreshToken);
+                return (accessToken, refreshToken);
         }
         public string Generate(IEnumerable<Claim> claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claimsList = claims.ToList();
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString());
+            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString());
+
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(15), 
+                expires: DateTime.UtcNow.AddMinutes(1), 
                 signingCredentials: creds
             );
 

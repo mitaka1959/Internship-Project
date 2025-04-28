@@ -26,7 +26,7 @@ namespace EasyStays.Infrastructure.Auth
             _refreshTokenService = refreshTokenService;
         }
 
-        public async Task<AuthResponse> RegisterAsync(string userName, string password, string role)
+        public async Task<AuthResponse> RegisterAsync(string userName, string password,string email, string role)
         {
             var existingUser = await _userManager.FindByNameAsync(userName);
             if (existingUser != null)
@@ -38,6 +38,7 @@ namespace EasyStays.Infrastructure.Auth
             {
                 UserName = userName,
                 PasswordHash = password,
+                Email = email,
                 EmailConfirmed = true
             };
 
@@ -55,7 +56,7 @@ namespace EasyStays.Infrastructure.Auth
 
             await _userManager.AddToRoleAsync(newUser, role);
 
-            var tokens = _jwtProvider.GenerateTokens(newUser.Id, newUser.UserName, role);
+            var tokens = _jwtProvider.GenerateTokens(newUser.Id, newUser.UserName, newUser.Email, role);
             var accessToken = tokens.AccessToken;
             var refreshToken = tokens.RefreshToken;
             await _refreshTokenService.SaveRefreshTokenAsync(newUser.Id, refreshToken);
@@ -89,7 +90,7 @@ namespace EasyStays.Infrastructure.Auth
 
             var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault() ?? string.Empty;
 
-            var tokens = _jwtProvider.GenerateTokens(user.Id, user.UserName, role); 
+            var tokens = _jwtProvider.GenerateTokens(user.Id, user.UserName, user.Email, role);
 
             await _refreshTokenService.SaveRefreshTokenAsync(user.Id, tokens.RefreshToken);
 
