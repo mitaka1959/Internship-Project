@@ -2,3 +2,64 @@
 2025-05-08 13:14:12.082 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
 2025-05-08 13:14:12.084 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
 2025-05-08 13:14:12.086 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-08 13:18:17.654 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-08 13:18:17.982 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 322.3738 ms
+2025-05-08 14:52:01.763 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 204 in 2.7623 ms
+2025-05-08 14:52:01.934 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 164.6869 ms
+2025-05-08 14:52:02.765 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 5.6778 ms
+2025-05-08 14:52:06.358 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 12.5225 ms
+2025-05-08 14:52:16.350 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 204 in 0.1864 ms
+2025-05-08 14:52:16.358 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 3.1491 ms
+2025-05-08 14:52:30.463 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1396 ms
+2025-05-08 14:52:30.545 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 77.2692 ms
+2025-05-08 14:53:12.359 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0840 ms
+2025-05-08 14:53:12.469 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 102.4209 ms
+2025-05-08 14:53:15.353 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 74.3567 ms
+2025-05-08 14:53:16.579 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 66.2652 ms
+2025-05-08 14:53:17.714 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0770 ms
+2025-05-08 14:53:17.794 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 77.0016 ms
+2025-05-08 14:55:31.876 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1467 ms
+2025-05-08 14:55:31.953 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 67.4274 ms
+2025-05-08 14:55:36.528 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 70.9995 ms
+2025-05-08 14:57:40.225 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1282 ms
+2025-05-08 14:57:40.302 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 71.3257 ms
+2025-05-08 14:57:59.760 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0807 ms
+2025-05-08 14:57:59.830 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 67.2157 ms
+2025-05-08 14:59:34.265 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-08 14:59:34.291 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-08 14:59:34.294 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-08 14:59:34.295 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-08 14:59:51.204 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-08 14:59:51.210 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.9067 ms
+2025-05-08 14:59:51.596 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 373.2102 ms
+2025-05-08 14:59:53.402 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 104.0616 ms
+2025-05-08 14:59:54.751 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 70.6648 ms
+2025-05-08 15:00:04.347 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.2163 ms
+2025-05-08 15:00:04.442 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 83.6789 ms
+2025-05-08 15:02:03.690 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1062 ms
+2025-05-08 15:02:03.775 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 79.6124 ms
+2025-05-08 15:03:47.087 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1065 ms
+2025-05-08 15:03:47.171 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 80.2943 ms
+2025-05-08 15:03:52.159 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1230 ms
+2025-05-08 15:03:52.233 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 70.6791 ms
+2025-05-08 15:04:00.111 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0899 ms
+2025-05-08 15:04:00.210 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 94.5362 ms
+2025-05-08 15:10:46.668 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0803 ms
+2025-05-08 15:10:46.767 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 94.0395 ms
+2025-05-08 15:12:55.265 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1699 ms
+2025-05-08 15:12:55.340 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 69.8242 ms
+2025-05-08 15:12:57.699 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 67.4624 ms
+2025-05-08 15:12:58.489 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 71.7334 ms
+2025-05-08 15:12:59.088 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 66.0909 ms
+2025-05-08 15:12:59.495 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 61.3354 ms
+2025-05-08 15:12:59.889 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 72.3905 ms
+2025-05-08 15:13:00.288 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 66.6782 ms
+2025-05-08 15:13:39.865 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0809 ms
+2025-05-08 15:13:39.938 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 68.3006 ms
+2025-05-08 15:15:41.593 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0958 ms
+2025-05-08 15:15:41.673 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 75.6796 ms
+2025-05-08 15:15:46.486 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 93.6282 ms
+2025-05-08 15:20:50.445 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.2282 ms
+2025-05-08 15:20:50.554 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 103.5999 ms
+2025-05-08 15:23:08.620 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0848 ms
+2025-05-08 15:23:08.712 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 84.7508 ms

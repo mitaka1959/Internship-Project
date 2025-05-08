@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Form, Input, Typography, Divider } from "antd";
 import { loginUser } from "../../../services/authService";
+import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 import AuthLayout from "../../../layouts/AuthLayout";
 import FacebookLogo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/Facebook-logo.png";
 import GoogleLogo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/Google.webp";
@@ -9,12 +11,27 @@ const { Title, Paragraph } = Typography;
 
 const LoginPage: React.FC = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
-  const handleLogin = async (values: any) => {
+  const onFinish = async (values: any) => {
     try {
-      await loginUser(values);
-    } catch (error) {
-      console.error(error);
+      const response = await loginUser(values);
+      console.log("Login response:", response);
+
+      const role = response.role;
+      localStorage.setItem("access_token", response.token);
+      localStorage.setItem("refresh_token", response.refreshToken);
+      localStorage.setItem("user_role", role);
+
+      if (role === "Host" || role === "Admin") {
+        navigate("/dashboard");
+      } else {
+        message.warning(
+          "You are logged in, but not authorized for dashboard access."
+        );
+      }
+    } catch (error: any) {
+      message.error(error.message || "Login failed");
     }
   };
 
@@ -27,7 +44,7 @@ const LoginPage: React.FC = () => {
       <Form
         form={form}
         layout="vertical"
-        onFinish={handleLogin}
+        onFinish={onFinish}
         requiredMark={false}
       >
         <Form.Item
