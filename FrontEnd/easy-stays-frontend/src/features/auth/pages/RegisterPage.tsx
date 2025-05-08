@@ -24,6 +24,7 @@ const RegisterPage: React.FC = () => {
       <Title level={3} style={{ textAlign: "center", color: "#023047" }}>
         Create an Account
       </Title>
+
       <Form
         form={form}
         name="register"
@@ -81,15 +82,18 @@ const RegisterPage: React.FC = () => {
 
         <Form.Item
           name="role"
-          label="Role"
           rules={[{ required: true, message: "Please select a role" }]}
         >
-          <Radio.Group>
-            <Radio value="Guest">Guest</Radio>
-            <Radio value="Host">Host</Radio>
-          </Radio.Group>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <span style={{ width: "40px" }}>Role:</span>
+            <Radio.Group>
+              <Radio value="Guest">Guest</Radio>
+              <Radio value="Host">Host</Radio>
+            </Radio.Group>
+          </div>
         </Form.Item>
-        <Form.Item>
+
+        <Form.Item style={{ marginBottom: 20 }}>
           <Button
             type="primary"
             htmlType="submit"
@@ -99,8 +103,11 @@ const RegisterPage: React.FC = () => {
             Create an Account
           </Button>
         </Form.Item>
-        <Form.Item>
-          <Paragraph style={{ marginTop: 20 }}>
+
+        <Form.Item style={{ marginBottom: 0 }}>
+          <Paragraph
+            style={{ marginTop: 8, marginBottom: 0, textAlign: "center" }}
+          >
             Already have an account?{" "}
             <a href="/login" style={{ color: "#219EBC", fontWeight: "bold" }}>
               Log In into your account

@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Form, Input, Typography, Divider } from "antd";
 import { loginUser } from "../../../services/authService";
 import AuthLayout from "../../../layouts/AuthLayout";
-import { GoogleOutlined, FacebookFilled } from "@ant-design/icons";
+import FacebookLogo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/Facebook-logo.png";
+import GoogleLogo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/Google.webp";
 
 const { Title, Paragraph } = Typography;
 
@@ -63,21 +64,35 @@ const LoginPage: React.FC = () => {
 
       <Divider plain>or</Divider>
 
-      <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem" }}>
         <Button
           shape="circle"
+          style={{ transform: "scale(1.3)" }}
           icon={
-            <FacebookFilled style={{ color: "#1877F2", fontSize: "35px" }} />
+            <img
+              src={FacebookLogo}
+              alt="Facebook"
+              style={{ width: 40, height: 25, borderRadius: "50%" }}
+            />
           }
-          size="large"
         />
 
         <Button
           shape="circle"
+          style={{ transform: "scale(1.3)" }}
           icon={
-            <GoogleOutlined style={{ color: "#DB4437", fontSize: "18px" }} />
+            <img
+              src={GoogleLogo}
+              alt="Google"
+              style={{
+                width: 25,
+                height: 25,
+                borderRadius: "50%",
+                backgroundColor: "white",
+                objectFit: "cover",
+              }}
+            />
           }
-          size="large"
         />
       </div>
 
