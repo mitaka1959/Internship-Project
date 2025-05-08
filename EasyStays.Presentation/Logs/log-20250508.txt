@@ -63,3 +63,11 @@
 2025-05-08 15:20:50.554 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 103.5999 ms
 2025-05-08 15:23:08.620 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0848 ms
 2025-05-08 15:23:08.712 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 84.7508 ms
+2025-05-08 15:43:48.754 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1376 ms
+2025-05-08 15:43:48.858 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 98.4023 ms
+2025-05-08 15:43:50.466 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 77.0816 ms
+2025-05-08 15:43:51.367 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 68.2099 ms
+2025-05-08 15:44:05.385 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0931 ms
+2025-05-08 15:44:05.459 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 68.9702 ms
+2025-05-08 15:44:18.254 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0497 ms
+2025-05-08 15:44:18.324 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 66.6804 ms
