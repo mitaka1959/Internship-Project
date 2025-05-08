@@ -1,0 +1,32 @@
+2025-05-07 11:33:41.535 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 11:33:41.567 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 11:33:41.570 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 11:33:41.572 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 13:05:28.295 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-07 13:05:28.303 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 405 in 2.2131 ms
+2025-05-07 13:06:22.942 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 144.7570 ms
+2025-05-07 13:07:46.786 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 405 in 0.0895 ms
+2025-05-07 13:07:47.652 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 405 in 0.0318 ms
+2025-05-07 13:07:48.021 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 405 in 0.0291 ms
+2025-05-07 13:07:48.801 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 405 in 0.0298 ms
+2025-05-07 13:07:49.686 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 405 in 0.0519 ms
+2025-05-07 13:12:56.828 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 13:12:56.858 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 13:12:56.859 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 13:12:56.861 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 13:13:09.102 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-07 13:13:09.106 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 204 in 1.3479 ms
+2025-05-07 13:13:09.544 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 426.2491 ms
+2025-05-07 13:13:18.585 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 204 in 0.2501 ms
+2025-05-07 13:13:18.604 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 15.0755 ms
+2025-05-07 13:13:48.415 +03:00 [INF] HTTP OPTIONS /api/Auth/register responded 204 in 0.2369 ms
+2025-05-07 13:13:48.453 +03:00 [INF] HTTP POST /api/Auth/register responded 200 in 33.5552 ms
+2025-05-07 13:14:00.278 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 98.0447 ms
+2025-05-07 15:40:26.688 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.3189 ms
+2025-05-07 15:40:26.771 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 77.4400 ms
+2025-05-07 15:40:45.039 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0945 ms
+2025-05-07 15:40:45.118 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 73.5084 ms
+2025-05-07 15:41:15.520 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 70.9993 ms
+2025-05-07 15:56:00.815 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1539 ms
+2025-05-07 15:56:00.896 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 75.8520 ms
+2025-05-07 15:56:02.327 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 62.2598 ms

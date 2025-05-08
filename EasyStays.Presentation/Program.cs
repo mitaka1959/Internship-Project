@@ -22,6 +22,20 @@ using EasyStays.Application.Interfaces.Auth;
 var builder = WebApplication.CreateBuilder(args);
 
 
+var AllowFrontEnd = "_allowFrontEnd";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowFrontEnd,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddMediatR(cfg =>
@@ -97,6 +111,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseCors(AllowFrontEnd);
 app.UseAuthorization();
 app.MapControllers();
 
