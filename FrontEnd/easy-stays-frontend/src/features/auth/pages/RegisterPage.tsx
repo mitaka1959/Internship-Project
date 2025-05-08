@@ -4,7 +4,7 @@ import AuthLayout from "../../../layouts/AuthLayout";
 import { registerUser } from "../../../services/authService";
 import { message } from "antd";
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 
 const RegisterPage: React.FC = () => {
   const [form] = Form.useForm();
@@ -98,6 +98,14 @@ const RegisterPage: React.FC = () => {
           >
             Create an Account
           </Button>
+        </Form.Item>
+        <Form.Item>
+          <Paragraph style={{ marginTop: 20 }}>
+            Already have an account?{" "}
+            <a href="/login" style={{ color: "#219EBC", fontWeight: "bold" }}>
+              Log In into your account
+            </a>
+          </Paragraph>
         </Form.Item>
       </Form>
     </AuthLayout>
