@@ -71,3 +71,5 @@
 2025-05-08 15:44:05.459 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 68.9702 ms
 2025-05-08 15:44:18.254 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0497 ms
 2025-05-08 15:44:18.324 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 66.6804 ms
+2025-05-08 16:34:56.660 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.1205 ms
+2025-05-08 16:34:56.755 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 89.6957 ms

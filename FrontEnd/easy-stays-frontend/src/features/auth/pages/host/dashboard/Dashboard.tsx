@@ -6,7 +6,13 @@ import RecentBookingsTable from "./RecentBookingsTable";
 
 const Dashboard: React.FC = () => {
   return (
-    <div style={{ padding: "24px" }}>
+    <div
+      style={{
+        backgroundColor: "#8ECAE6",
+        minHeight: "100vh",
+        padding: "2rem",
+      }}
+    >
       <DashboardHeader />
       <DashboardStats />
       <DashboardChart />
