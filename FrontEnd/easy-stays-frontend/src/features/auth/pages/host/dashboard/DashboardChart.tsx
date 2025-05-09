@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -30,18 +30,25 @@ const DashboardChart: React.FC = () => {
         Visitor Statistics
       </Title>
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data}>
+        <AreaChart data={data}>
+          <defs>
+            <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FB8500" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#FB8500" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line
+          <Area
             type="monotone"
             dataKey="visitors"
             stroke="#FB8500"
             strokeWidth={3}
+            fill="url(#colorVisitors)"
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </Card>
   );

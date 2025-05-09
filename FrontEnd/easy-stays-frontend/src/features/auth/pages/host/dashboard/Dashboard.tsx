@@ -10,7 +10,7 @@ const Dashboard: React.FC = () => {
     <div
       style={{
         marginLeft: "220px",
-        padding: "2rem",
+        padding: "1rem",
         backgroundColor: "#8ECAE6",
         minHeight: "100vh",
         display: "flex",

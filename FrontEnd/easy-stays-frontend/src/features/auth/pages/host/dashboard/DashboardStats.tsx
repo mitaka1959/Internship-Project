@@ -44,7 +44,7 @@ const DashboardStats: React.FC = () => {
             <div
               style={{
                 position: "absolute",
-                top: "0.2rem",
+                top: "1rem",
                 right: "1rem",
                 backgroundColor: stat.badgeColor,
                 color: "#fff",
