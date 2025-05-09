@@ -26,7 +26,7 @@ const data = [
 const DashboardChart: React.FC = () => {
   return (
     <Card style={{ marginBottom: "2rem", backgroundColor: "#ffffff" }}>
-      <Title level={4} style={{ color: "#023047", marginBottom: 16 }}>
+      <Title level={4} style={{ color: "#023047", marginBottom: 0 }}>
         Visitor Statistics
       </Title>
       <ResponsiveContainer width="100%" height={300}>

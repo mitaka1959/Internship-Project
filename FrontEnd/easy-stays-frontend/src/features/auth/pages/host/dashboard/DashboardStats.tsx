@@ -41,11 +41,10 @@ const DashboardStats: React.FC = () => {
               height: "130px",
             }}
           >
-            {/* Percentage Badge */}
             <div
               style={{
                 position: "absolute",
-                top: "1rem",
+                top: "0.2rem",
                 right: "1rem",
                 backgroundColor: stat.badgeColor,
                 color: "#fff",
@@ -66,7 +65,7 @@ const DashboardStats: React.FC = () => {
               level={1}
               style={{
                 margin: 0,
-                marginTop: "0.5rem",
+                marginTop: "0.2rem",
                 color: "#023047",
                 fontSize: "2.5rem",
               }}

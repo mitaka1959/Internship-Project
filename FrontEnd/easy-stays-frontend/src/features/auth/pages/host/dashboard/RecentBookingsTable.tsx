@@ -74,7 +74,7 @@ const columns = [
 
 const RecentBookingsTable: React.FC = () => {
   return (
-    <Card style={{ marginTop: "2rem", backgroundColor: "#ffffff" }}>
+    <Card style={{ marginTop: "0.2rem", backgroundColor: "#ffffff" }}>
       <Title level={4} style={{ color: "#023047", marginBottom: 16 }}>
         Recent Bookings
       </Title>

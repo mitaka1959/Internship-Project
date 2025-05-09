@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterPage from "./features/auth/pages/RegisterPage";
 import LoginPage from "./features/auth/pages/LoginPage";
+import HostDashboardLayout from "./layouts/HostDashboardLayout";
 import Dashboard from "./features/auth/pages/host/dashboard/Dashboard";
 import PrivateRoutes from "./features/auth/PrivateRoutes";
 
