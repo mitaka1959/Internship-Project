@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
-
-import type { JSX } from "react";
+import React from "react";
+import type { ReactNode } from "react";
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("access_token");
@@ -11,7 +11,7 @@ const getRole = () => {
 };
 
 interface Props {
-  children: JSX.Element;
+  children: ReactNode;
   allowedRoles?: string[];
 }
 

@@ -67,7 +67,7 @@ const Sidebar = () => {
           Dashboard
         </Menu.Item>
         <Menu.Item
-          key="/my-hotels"
+          key="/my_hotels"
           icon={<PlusOutlined style={{ fontSize: "20px" }} />}
           style={{ color: "white", fontSize: "18px", padding: "7px 24px" }}
         >

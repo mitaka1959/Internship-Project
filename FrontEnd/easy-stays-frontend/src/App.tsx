@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterPage from "./features/auth/pages/RegisterPage";
 import LoginPage from "./features/auth/pages/LoginPage";
-import HostDashboardLayout from "./layouts/HostDashboardLayout";
 import Dashboard from "./features/auth/pages/host/dashboard/Dashboard";
 import PrivateRoutes from "./features/auth/PrivateRoutes";
+import MyHotels from "./features/auth/pages/host/my_hotels/MyHotels";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +20,16 @@ const App: React.FC = () => {
             </PrivateRoutes>
           }
         />
+
+        <Route
+          path="/my_hotels"
+          element={
+            <PrivateRoutes allowedRoles={["Host", "Admin"]}>
+              <MyHotels />
+            </PrivateRoutes>
+          }
+        />
+
         <Route
           path="*"
           element={<div style={{ padding: "2rem" }}>Welcome to EasyStays</div>}
