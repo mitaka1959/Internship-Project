@@ -14,6 +14,9 @@ using EasyStays.Infrastructure.Auth;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using EasyStays.Application.Interfaces.Auth;
+using Azure.Storage.Blobs;
+using EasyStays.Domain.Interfaces;
+using EasyStays.Infrastructure.BlopStorage;
 
 
 
@@ -97,10 +100,26 @@ builder.Services.AddAuthentication("Bearer")
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
+builder.Services.AddSingleton(new BlobServiceClient(
+    builder.Configuration.GetConnectionString("StorageAccount")));
+
+builder.Services.AddScoped<IStorageService, StorageService>();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SupportNonNullableReferenceTypes();
+    options.MapType<IFormFile>(() => new Microsoft.OpenApi.Models.OpenApiSchema
+    {
+        Type = "string",
+        Format = "binary"
+    });
+});
+
+
 
 
 
 var app = builder.Build();
+
 
 
 if (app.Environment.IsDevelopment())
@@ -113,6 +132,7 @@ app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors(AllowFrontEnd);
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

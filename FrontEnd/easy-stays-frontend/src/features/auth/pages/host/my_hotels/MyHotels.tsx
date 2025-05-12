@@ -6,6 +6,7 @@ import {
   EyeOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
+import Sidebar from "../dashboard/sidebar/Sidebar";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -61,45 +62,64 @@ const MyHotels: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <Space
+    <div
+      style={{
+        display: "flex",
+        backgroundColor: "#8ECAE6",
+        minHeight: "100vh",
+      }}
+    >
+      <Sidebar />
+      <div
         style={{
+          marginLeft: "220px",
+          padding: "2rem",
           width: "100%",
-          justifyContent: "space-between",
-          marginBottom: "1.5rem",
         }}
       >
-        <Title level={3} style={{ color: "#023047" }}>
-          My Hotels
-        </Title>
-        <Button
-          type="primary"
-          icon={<PlusOutlined />}
-          style={{ backgroundColor: "#FB8500", borderColor: "#FB8500" }}
+        <Space
+          style={{
+            width: "100%",
+            justifyContent: "space-between",
+            marginBottom: "1.5rem",
+          }}
         >
-          Add New Hotel
-        </Button>
-      </Space>
+          <Title level={3} style={{ color: "#023047" }}>
+            My Hotels
+          </Title>
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            style={{
+              backgroundColor: "#FB8500",
+              borderColor: "#FB8500",
+              fontWeight: "bold",
+            }}
+          >
+            Add New Hotel
+          </Button>
+        </Space>
 
-      <Space style={{ marginBottom: "1rem" }}>
-        <Input
-          placeholder="Search by hotel name"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <Select
-          placeholder="Filter by Status"
-          style={{ width: 200 }}
-          allowClear
-          onChange={(value) => setStatusFilter(value)}
-        >
-          <Option value="Active">Active</Option>
-          <Option value="Inactive">Inactive</Option>
-          <Option value="Draft">Draft</Option>
-        </Select>
-      </Space>
+        <Space style={{ marginBottom: "1rem" }}>
+          <Input
+            placeholder="Search by hotel name"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Select
+            placeholder="Filter by Status"
+            style={{ width: 200 }}
+            allowClear
+            onChange={(value) => setStatusFilter(value)}
+          >
+            <Option value="Active">Active</Option>
+            <Option value="Inactive">Inactive</Option>
+            <Option value="Draft">Draft</Option>
+          </Select>
+        </Space>
 
-      <Table dataSource={filteredData} columns={columns} />
+        <Table dataSource={filteredData} columns={columns} />
+      </div>
     </div>
   );
 };

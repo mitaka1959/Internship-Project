@@ -15,20 +15,17 @@ namespace EasyStays.Infrastructure.BlopStorage
     public class StorageService : IStorageService
     {
         private readonly BlobServiceClient _blobServiceClient;
-        private readonly BlobContainerClient _containerClient;
-        private readonly BlobClient _blobClient;
-        public StorageService(BlobServiceClient blobServiceClient, BlobContainerClient blopContainerClient, BlobClient blobClient)
+
+        public StorageService(BlobServiceClient blobServiceClient)
         {
             _blobServiceClient = blobServiceClient;
-            _containerClient = blopContainerClient;
-            _blobClient = blobClient;
         }
 
-        public async Task<string> CreateContainer(string containerName)
+        public async Task<string> CreateContainerAsync(string containerName)
         {
-            var client = _blobServiceClient.GetBlobContainerClient(containerName);
-            await client.CreateIfNotExistsAsync(PublicAccessType.Blob);
-            return client.Uri.ToString();
+            var containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
+            await containerClient.CreateIfNotExistsAsync();
+            return containerClient.Uri.ToString();
         }
         public async Task UploadFileAsync(Stream stream, string fileName, string containerName)
         {

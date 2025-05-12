@@ -8,7 +8,7 @@ namespace EasyStays.Domain.Interfaces
 {
     public interface IStorageService
     {
-        public Task<string> CreateContainer(string containerName);
+        public Task<string> CreateContainerAsync(string containerName);
         public Task UploadFileAsync(Stream stream, string fileName, string containerName);
         public Task<List<string>> RetrieveFilesAsync(string containerName);
     }
