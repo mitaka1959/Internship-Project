@@ -10,7 +10,7 @@ namespace EasyStays.Application.UseCases.Storage.Commands
 {
     public class UploadFileCommand : IRequest<string>
     {
-        [System.Text.Json.Serialization.JsonIgnore]
+        
         public Stream FileStream { get; private set; }
 
         public string FileName { get; private set; }
