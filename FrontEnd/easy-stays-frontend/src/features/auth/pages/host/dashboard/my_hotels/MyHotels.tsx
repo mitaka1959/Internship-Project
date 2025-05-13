@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Row, Col, Typography, Button, Rate, Tag, Progress } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import Sidebar from "../../host/dashboard/sidebar/Sidebar";
+import Sidebar from "../sidebar/Sidebar";
 import hotelImage from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/hotel.webp";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -24,6 +25,8 @@ const hotels = [
 ];
 
 const MyHotels: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
@@ -48,6 +51,7 @@ const MyHotels: React.FC = () => {
             My Hotels
           </Title>
           <Button
+            onClick={() => navigate("/host/create-hotel/basic-info")}
             type="primary"
             style={{
               backgroundColor: "#FB8500",

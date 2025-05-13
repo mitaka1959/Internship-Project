@@ -16,7 +16,7 @@ interface Props {
 }
 
 const PrivateRoutes: React.FC<Props> = ({ allowedRoles, children }) => {
-  if (!isAuthenticated) {
+  if (!isAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
   if (!allowedRoles?.includes(getRole() || "")) {

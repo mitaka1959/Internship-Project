@@ -9,7 +9,7 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   const navigate = useNavigate();
 
   return (
