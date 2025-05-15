@@ -19,15 +19,15 @@ namespace EasyStays.Domain.Entities
         public int Capacity { get; set; } 
         public decimal PricePerNight { get; set; }
         public int RoomCount { get; set; } 
-
-        public int RoomSize { get; set; } 
-        public string BedConfiguration { get; set; } 
+        public int RoomSize { get; set; }
 
         public bool IsAvailable { get; set; }
 
         public ICollection<RoomAmenity> RoomAmenities { get; set; } = new List<RoomAmenity>();
         public ICollection<RoomImage> Images { get; set; } = new List<RoomImage>(); 
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public ICollection<BedConfiguration> BedConfigurations { get; set; } = new List<BedConfiguration>();
+
     }
 
 

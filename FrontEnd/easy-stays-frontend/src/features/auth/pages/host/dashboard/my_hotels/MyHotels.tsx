@@ -51,7 +51,7 @@ const MyHotels: React.FC = () => {
             My Hotels
           </Title>
           <Button
-            onClick={() => navigate("/host/create-hotel/basic-info")}
+            onClick={() => navigate("/host/create-hotel/create-hotel")}
             type="primary"
             style={{
               backgroundColor: "#FB8500",
