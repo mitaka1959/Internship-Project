@@ -1,7 +1,9 @@
-import { Input, Form, Radio, Select, Button } from "antd";
+import { Input, Form, Radio, Select, Button, Space } from "antd";
 import AntSteps from "./Steps";
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
+import type { SelectProps } from "antd";
+
 const languageOptions = [
   { label: "English", value: "en" },
   { label: "Spanish", value: "es" },
@@ -39,6 +41,20 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
     setFormData({ ...formData, [name]: value });
     onChange({ [name]: value });
   };
+  const handleChangeLanguage = (value: string[]) => {
+    console.log(`selected ${value}`);
+  };
+  const handleChangeType = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+  const combinedHandleChange = (value: any) => {
+    handleChange(value);
+    handleChangeLanguage(value);
+  };
+  const combinedHadnleChangeType = (value: any) => {
+    handleChange(value);
+    handleChangeType(value);
+  };
   return (
     <div
       style={{
@@ -71,6 +87,17 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
             placeholder="Hotel Name"
             value={formData.hotelName}
             onChange={handleChange}
+          />
+        </Form.Item>
+        <Form.Item label="Hotel Type">
+          <Select
+            style={{ width: 120 }}
+            onChange={combinedHadnleChangeType}
+            options={[
+              { value: "hotel", label: "Hotel" },
+              { value: "apartament", label: "Apartament" },
+              { value: "B&B", label: "B&B" },
+            ]}
           />
         </Form.Item>
 
@@ -108,6 +135,17 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
             placeholder="Description"
             value={formData.description}
             onChange={handleChange}
+          />
+        </Form.Item>
+        <Form.Item label="Languages Spoken">
+          <Select
+            mode="multiple"
+            allowClear
+            style={{ width: "100%" }}
+            placeholder="Please select"
+            defaultValue={["English"]}
+            onChange={combinedHandleChange}
+            options={languageOptions}
           />
         </Form.Item>
 

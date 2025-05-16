@@ -4,6 +4,7 @@ using EasyStays.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyStays.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250515104137_AddedAmentityEmoji")]
+    partial class AddedAmentityEmoji
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,19 +31,11 @@ namespace EasyStays.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("AmenityType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Emoji")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -125,9 +120,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<double>("Latitude")
                         .HasColumnType("float");
 
@@ -145,8 +137,11 @@ namespace EasyStays.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Stars")
-                        .HasColumnType("int");
+                    b.Property<decimal>("PricePerNight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<float>("Stars")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 

@@ -8,8 +8,7 @@ public class CreateHotelCommand : IRequest<Guid>
     public string Country { get; set; }
     public string AddressLine { get; set; }
     public int NumberOfRooms { get; set; }
-    public float Stars { get; set; }
-    public decimal PricePerNight { get; set; }
+    public int Stars { get; set; }
     public Guid OwnerId { get; set; }
 }
 

@@ -1,15 +1,5 @@
 import React from "react";
 import { Steps as AntSteps } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
-
-const stepLinks = [
-  "/host/create-hotel/basic-info",
-  "/host/create-hotel/room-configuration",
-  "/host/create-hotel/photos-and-media",
-  "/host/create-hotel/pricing-and-availability",
-  "/host/create-hotel/policies",
-  "/host/create-hotel/review-and-submit",
-];
 
 const items = [
   { title: "Basic Info" },
@@ -20,18 +10,11 @@ const items = [
   { title: "Review & Submit" },
 ];
 
-const StepsComponent: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+interface StepsProps {
+  currentStep: number;
+}
 
-  const currentStep = stepLinks.findIndex((path) => location.pathname === path);
-
-  const handleStepChange = (targetStep: number) => {
-    if (targetStep <= currentStep) {
-      navigate(stepLinks[targetStep]);
-    }
-  };
-
+const StepsComponent: React.FC<StepsProps> = ({ currentStep }) => {
   return (
     <div
       style={{
@@ -43,9 +26,8 @@ const StepsComponent: React.FC = () => {
       }}
     >
       <AntSteps
-        current={currentStep >= 0 ? currentStep : 0}
+        current={currentStep - 1}
         labelPlacement="vertical"
-        onChange={handleStepChange}
         items={items}
       />
     </div>

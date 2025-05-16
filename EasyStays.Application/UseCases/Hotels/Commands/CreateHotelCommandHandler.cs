@@ -23,7 +23,6 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
             AddressLine = request.AddressLine,
             NumberOfRooms = request.NumberOfRooms,
             Stars = request.Stars,
-            PricePerNight = request.PricePerNight,
             IsApproved = false,
             OwnerId = request.OwnerId.ToString()
         };

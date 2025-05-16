@@ -21,8 +21,7 @@ namespace EasyStays.Domain.Entities
         public double Longitude { get; set; } 
 
         public int NumberOfRooms { get; set; }
-        public float Stars { get; set; }
-        public decimal PricePerNight { get; set; }
+        public int Stars { get; set; }
 
         // Contact 
         public string ContactEmail { get; set; } 
@@ -34,9 +33,9 @@ namespace EasyStays.Domain.Entities
         public string CancellationPolicy { get; set; } 
         public string HouseRules { get; set; } 
         public decimal? DamageDeposit { get; set; } 
-
-        public bool IsApproved { get; set; }
         public string OwnerId { get; set; } = string.Empty;
+        public bool IsApproved { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
 
         public ICollection<HotelImage> Images { get; set; } = new List<HotelImage>();
         public ICollection<HotelAmenity> HotelAmenities { get; set; } = new List<HotelAmenity>();

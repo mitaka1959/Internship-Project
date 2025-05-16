@@ -5,7 +5,7 @@ import LoginPage from "./features/auth/pages/LoginPage";
 import Dashboard from "./features/auth/pages/host/dashboard/Dashboard";
 import PrivateRoutes from "./features/auth/PrivateRoutes";
 import MyHotels from "./features/auth/pages/host/dashboard/my_hotels/MyHotels";
-import CreateHotel from "./features/auth/pages/host/CreateHotel/CreateHotel";
+import CreateHotelPage from "./features/auth/pages/host/CreateHotel/CreateHotelPage";
 
 const App: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ const App: React.FC = () => {
           path="/host/create-hotel/create-hotel"
           element={
             <PrivateRoutes allowedRoles={["Host", "Admin"]}>
-              <CreateHotel />
+              <CreateHotelPage />
             </PrivateRoutes>
           }
         />

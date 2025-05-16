@@ -1,145 +1,288 @@
+import React, { useState } from "react";
+import type { ChangeEvent } from "react";
 import {
-  Select,
-  Button,
   Form,
   Input,
+  Select,
   InputNumber,
+  Button,
   Typography,
   Row,
   Col,
+  Divider,
 } from "antd";
-import React, { useState } from "react";
 
 const { Title, Text } = Typography;
 
 const roomTypes = [
-  { value: "Standard Room", label: "Standard Room" },
-  { value: "Deluxe Room", label: "Deluxe Room" },
-  { value: "Suite", label: "Suite" },
-  { value: "Family Room", label: "Family Room" },
+  { label: "Standard", value: "standard" },
+  { label: "Suite", value: "suite" },
+  { label: "Custom", value: "custom" },
+];
+
+const roomAmenities = [
+  { name: "Wi-Fi", value: "wifi", emoji: "📶" },
+  { name: "TV", value: "tv", emoji: "📺" },
+  { name: "Air Conditioning", value: "air_conditioning", emoji: "❄️" },
+  { name: "Heating", value: "heating", emoji: "🔥" },
+  { name: "Private Bathroom", value: "private_bathroom", emoji: "🛁" },
+  { name: "Mini Bar", value: "mini_bar", emoji: "🍾" },
+  { name: "Coffee Maker", value: "coffee_maker", emoji: "☕" },
+  { name: "Room Service", value: "room_service", emoji: "🛎️" },
+  { name: "Safe", value: "safe", emoji: "🔒" },
+  { name: "Iron", value: "iron", emoji: "🧺" },
+  { name: "Desk", value: "desk", emoji: "📝" },
+  { name: "Balcony", value: "balcony", emoji: "🏞️" },
+  { name: "Sea View", value: "sea_view", emoji: "🌊" },
+  { name: "Accessible Room", value: "accessible_room", emoji: "♿" },
 ];
 
 interface Step2Props {
   onNext: () => void;
+  onPrev: () => void;
   onChange: (data: { [key: string]: any }) => void;
 }
 
-const RoomConfiguration: React.FC<Step2Props> = ({ onNext, onChange }) => {
-  const [formData, setFormData] = useState({
-    roomType: "Standard Room",
-    roomName: "",
-    roomQuantity: 1,
-    roomMaxOccupancy: 2,
-    roomSize: 50,
-    bedConfiguration: {
-      single: 0,
-      queen: 0,
-      king: 0,
+const RoomConfiguration: React.FC<Step2Props> = ({
+  onNext,
+  onPrev,
+  onChange,
+}) => {
+  const [roomGroups, setRoomGroups] = useState([
+    {
+      roomType: "standard",
+      displayName: "",
+      roomQuantity: 1,
+      maxGuests: 1,
+      roomSize: 20,
+      bedConfiguration: { single: 0, queen: 0, king: 0 },
+      amenities: [],
+      pricePerNight: 100,
+      description: "",
     },
-  });
+  ]);
 
-  const handleInputChange = (name: string, value: any) => {
-    const updatedData = { ...formData, [name]: value };
-    setFormData(updatedData);
-    onChange({ [name]: value });
+  const handleChange = (
+    index: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const updatedGroups = [...roomGroups];
+    updatedGroups[index] = { ...updatedGroups[index], [name]: value };
+    setRoomGroups(updatedGroups);
+    onChange({ roomGroups: updatedGroups });
   };
 
-  const handleBedConfigChange = (bedType: string, value: number | null) => {
-    const updatedBedConfig = { ...formData.bedConfiguration, [bedType]: value };
-    setFormData({ ...formData, bedConfiguration: updatedBedConfig });
-    onChange({ bedConfiguration: updatedBedConfig });
+  const handleSelectChange = (index: number, name: string, value: any) => {
+    const updatedGroups = [...roomGroups];
+    updatedGroups[index] = { ...updatedGroups[index], [name]: value };
+    setRoomGroups(updatedGroups);
+    onChange({ roomGroups: updatedGroups });
   };
 
-  const totalBeds = Object.values(formData.bedConfiguration).reduce(
-    (a, b) => a + b,
-    0
-  );
+  const handleBedConfigChange = (
+    index: number,
+    bedType: string,
+    value: number | null
+  ) => {
+    const updatedGroups = [...roomGroups];
+    const updatedBedConfig = {
+      ...updatedGroups[index].bedConfiguration,
+      [bedType]: value,
+    };
+    updatedGroups[index] = {
+      ...updatedGroups[index],
+      bedConfiguration: updatedBedConfig,
+    };
+    setRoomGroups(updatedGroups);
+    onChange({ roomGroups: updatedGroups });
+  };
+
+  const addRoomGroup = () => {
+    setRoomGroups([
+      ...roomGroups,
+      {
+        roomType: "standard",
+        displayName: "",
+        roomQuantity: 1,
+        maxGuests: 1,
+        roomSize: 20,
+        bedConfiguration: { single: 0, queen: 0, king: 0 },
+        amenities: [],
+        pricePerNight: 100,
+        description: "",
+      },
+    ]);
+  };
+
+  const removeRoomGroup = (index: number) => {
+    const updatedGroups = roomGroups.filter((_, i) => i !== index);
+    setRoomGroups(updatedGroups);
+    onChange({ roomGroups: updatedGroups });
+  };
 
   return (
     <div style={{ padding: "2rem" }}>
       <Title level={3}>Room Configuration</Title>
-      <Form layout="vertical">
-        <Form.Item label="Room Type">
-          <Select
-            value={formData.roomType}
-            style={{ width: "100%" }}
-            onChange={(value) => handleInputChange("roomType", value)}
-            options={roomTypes}
-          />
-        </Form.Item>
+      {roomGroups.map((group, index) => {
+        const totalBeds =
+          group.bedConfiguration.single +
+          group.bedConfiguration.queen * 2 +
+          group.bedConfiguration.king * 2;
 
-        <Form.Item label="Room Name">
-          <Input
-            name="roomName"
-            placeholder="Room Name"
-            value={formData.roomName}
-            onChange={(e) => handleInputChange("roomName", e.target.value)}
-          />
-        </Form.Item>
+        return (
+          <Form key={index} layout="vertical" style={{ marginBottom: "2rem" }}>
+            <Divider>Room Group {index + 1}</Divider>
 
-        <Form.Item label="Quantity of Identical Rooms">
-          <InputNumber
-            min={1}
-            value={formData.roomQuantity}
-            onChange={(value) => handleInputChange("roomQuantity", value)}
-            style={{ width: "100%" }}
-          />
-        </Form.Item>
+            <Form.Item label="Room Base Type">
+              <Select
+                value={group.roomType}
+                onChange={(value) =>
+                  handleSelectChange(index, "roomType", value)
+                }
+                options={roomTypes}
+              />
+            </Form.Item>
 
-        <Form.Item label="Room Max Occupancy">
-          <InputNumber
-            min={1}
-            value={formData.roomMaxOccupancy}
-            onChange={(value) => handleInputChange("roomMaxOccupancy", value)}
-            style={{ width: "100%" }}
-          />
-        </Form.Item>
+            <Form.Item label="Display Name">
+              <Input
+                name="displayName"
+                value={group.displayName}
+                onChange={(e) => handleChange(index, e)}
+              />
+            </Form.Item>
 
-        <Form.Item label="Room Size (m²)">
-          <InputNumber
-            min={1}
-            value={formData.roomSize}
-            onChange={(value) => handleInputChange("roomSize", value)}
-            style={{ width: "100%" }}
-          />
-        </Form.Item>
+            <Form.Item label="Number of Identical Rooms">
+              <InputNumber
+                min={1}
+                value={group.roomQuantity}
+                onChange={(value) =>
+                  handleSelectChange(index, "roomQuantity", value)
+                }
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
 
-        <Form.Item label="Bed Configuration">
-          <Row gutter={[16, 16]}>
-            <Col span={8}>
-              <Text>Single Beds</Text>
+            <Form.Item label="Max Guests">
+              <InputNumber
+                min={1}
+                value={group.maxGuests}
+                onChange={(value) =>
+                  handleSelectChange(index, "maxGuests", value)
+                }
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+
+            <Form.Item label="Room Size (m²)">
+              <InputNumber
+                min={1}
+                value={group.roomSize}
+                onChange={(value) =>
+                  handleSelectChange(index, "roomSize", value)
+                }
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+
+            <Form.Item label="Bed Configuration">
+              <Row gutter={[16, 16]}>
+                <Col span={8}>
+                  <Text>Single Beds</Text>
+                  <InputNumber
+                    min={0}
+                    value={group.bedConfiguration.single}
+                    onChange={(value) =>
+                      handleBedConfigChange(index, "single", value)
+                    }
+                  />
+                </Col>
+                <Col span={8}>
+                  <Text>Queen Beds</Text>
+                  <InputNumber
+                    min={0}
+                    value={group.bedConfiguration.queen}
+                    onChange={(value) =>
+                      handleBedConfigChange(index, "queen", value)
+                    }
+                  />
+                </Col>
+                <Col span={8}>
+                  <Text>King Beds</Text>
+                  <InputNumber
+                    min={0}
+                    value={group.bedConfiguration.king}
+                    onChange={(value) =>
+                      handleBedConfigChange(index, "king", value)
+                    }
+                  />
+                </Col>
+              </Row>
+              <Text strong>Total sleeping room for people: {totalBeds}</Text>
+            </Form.Item>
+
+            <Form.Item label="Amenities">
+              <Select
+                mode="multiple"
+                allowClear
+                style={{ width: "100%" }}
+                placeholder="Select amenities"
+                value={group.amenities}
+                onChange={(value) =>
+                  handleSelectChange(index, "amenities", value)
+                }
+                options={roomAmenities}
+              />
+            </Form.Item>
+
+            <Form.Item label="Price Per Night">
               <InputNumber
                 min={0}
-                value={formData.bedConfiguration.single}
-                onChange={(value) => handleBedConfigChange("single", value)}
+                value={group.pricePerNight}
+                onChange={(value) =>
+                  handleSelectChange(index, "pricePerNight", value)
+                }
+                style={{ width: "100%" }}
               />
-            </Col>
-            <Col span={8}>
-              <Text>Queen Beds</Text>
-              <InputNumber
-                min={0}
-                value={formData.bedConfiguration.queen}
-                onChange={(value) => handleBedConfigChange("queen", value)}
-              />
-            </Col>
-            <Col span={8}>
-              <Text>King Beds</Text>
-              <InputNumber
-                min={0}
-                value={formData.bedConfiguration.king}
-                onChange={(value) => handleBedConfigChange("king", value)}
-              />
-            </Col>
-          </Row>
-          <Text strong>Total Beds: {totalBeds}</Text>
-        </Form.Item>
+            </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" onClick={onNext} block>
-            Next Step
-          </Button>
-        </Form.Item>
-      </Form>
+            <Form.Item label="Description">
+              <Input.TextArea
+                name="description"
+                value={group.description}
+                onChange={(e) => handleChange(index, e)}
+              />
+            </Form.Item>
+
+            {roomGroups.length > 1 && (
+              <Button
+                type="primary"
+                danger
+                onClick={() => removeRoomGroup(index)}
+              >
+                Remove This Room Group
+              </Button>
+            )}
+          </Form>
+        );
+      })}
+
+      <Button
+        type="dashed"
+        onClick={addRoomGroup}
+        style={{ width: "100%", marginBottom: "2rem" }}
+      >
+        Add Another Room Group
+      </Button>
+
+      <Form.Item>
+        <Button type="primary" onClick={onPrev} style={{ marginRight: "1rem" }}>
+          Previous Step
+        </Button>
+        <Button type="primary" onClick={onNext}>
+          Next Step
+        </Button>
+      </Form.Item>
     </div>
   );
 };
