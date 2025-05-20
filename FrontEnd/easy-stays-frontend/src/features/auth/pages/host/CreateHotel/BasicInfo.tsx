@@ -1,60 +1,67 @@
-import { Input, Form, Radio, Select, Button, Space } from "antd";
-import AntSteps from "./Steps";
+import { Input, Form, Select, Button, Rate } from "antd";
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-import type { SelectProps } from "antd";
 
 const languageOptions = [
-  { label: "English", value: "en" },
-  { label: "Spanish", value: "es" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Chinese", value: "zh" },
-  { label: "Japanese", value: "ja" },
-  { label: "Russian", value: "ru" },
-  { label: "Arabic", value: "ar" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Italian", value: "it" },
+  { label: "English", value: "English" },
+  { label: "Bulgarian", value: "Bulgarian" },
+  { label: "Spanish", value: "Spanish" },
+  { label: "French", value: "French" },
+  { label: "German", value: "German" },
+  { label: "Chinese", value: "Chinese" },
+  { label: "Japanese", value: "Japanese" },
+  { label: "Russian", value: "Russian" },
+  { label: "Arabic", value: "Arabic" },
+  { label: "Portuguese", value: "Portuguese" },
+  { label: "Italian", value: "Italian" },
+  { label: "Dutch", value: "Dutch" },
+  { label: "Greek", value: "Greek" },
+  { label: "Turkish", value: "Turkish" },
+  { label: "Korean", value: "Korean" },
+  { label: "Hindi", value: "Hindi" },
+  { label: "Polish", value: "Polish" },
+  { label: "Swedish", value: "Swedish" },
+  { label: "Norwegian", value: "Norwegian" },
+  { label: "Danish", value: "Danish" },
+  { label: "Finnish", value: "Finnish" },
 ];
 
 interface Step1Props {
   onNext: () => void;
-  onChange: (data: { [key: string]: string }) => void;
+  onChange: (data: { [key: string]: any }) => void;
+  formData: { [key: string]: any };
 }
 
-const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
-  const [formData, setFormData] = useState({
-    hotelName: "",
-    hotelType: "",
-    addressLine: "",
-    city: "",
-    country: "",
-    description: "",
-    languagesSpoken: [],
-    email: "",
-    phone: "",
+const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange, formData }) => {
+  const [localData, setLocalData] = useState({
+    hotelName: formData.hotelName || "",
+    hotelType: formData.hotelType || "",
+    stars: formData.stars || 0,
+    addressLine: formData.addressLine || "",
+    city: formData.city || "",
+    country: formData.country || "",
+    description: formData.description || "",
+    languagesSpoken: formData.languagesSpoken || [],
+    email: formData.email || "",
+    phone: formData.phone || "",
   });
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    onChange({ [name]: value });
+    setLocalData({ ...localData, [name]: value });
   };
-  const handleChangeLanguage = (value: string[]) => {
-    console.log(`selected ${value}`);
+
+  const handleSelectChange = (name: string, value: any) => {
+    setLocalData({ ...localData, [name]: value });
   };
-  const handleChangeType = (value: string) => {
-    console.log(`selected ${value}`);
+
+  const handleNext = () => {
+    onChange(localData);
+    onNext();
   };
-  const combinedHandleChange = (value: any) => {
-    handleChange(value);
-    handleChangeLanguage(value);
-  };
-  const combinedHadnleChangeType = (value: any) => {
-    handleChange(value);
-    handleChangeType(value);
-  };
+
   return (
     <div
       style={{
@@ -66,9 +73,7 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
         padding: "1rem",
       }}
     >
-      <div>
-        <h1>Basic Info</h1>
-      </div>
+      <h1>Basic Info</h1>
       <Form
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
@@ -85,19 +90,28 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
           <Input
             name="hotelName"
             placeholder="Hotel Name"
-            value={formData.hotelName}
+            value={localData.hotelName}
             onChange={handleChange}
           />
         </Form.Item>
+
         <Form.Item label="Hotel Type">
           <Select
-            style={{ width: 120 }}
-            onChange={combinedHadnleChangeType}
+            value={localData.hotelType}
+            onChange={(value) => handleSelectChange("hotelType", value)}
             options={[
               { value: "hotel", label: "Hotel" },
               { value: "apartament", label: "Apartament" },
               { value: "B&B", label: "B&B" },
             ]}
+            style={{ width: "100%" }}
+          />
+        </Form.Item>
+
+        <Form.Item label="Stars">
+          <Rate
+            value={localData.stars}
+            onChange={(value) => handleSelectChange("stars", value)}
           />
         </Form.Item>
 
@@ -105,7 +119,7 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
           <Input
             name="addressLine"
             placeholder="Address Line"
-            value={formData.addressLine}
+            value={localData.addressLine}
             onChange={handleChange}
           />
         </Form.Item>
@@ -114,7 +128,7 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
           <Input
             name="city"
             placeholder="City"
-            value={formData.city}
+            value={localData.city}
             onChange={handleChange}
           />
         </Form.Item>
@@ -123,7 +137,7 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
           <Input
             name="country"
             placeholder="Country"
-            value={formData.country}
+            value={localData.country}
             onChange={handleChange}
           />
         </Form.Item>
@@ -133,19 +147,20 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
             name="description"
             rows={4}
             placeholder="Description"
-            value={formData.description}
+            value={localData.description}
             onChange={handleChange}
           />
         </Form.Item>
+
         <Form.Item label="Languages Spoken">
           <Select
             mode="multiple"
             allowClear
-            style={{ width: "100%" }}
             placeholder="Please select"
-            defaultValue={["English"]}
-            onChange={combinedHandleChange}
+            value={localData.languagesSpoken}
+            onChange={(value) => handleSelectChange("languagesSpoken", value)}
             options={languageOptions}
+            style={{ width: "100%" }}
           />
         </Form.Item>
 
@@ -154,7 +169,7 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
             name="email"
             type="email"
             placeholder="Email"
-            value={formData.email}
+            value={localData.email}
             onChange={handleChange}
           />
         </Form.Item>
@@ -163,12 +178,17 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange }) => {
           <Input
             name="phone"
             placeholder="Phone"
-            value={formData.phone}
+            value={localData.phone}
             onChange={handleChange}
           />
         </Form.Item>
+
         <Form.Item>
-          <Button type="primary" onClick={onNext} style={{ float: "right" }}>
+          <Button
+            type="primary"
+            onClick={handleNext}
+            style={{ float: "right" }}
+          >
             Next Step
           </Button>
         </Form.Item>

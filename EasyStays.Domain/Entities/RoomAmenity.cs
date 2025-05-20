@@ -12,6 +12,8 @@ namespace EasyStays.Domain.Entities
         public Room Room { get; set; }
 
         public Guid AmenityId { get; set; }
+
+        public string Name { get; set; }
         public Amenity Amenity { get; set; }
     }
 

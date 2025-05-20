@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyStays.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace EasyStays.Domain.Entities
         // Policies
         public TimeOnly CheckInTime { get; set; } 
         public TimeOnly CheckOutTime { get; set; } 
-        public string CancellationPolicy { get; set; } 
+        public CancelationPolicy CancellationPolicy { get; set; } 
         public string HouseRules { get; set; } 
         public decimal? DamageDeposit { get; set; } 
         public string OwnerId { get; set; } = string.Empty;

@@ -8,7 +8,7 @@ namespace EasyStays.Application.Mappings
     {
         public HotelProfile()
         {
-            CreateMap<CreateHotelDTO, Hotel>()
+            CreateMap<CreateHotelDto, Hotel>()
                 .ForMember(dest => dest.IsApproved, opt => opt.Ignore())
                 .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest => dest.HotelAmenities, opt => opt.Ignore())
@@ -16,7 +16,7 @@ namespace EasyStays.Application.Mappings
                 .ForMember(dest => dest.Reservations, opt => opt.Ignore())
                 .ForMember(dest => dest.Reviews, opt => opt.Ignore());
 
-            CreateMap<Hotel, CreateHotelDTO>();
+            CreateMap<Hotel, CreateHotelDto>();
             CreateMap<Hotel, HotelDto>();
 
         }

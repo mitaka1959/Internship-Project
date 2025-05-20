@@ -13,6 +13,8 @@ namespace EasyStays.Application.Interfaces.Repositories
     public interface IApplicationDbContext
     {
         DbSet<Hotel> Hotels { get; }
+        public DbSet<Amenity> Amenities { get; }
+        public DbSet<HotelImage> HotelImages { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 

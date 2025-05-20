@@ -9,6 +9,7 @@ using Azure.Storage.Blobs.Models;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace EasyStays.Infrastructure.BlopStorage
 {
@@ -35,7 +36,6 @@ namespace EasyStays.Infrastructure.BlopStorage
             var blobClient = containerClient.GetBlobClient(fileName);
             await blobClient.UploadAsync(stream, overwrite: true);
         }
-
         public async Task<List<string>> RetrieveFilesAsync(string containerName)
         {
             var containerClient = _blobServiceClient.GetBlobContainerClient(containerName);

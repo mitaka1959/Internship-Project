@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Row, Col, Typography, Button, Rate, Tag, Progress } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import Sidebar from "../sidebar/Sidebar";
-import hotelImage from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/hotel.webp";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const { Title, Text } = Typography;
 
-const hotels = [
-  {
-    id: 1,
-    name: "Victory House Hotel",
-    rating: 4,
-    status: "Active",
-    rooms: "5 / 20",
-  },
-  {
-    id: 2,
-    name: "The Strand",
-    rating: 5,
-    status: "Inactive",
-    rooms: "10 / 30",
-  },
-];
+interface Hotel {
+  id: string;
+  name: string;
+  rating: number;
+  status: string;
+  roomsAvailable: number;
+  totalRooms: number;
+}
 
 const MyHotels: React.FC = () => {
+  const [hotels, setHotels] = useState<Hotel[]>([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5067/api/Hotels/my-hotels"
+        );
+        setHotels(res.data);
+      } catch (error) {
+        console.error("Failed to fetch hotels", error);
+      }
+    };
+
+    fetchHotels();
+  }, []);
 
   return (
     <div style={{ display: "flex" }}>
@@ -53,10 +61,7 @@ const MyHotels: React.FC = () => {
           <Button
             onClick={() => navigate("/host/create-hotel/create-hotel")}
             type="primary"
-            style={{
-              backgroundColor: "#FB8500",
-              borderColor: "#FB8500",
-            }}
+            style={{ backgroundColor: "#FB8500", borderColor: "#FB8500" }}
           >
             + Add New Hotel
           </Button>
@@ -78,7 +83,7 @@ const MyHotels: React.FC = () => {
               >
                 <img
                   alt="hotel"
-                  src={hotelImage}
+                  src="/placeholder.jpg"
                   style={{
                     width: "250px",
                     height: "180px",
@@ -107,11 +112,12 @@ const MyHotels: React.FC = () => {
                         {hotel.status}
                       </Tag>
                     </div>
-                    <Text style={{ marginRight: "30px" }}>
-                      Available Rooms: {hotel.rooms}
+                    <Text>
+                      Available Rooms: {hotel.roomsAvailable} /{" "}
+                      {hotel.totalRooms}
                     </Text>
                     <Progress
-                      percent={40}
+                      percent={(hotel.roomsAvailable / hotel.totalRooms) * 100}
                       style={{ marginTop: "0.5rem", maxWidth: "300px" }}
                     />
                   </div>

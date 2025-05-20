@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+
 import { PlusOutlined } from "@ant-design/icons";
-import { Image, Upload } from "antd";
+import { Image, Upload, Form, Button } from "antd";
 import type { GetProp, UploadFile, UploadProps } from "antd";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
@@ -16,49 +16,84 @@ const getBase64 = (file: FileType): Promise<string> =>
   });
 
 interface Step3Props {
-  onPrevious: () => void;
+  onPrev: () => void;
   onNext: () => void;
   onChange: (data: { [key: string]: any }) => void;
+  formData: { [key: string]: any };
+}
+interface FormDataState {
+  images: { name: string; url: string }[];
+  phoneNumber: string;
+  message: string;
 }
 
 const PhotosAndMedia: React.FC<Step3Props> = ({
-  onPrevious,
+  onPrev,
   onNext,
   onChange,
+  formData,
 }) => {
-  const [formData, setFormData] = useState({
-    images: [],
-    phoneNumber: "",
-    message: "",
+  const [localData, setLocalData] = useState<FormDataState>({
+    images: formData.images || [],
+    phoneNumber: formData.phoneNumber || "",
+    message: formData.message || "",
   });
+
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [fileList, setFileList] = useState<UploadFile[]>(
+    formData.images?.map(
+      (img: { name: string; url: string }, index: number) => ({
+        uid: String(index),
+        name: img.name,
+        url: img.url,
+      })
+    ) || []
+  );
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    onChange({ [name]: value });
+    setLocalData({ ...localData, [name]: value });
   };
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
 
   const handlePreview = async (file: UploadFile) => {
-    if (!file.url && !file.preview) {
+    if (!file.url && !file.preview && file.originFileObj) {
       file.preview = await getBase64(file.originFileObj as FileType);
     }
-
     setPreviewImage(file.url || (file.preview as string));
     setPreviewOpen(true);
   };
 
-  const handleChangeUpload: UploadProps["onChange"] = ({
-    fileList: newFileList,
-  }) => setFileList(newFileList);
+  const combinedHandleChangeUpload = async (info: {
+    fileList: UploadFile[];
+  }) => {
+    const newFileList = await Promise.all(
+      info.fileList.map(async (file) => {
+        if (!file.url && !file.preview && file.originFileObj) {
+          file.preview = await getBase64(file.originFileObj as FileType);
+        }
+        return {
+          name: file.name,
+          url: file.url || (file.preview as string) || "",
+        };
+      })
+    );
 
-  const combinedHandleChangeUplaod = (value: any) => {
-    handleChange(value);
-    handleChangeUpload(value);
+    setFileList(info.fileList);
+    const updatedData = { ...localData, images: newFileList };
+    setLocalData(updatedData);
+  };
+
+  const handleNext = () => {
+    onChange(localData);
+    onNext();
+  };
+
+  const handlePrev = () => {
+    onChange(localData);
+    onPrev();
   };
 
   const uploadButton = (
@@ -71,26 +106,41 @@ const PhotosAndMedia: React.FC<Step3Props> = ({
   return (
     <div style={{ padding: "2rem" }}>
       <h1>Photos and Media</h1>
-      <Upload
-        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-        listType="picture-card"
-        fileList={fileList}
-        onPreview={handlePreview}
-        onChange={combinedHandleChangeUplaod}
-      >
-        {fileList.length >= 8 ? null : uploadButton}
-      </Upload>
-      {previewImage && (
-        <Image
-          wrapperStyle={{ display: "none" }}
-          preview={{
-            visible: previewOpen,
-            onVisibleChange: (visible) => setPreviewOpen(visible),
-            afterOpenChange: (visible) => !visible && setPreviewImage(""),
-          }}
-          src={previewImage}
-        />
-      )}
+      <Form>
+        <Form.Item>
+          <Upload.Dragger
+            listType="picture-card"
+            fileList={fileList}
+            onPreview={handlePreview}
+            onChange={combinedHandleChangeUpload}
+          >
+            {fileList.length >= 8 ? null : uploadButton}
+          </Upload.Dragger>
+          {previewImage && (
+            <Image
+              preview={{
+                visible: previewOpen,
+                onVisibleChange: (visible) => setPreviewOpen(visible),
+                afterOpenChange: (visible) => !visible && setPreviewImage(""),
+              }}
+              src={previewImage}
+              wrapperStyle={{ display: "none" }}
+            />
+          )}
+        </Form.Item>
+        <Form.Item>
+          <Button
+            type="primary"
+            onClick={handlePrev}
+            style={{ marginRight: "1rem" }}
+          >
+            Previous Step
+          </Button>
+          <Button type="primary" onClick={handleNext}>
+            Next Step
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };

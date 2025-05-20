@@ -41,26 +41,41 @@ interface Step2Props {
   onNext: () => void;
   onPrev: () => void;
   onChange: (data: { [key: string]: any }) => void;
+  formData: { [key: string]: any };
+}
+interface RoomGroup {
+  roomType: string;
+  displayName: string;
+  roomQuantity: number;
+  maxGuests: number;
+  roomSize: number;
+  bedConfiguration: { single: number; queen: number; king: number };
+  amenities: string[];
+  pricePerNight: number;
+  description: string;
 }
 
 const RoomConfiguration: React.FC<Step2Props> = ({
   onNext,
   onPrev,
   onChange,
+  formData,
 }) => {
-  const [roomGroups, setRoomGroups] = useState([
-    {
-      roomType: "standard",
-      displayName: "",
-      roomQuantity: 1,
-      maxGuests: 1,
-      roomSize: 20,
-      bedConfiguration: { single: 0, queen: 0, king: 0 },
-      amenities: [],
-      pricePerNight: 100,
-      description: "",
-    },
-  ]);
+  const [roomGroups, setRoomGroups] = useState<RoomGroup[]>(
+    formData.roomGroups || [
+      {
+        roomType: "standard",
+        displayName: "",
+        roomQuantity: 1,
+        maxGuests: 1,
+        roomSize: 20,
+        bedConfiguration: { single: 0, queen: 0, king: 0 },
+        amenities: [],
+        pricePerNight: 100,
+        description: "",
+      },
+    ]
+  );
 
   const handleChange = (
     index: number,
@@ -70,14 +85,12 @@ const RoomConfiguration: React.FC<Step2Props> = ({
     const updatedGroups = [...roomGroups];
     updatedGroups[index] = { ...updatedGroups[index], [name]: value };
     setRoomGroups(updatedGroups);
-    onChange({ roomGroups: updatedGroups });
   };
 
   const handleSelectChange = (index: number, name: string, value: any) => {
     const updatedGroups = [...roomGroups];
     updatedGroups[index] = { ...updatedGroups[index], [name]: value };
     setRoomGroups(updatedGroups);
-    onChange({ roomGroups: updatedGroups });
   };
 
   const handleBedConfigChange = (
@@ -86,16 +99,11 @@ const RoomConfiguration: React.FC<Step2Props> = ({
     value: number | null
   ) => {
     const updatedGroups = [...roomGroups];
-    const updatedBedConfig = {
+    updatedGroups[index].bedConfiguration = {
       ...updatedGroups[index].bedConfiguration,
       [bedType]: value,
     };
-    updatedGroups[index] = {
-      ...updatedGroups[index],
-      bedConfiguration: updatedBedConfig,
-    };
     setRoomGroups(updatedGroups);
-    onChange({ roomGroups: updatedGroups });
   };
 
   const addRoomGroup = () => {
@@ -118,7 +126,16 @@ const RoomConfiguration: React.FC<Step2Props> = ({
   const removeRoomGroup = (index: number) => {
     const updatedGroups = roomGroups.filter((_, i) => i !== index);
     setRoomGroups(updatedGroups);
-    onChange({ roomGroups: updatedGroups });
+  };
+
+  const handleNext = () => {
+    onChange({ roomGroups });
+    onNext();
+  };
+
+  const handlePrev = () => {
+    onChange({ roomGroups });
+    onPrev();
   };
 
   return (
@@ -276,10 +293,14 @@ const RoomConfiguration: React.FC<Step2Props> = ({
       </Button>
 
       <Form.Item>
-        <Button type="primary" onClick={onPrev} style={{ marginRight: "1rem" }}>
+        <Button
+          type="primary"
+          onClick={handlePrev}
+          style={{ marginRight: "1rem" }}
+        >
           Previous Step
         </Button>
-        <Button type="primary" onClick={onNext}>
+        <Button type="primary" onClick={handleNext}>
           Next Step
         </Button>
       </Form.Item>
