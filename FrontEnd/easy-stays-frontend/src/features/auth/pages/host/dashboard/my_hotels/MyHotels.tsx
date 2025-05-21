@@ -3,7 +3,7 @@ import { Card, Row, Col, Typography, Button, Rate, Tag, Progress } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import Sidebar from "../sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../../../../services/axios";
 
 const { Title, Text } = Typography;
 
@@ -23,12 +23,10 @@ const MyHotels: React.FC = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5067/api/Hotels/my-hotels"
-        );
+        const res = await api.get("/api/Hotels/my-hotels");
         setHotels(res.data);
-      } catch (error) {
-        console.error("Failed to fetch hotels", error);
+      } catch (err) {
+        console.error("Failed to fetch hotels", err);
       }
     };
 

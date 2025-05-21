@@ -1,0 +1,643 @@
+2025-05-21 13:39:39.798 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:39:39.825 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:39:39.833 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:39:39.836 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:40:44.222 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 13:40:44.228 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.5866 ms
+2025-05-21 13:40:44.264 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:40:44.325 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 83.7282 ms
+2025-05-21 13:40:47.200 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:40:47.210 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 10.7866 ms
+2025-05-21 13:41:56.874 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:41:56.897 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:41:56.898 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:41:56.898 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:42:12.677 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 13:42:12.690 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:42:12.719 +03:00 [ERR] HTTP GET /api/Hotels responded 500 in 37.1757 ms
+2025-05-21 13:42:46.990 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:42:46.997 +03:00 [ERR] HTTP GET /api/Storage/retrieve-file responded 500 in 8.7899 ms
+2025-05-21 13:44:12.053 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:44:12.061 +03:00 [ERR] HTTP GET /api/Storage/retrieve-file responded 500 in 10.3359 ms
+2025-05-21 13:44:16.493 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:44:16.500 +03:00 [ERR] HTTP GET /api/Hotels responded 500 in 6.6897 ms
+2025-05-21 13:46:59.959 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:46:59.983 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:46:59.985 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:46:59.985 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:47:06.561 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 13:47:06.568 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 2.4270 ms
+2025-05-21 13:47:06.589 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:47:06.640 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 60.7728 ms
+2025-05-21 13:47:08.233 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:47:08.245 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 13.0014 ms
+2025-05-21 13:47:11.522 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:47:11.533 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 15.0601 ms
+2025-05-21 13:48:22.420 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:48:22.427 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 7.2341 ms
+2025-05-21 13:48:38.669 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:48:38.677 +03:00 [ERR] HTTP GET /api/Hotels responded 500 in 8.2063 ms
+2025-05-21 13:49:01.494 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:49:01.503 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 19.3566 ms
+2025-05-21 13:49:02.588 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:49:02.596 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 7.8283 ms
+2025-05-21 13:49:35.963 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:49:35.990 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:49:35.992 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:49:35.993 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:49:41.133 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 13:49:41.138 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.3410 ms
+2025-05-21 13:49:41.156 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:49:41.205 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 56.5462 ms
+2025-05-21 13:49:42.570 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 13:49:42.577 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 7.3544 ms
+2025-05-21 13:55:34.009 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:55:34.037 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:55:34.039 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:55:34.040 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 13:55:58.180 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 13:55:58.633 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 447.7500 ms
+2025-05-21 13:56:25.021 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 60.4942 ms
+2025-05-21 13:56:34.733 +03:00 [INF] HTTP GET /api/Hotels responded 200 in 138.8080 ms
+2025-05-21 13:56:46.853 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 302 in 6.6807 ms
+2025-05-21 13:56:46.859 +03:00 [INF] HTTP GET /Account/Login responded 404 in 0.1921 ms
+2025-05-21 13:56:54.469 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.6265 ms
+2025-05-21 13:56:54.535 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 62.5487 ms
+2025-05-21 13:56:56.433 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1126 ms
+2025-05-21 13:56:56.437 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 302 in 1.2027 ms
+2025-05-21 13:56:56.450 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 302 in 1.4405 ms
+2025-05-21 13:56:56.467 +03:00 [INF] HTTP OPTIONS /Account/Login responded 204 in 0.0750 ms
+2025-05-21 13:56:56.467 +03:00 [INF] HTTP OPTIONS /Account/Login responded 204 in 0.1007 ms
+2025-05-21 13:56:56.471 +03:00 [INF] HTTP GET /Account/Login responded 404 in 0.1723 ms
+2025-05-21 13:56:56.474 +03:00 [INF] HTTP GET /Account/Login responded 404 in 0.2593 ms
+2025-05-21 14:02:02.105 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:02:02.134 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:02:02.136 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:02:02.137 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:02:08.878 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:02:08.884 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 1.9871 ms
+2025-05-21 14:02:08.884 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 2.0173 ms
+2025-05-21 14:02:08.903 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:02:08.944 +03:00 [ERR] HTTP GET /api/Hotels/my-hotels responded 500 in 49.0163 ms
+2025-05-21 14:02:08.947 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:02:08.952 +03:00 [ERR] HTTP GET /api/Hotels/my-hotels responded 500 in 6.4563 ms
+2025-05-21 14:02:41.680 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:02:41.688 +03:00 [ERR] HTTP GET /api/Hotels responded 500 in 11.0055 ms
+2025-05-21 14:03:17.179 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:03:17.187 +03:00 [ERR] HTTP GET /api/Storage/retrieve-file responded 500 in 7.8657 ms
+2025-05-21 14:03:58.942 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:03:58.967 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:03:58.968 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:03:58.969 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:04:04.846 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:04:04.857 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:04:04.902 +03:00 [ERR] HTTP GET /api/Storage/retrieve-file responded 500 in 51.8764 ms
+2025-05-21 14:04:07.242 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 96
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:04:07.248 +03:00 [ERR] HTTP GET /api/Storage/retrieve-file responded 500 in 7.1724 ms
+2025-05-21 14:06:15.215 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:06:15.241 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:06:15.242 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:06:15.243 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:06:44.492 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:06:44.506 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:06:44.536 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 39.8277 ms
+2025-05-21 14:06:47.607 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:06:47.614 +03:00 [ERR] HTTP POST /api/Auth/login responded 500 in 8.5577 ms
+2025-05-21 14:06:53.120 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:06:53.128 +03:00 [ERR] HTTP GET /api/Hotels responded 500 in 9.2016 ms
+2025-05-21 14:07:24.199 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:07:24.228 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:07:24.229 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:07:24.230 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:07:29.557 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:07:29.574 +03:00 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__8(JwtBearerOptions options) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Program.cs:line 97
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.<>c.<Get>b__10_0(String name, IOptionsFactory`1 factory)
+   at Microsoft.Extensions.Options.OptionsCache`1.<>c__DisplayClass3_1`1.<GetOrAdd>b__2()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\EasyStays\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-05-21 14:07:29.638 +03:00 [ERR] HTTP GET /api/Hotels responded 500 in 76.0078 ms
+2025-05-21 14:14:42.960 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:14:42.990 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:14:42.992 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:14:42.993 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:15:18.074 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:15:18.403 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 326.0770 ms
+2025-05-21 14:15:31.755 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 52.5953 ms
+2025-05-21 14:15:36.463 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 1.5477 ms
+2025-05-21 14:15:36.478 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 11.3179 ms
+2025-05-21 14:15:36.482 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 1.4650 ms
+2025-05-21 14:16:44.289 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:16:44.312 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:16:44.314 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:16:44.315 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:16:47.855 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:16:47.861 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.4472 ms
+2025-05-21 14:16:48.180 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 309.9650 ms
+2025-05-21 14:16:50.205 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.2302 ms
+2025-05-21 14:16:50.225 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 12.7934 ms
+2025-05-21 14:16:50.229 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 2.1352 ms
+2025-05-21 14:17:44.696 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1031 ms
+2025-05-21 14:17:44.701 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 1.5138 ms
+2025-05-21 14:17:44.717 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.3272 ms
+2025-05-21 14:22:31.168 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1072 ms
+2025-05-21 14:22:31.315 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 143.0229 ms
+2025-05-21 14:22:31.321 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 3.9730 ms
+2025-05-21 14:27:22.904 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1173 ms
+2025-05-21 14:27:22.911 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 3.7478 ms
+2025-05-21 14:27:22.926 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.5160 ms
+2025-05-21 14:34:46.364 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.1052 ms
+2025-05-21 14:34:46.441 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 73.8715 ms
+2025-05-21 14:34:46.441 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 56.0056 ms
+2025-05-21 14:34:46.447 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0775 ms
+2025-05-21 14:34:46.447 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0501 ms
+2025-05-21 14:34:46.450 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.4062 ms
+2025-05-21 14:34:46.452 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.2612 ms
+2025-05-21 14:34:56.830 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.1198 ms
+2025-05-21 14:34:56.873 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 24.6564 ms
+2025-05-21 14:34:56.873 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 40.3187 ms
+2025-05-21 14:34:56.882 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0812 ms
+2025-05-21 14:34:56.885 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.2723 ms
+2025-05-21 14:34:56.894 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.3627 ms
+2025-05-21 14:37:13.782 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.1216 ms
+2025-05-21 14:37:13.826 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 24.3649 ms
+2025-05-21 14:37:13.827 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 41.5961 ms
+2025-05-21 14:37:13.832 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0759 ms
+2025-05-21 14:37:13.832 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0302 ms
+2025-05-21 14:37:13.835 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.4113 ms
+2025-05-21 14:37:13.836 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.1937 ms
+2025-05-21 14:38:24.632 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.1049 ms
+2025-05-21 14:38:24.676 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 40.1339 ms
+2025-05-21 14:38:24.678 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 23.5908 ms
+2025-05-21 14:38:24.683 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0816 ms
+2025-05-21 14:38:24.683 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0342 ms
+2025-05-21 14:38:24.687 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.4284 ms
+2025-05-21 14:38:24.688 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 0.3572 ms
+2025-05-21 14:38:47.726 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:38:47.750 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:38:47.752 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:38:47.754 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 14:39:13.609 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-21 14:39:13.616 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 2.5116 ms
+2025-05-21 14:39:13.622 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.2884 ms
+2025-05-21 14:39:13.684 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 55.7893 ms
+2025-05-21 14:39:13.689 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 401 in 3.6726 ms
+2025-05-21 14:39:26.463 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 0.0749 ms
+2025-05-21 14:39:26.826 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 357.5137 ms
+2025-05-21 14:39:28.830 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0823 ms
+2025-05-21 14:39:28.966 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 133.1373 ms
+2025-05-21 14:39:28.971 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 4.0674 ms
+2025-05-21 14:48:04.557 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1138 ms
+2025-05-21 14:48:04.585 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 24.0141 ms
+2025-05-21 14:48:04.590 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 3.4085 ms
+2025-05-21 14:48:07.895 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 12.2915 ms
+2025-05-21 14:48:07.901 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 2.7779 ms
+2025-05-21 14:55:21.737 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1238 ms
+2025-05-21 14:55:21.737 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.1238 ms
+2025-05-21 14:55:21.765 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 23.0632 ms
+2025-05-21 14:55:21.769 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 3.6641 ms

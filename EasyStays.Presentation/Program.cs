@@ -17,6 +17,7 @@ using EasyStays.Application.Interfaces.Auth;
 using Azure.Storage.Blobs;
 using EasyStays.Domain.Interfaces;
 using EasyStays.Infrastructure.BlopStorage;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 
@@ -68,7 +69,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 builder.Services.AddAuthorization(options =>
-{   
+{
     options.AddPolicy("RequireHostRole",
          policy => policy.RequireRole("Host"));
 });
@@ -85,21 +86,43 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 6;
 });
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+});
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.TokenValidationParameters = new TokenValidationParameters
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnChallenge = context =>
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-        };
-    });
+            context.HandleResponse();
+            context.Response.StatusCode = 401;
+            context.Response.ContentType = "application/json";
+            return context.Response.WriteAsync("{\"error\": \"Unauthorized\"}");
+        }
+    };
+});
+
+
 builder.Services.AddSingleton(new BlobServiceClient(
     builder.Configuration.GetConnectionString("StorageAccount")));
 
