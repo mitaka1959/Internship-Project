@@ -37,6 +37,7 @@ namespace EasyStays.Domain.Entities
         public string OwnerId { get; set; } = string.Empty;
         public bool IsApproved { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
+        public bool IsActive { get; set; } = false;
 
         public ICollection<HotelImage> Images { get; set; } = new List<HotelImage>();
         public ICollection<HotelAmenity> HotelAmenities { get; set; } = new List<HotelAmenity>();

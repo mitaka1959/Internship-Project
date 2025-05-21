@@ -7,13 +7,18 @@ import api from "../../../../../../services/axios";
 
 const { Title, Text } = Typography;
 
+interface HotelImage {
+  url: string;
+}
+
 interface Hotel {
   id: string;
   name: string;
-  rating: number;
+  stars: number;
   status: string;
   roomsAvailable: number;
   totalRooms: number;
+  images: { imageUrl: string }[];
 }
 
 const MyHotels: React.FC = () => {
@@ -24,9 +29,10 @@ const MyHotels: React.FC = () => {
     const fetchHotels = async () => {
       try {
         const res = await api.get("/api/Hotels/my-hotels");
+        console.log(res);
         setHotels(res.data);
-      } catch (err) {
-        console.error("Failed to fetch hotels", err);
+      } catch (error) {
+        console.error("Failed to fetch hotels", error);
       }
     };
 
@@ -81,16 +87,18 @@ const MyHotels: React.FC = () => {
               >
                 <img
                   alt="hotel"
-                  src="/placeholder.jpg"
+                  src={hotel.images?.[0]?.imageUrl || "/placeholder.jpg"}
                   style={{
-                    width: "250px",
-                    height: "180px",
-                    padding: "10px 0px",
-                    margin: "10px 20px",
+                    width: "300px",
+                    height: "160px",
                     objectFit: "cover",
                     borderRadius: "10px",
+                    marginTop: "1.2rem",
+                    marginLeft: "1.2rem",
+                    marginRight: "20px",
                   }}
                 />
+
                 <div
                   style={{
                     flex: 1,
@@ -104,7 +112,7 @@ const MyHotels: React.FC = () => {
                     <Title level={4} style={{ marginBottom: "0.5rem" }}>
                       {hotel.name}
                     </Title>
-                    <Rate disabled defaultValue={hotel.rating} />
+                    <Rate disabled defaultValue={hotel.stars} />
                     <div style={{ margin: "0.5rem 0" }}>
                       <Tag color={hotel.status === "Active" ? "green" : "red"}>
                         {hotel.status}
