@@ -4,8 +4,8 @@ import { loginUser } from "../../../services/authService";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 import AuthLayout from "../../../layouts/AuthLayout";
-import FacebookLogo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/Facebook-logo.png";
-import GoogleLogo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/Google.webp";
+import FacebookLogo from "../../../assets/Facebook-logo.png";
+import GoogleLogo from "../../../assets/Google.webp";
 
 const { Title, Paragraph } = Typography;
 

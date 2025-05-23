@@ -1,27 +1,35 @@
-﻿using EasyStays.Application.Interfaces.Repositories;
+﻿using EasyStays.Application.Interfaces.Auth;
+using EasyStays.Application.Interfaces.Repositories;
 using EasyStays.Domain.Entities;
 using EasyStays.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using EasyStays.Application.UseCases.Hotels.Commands;
 
-
-
 public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Guid>
 {
     private readonly IApplicationDbContext _context;
+    private readonly ICurrentUserService _currentUser;
 
-    public CreateHotelCommandHandler(IApplicationDbContext context)
+    public CreateHotelCommandHandler(
+        IApplicationDbContext context,
+        ICurrentUserService currentUser)
     {
         _context = context;
+        _currentUser = currentUser;
     }
 
     public async Task<Guid> Handle(CreateHotelCommand request, CancellationToken cancellationToken)
     {
+        var userId = _currentUser.UserId;
+
+        if (string.IsNullOrEmpty(userId))
+            throw new UnauthorizedAccessException("User is not authenticated.");
+
         var hotel = new Hotel
         {
             Id = Guid.NewGuid(),
-            OwnerId = request.OwnerId,
+            OwnerId = userId,
             Name = request.Name,
             HotelType = request.HotelType,
             Description = request.Description,
@@ -47,7 +55,7 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                 .Select(a => new RoomAmenity { AmenityId = a.Id })
                 .ToList();
 
-            return new Room
+            var room = new Room
             {
                 Id = Guid.NewGuid(),
                 HotelId = hotel.Id,
@@ -58,17 +66,26 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                 PricePerNight = group.PricePerNight,
                 RoomCount = group.RoomQuantity,
                 RoomSize = group.RoomSize,
-                IsAvailable = true,
 
                 BedConfigurations = new List<BedConfiguration>
-            {
-                new() { BedType = BedType.singleBed, Quantity = group.BedConfiguration.Single },
-                new() { BedType = BedType.queenSizeBed, Quantity = group.BedConfiguration.Queen },
-                new() { BedType = BedType.kingSizeBed, Quantity = group.BedConfiguration.King },
-            }.Where(b => b.Quantity > 0).ToList(),
+                {
+                    new() { BedType = BedType.singleBed, Quantity = group.BedConfiguration.Single },
+                    new() { BedType = BedType.queenSizeBed, Quantity = group.BedConfiguration.Queen },
+                    new() { BedType = BedType.kingSizeBed, Quantity = group.BedConfiguration.King },
+                }.Where(b => b.Quantity > 0).ToList(),
 
                 RoomAmenities = matchedAmenities
             };
+
+            room.RoomUnits = Enumerable.Range(1, group.RoomQuantity)
+                .Select(i => new RoomUnit
+                {
+                    Id = Guid.NewGuid(),
+                    IsAvailable = true,
+                    Number = null
+                }).ToList();
+
+            return room;
         }).ToList();
 
         _context.Hotels.Add(hotel);

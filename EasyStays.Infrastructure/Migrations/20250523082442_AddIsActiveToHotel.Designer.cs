@@ -4,6 +4,7 @@ using EasyStays.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyStays.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250523082442_AddIsActiveToHotel")]
+    partial class AddIsActiveToHotel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,6 +123,9 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Property<string>("HouseRules")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
@@ -373,6 +379,9 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Property<Guid>("HotelId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("PricePerNight")
                         .HasColumnType("decimal(18,2)");
 
@@ -436,28 +445,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("RoomImage");
-                });
-
-            modelBuilder.Entity("EasyStays.Domain.Entities.RoomUnit", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("RoomId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("RoomUnit");
                 });
 
             modelBuilder.Entity("EasyStays.Infrastructure.Identity.ApplicationUser", b =>
@@ -826,17 +813,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("EasyStays.Domain.Entities.RoomUnit", b =>
-                {
-                    b.HasOne("EasyStays.Domain.Entities.Room", "Room")
-                        .WithMany("RoomUnits")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Room");
-                });
-
             modelBuilder.Entity("HotelLanguage", b =>
                 {
                     b.HasOne("EasyStays.Domain.Entities.Hotel", null)
@@ -938,8 +914,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("RoomAmenities");
-
-                    b.Navigation("RoomUnits");
                 });
 #pragma warning restore 612, 618
         }

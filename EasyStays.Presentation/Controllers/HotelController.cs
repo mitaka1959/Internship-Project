@@ -22,6 +22,7 @@ namespace EasyStays.Presentation.Controllers
             _mediator = mediator;
             _logger = logger;
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateHotelCommand command)
         {
@@ -42,6 +43,7 @@ namespace EasyStays.Presentation.Controllers
             var hotelId = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = hotelId }, hotelId);
         }
+
 
 
 

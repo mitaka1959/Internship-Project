@@ -124,6 +124,13 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasOne<ApplicationUser>() 
                 .WithMany()                
                 .HasForeignKey(rt => rt.UserId);
+            
+            modelBuilder.Entity<RoomUnit>()
+                .HasOne(ru => ru.Room)
+                .WithMany(r => r.RoomUnits)
+                .HasForeignKey(ru => ru.RoomId)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
 
     }

@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Collapse, Descriptions, Image, List, Tag } from "antd";
 import { SettingOutlined } from "@ant-design/icons";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../../../../services/axios";
 
 const { Panel } = Collapse;
 
@@ -38,8 +38,13 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
 
   const submitHotel = async () => {
     try {
+      const token = localStorage.getItem("access_token");
+      if (!token) {
+        alert("User is not authenticated. Please log in again.");
+        return;
+      }
+
       const hotelPayload = {
-        ownerId: "4b1be523-8d4c-4655-994f-28e751639d27",
         name: formData.hotelName,
         hotelType: formData.hotelType,
         description: formData.description,
@@ -57,10 +62,8 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
         roomGroups: formData.roomGroups,
       };
 
-      const res = await axios.post(
-        "http://localhost:5067/api/Hotels",
-        hotelPayload
-      );
+      const res = await api.post("/api/Hotels", hotelPayload);
+
       const hotelId = res.data;
 
       const imageForm = new FormData();
@@ -80,16 +83,14 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
         imageForm.append("Images", blob, file.name);
       }
 
-      await axios.post(
-        `http://localhost:5067/api/Hotels/${hotelId}/images`,
-        imageForm,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      await api.post(`/api/Hotels/${hotelId}/images`, imageForm, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       alert("Hotel and images submitted successfully!");
-      navigate("/host/my_hotels");
+      navigate("/my_hotels");
     } catch (error) {
       console.error("Submission error:", error);
       alert("Failed to submit hotel.");

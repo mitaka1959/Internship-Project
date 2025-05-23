@@ -20,8 +20,6 @@ namespace EasyStays.Domain.Entities
         public string Country { get; set; }
         public double Latitude { get; set; }  
         public double Longitude { get; set; } 
-
-        public int NumberOfRooms { get; set; }
         public int Stars { get; set; }
 
         // Contact 
@@ -37,7 +35,12 @@ namespace EasyStays.Domain.Entities
         public string OwnerId { get; set; } = string.Empty;
         public bool IsApproved { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
-        public bool IsActive { get; set; } = false;
+        public int AvailableRooms => Rooms?
+            .SelectMany(r => r.RoomUnits)
+            .Count(ru => ru.IsAvailable) ?? 0;
+        public int TotalRooms => Rooms?
+            .SelectMany(r => r.RoomUnits)
+            .Count() ?? 0;
 
         public ICollection<HotelImage> Images { get; set; } = new List<HotelImage>();
         public ICollection<HotelAmenity> HotelAmenities { get; set; } = new List<HotelAmenity>();

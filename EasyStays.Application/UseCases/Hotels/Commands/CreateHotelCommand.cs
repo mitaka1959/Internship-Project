@@ -6,8 +6,6 @@ using System.ComponentModel.DataAnnotations;
 
 public class CreateHotelCommand : IRequest<Guid>
 {
-    [Required]
-    public string OwnerId { get; set; }
 
     public string Name { get; set; }
     public string HotelType { get; set; }

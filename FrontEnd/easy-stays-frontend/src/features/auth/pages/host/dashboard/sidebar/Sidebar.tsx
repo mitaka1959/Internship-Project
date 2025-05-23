@@ -1,7 +1,7 @@
 import { Menu, Divider, Card, Avatar } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import logo from "C:/Users/dimit/source/repos/EasyStays/FrontEnd/easy-stays-frontend/src/assets/logo.png";
+import logo from "C:/Users/dimit/source/repos/easy-stays-3/Internship-Project/FrontEnd/easy-stays-frontend/src/assets/logo.png";
 import {
   HomeOutlined,
   CalendarOutlined,

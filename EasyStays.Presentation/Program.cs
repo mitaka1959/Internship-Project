@@ -77,6 +77,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireHostRole",
          policy => policy.RequireRole("Host"));
 });
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

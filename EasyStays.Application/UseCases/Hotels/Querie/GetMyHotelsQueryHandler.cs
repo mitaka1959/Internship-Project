@@ -24,7 +24,8 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
         public async Task<List<Hotel>> Handle(GetMyHotelsQuery query, CancellationToken cancellationToken)
         {
             return await _context.Hotels
-                .Include(h => h.Images) 
+                .Include(h => h.Images)
+                .Include(h => h.Rooms).ThenInclude(r => r.RoomUnits)
                 .Where(h => h.OwnerId == query.UserId)
                 .ToListAsync(cancellationToken);
         }
