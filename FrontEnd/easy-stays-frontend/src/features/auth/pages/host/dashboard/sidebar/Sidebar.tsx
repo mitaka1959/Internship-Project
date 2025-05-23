@@ -93,22 +93,6 @@ const Sidebar: React.FC = () => {
         style={{ backgroundColor: "white", width: "80%", margin: "1rem auto" }}
       />
 
-      <Menu
-        mode="vertical"
-        theme="dark"
-        style={{
-          backgroundColor: "#023047",
-          color: "white",
-          width: "100%",
-          borderInlineEnd: "none",
-        }}
-        onClick={({ key }) => navigate(key)}
-        items={[
-          { label: "Settings", key: "/settings" },
-          { label: "Help", key: "/help" },
-        ]}
-      />
-
       <div style={{ textAlign: "center", marginBottom: "1rem" }}>
         <Avatar
           size={64}
