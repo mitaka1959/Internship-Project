@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import Sidebar from "../sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import api from "../../../../../../services/axios";
+import { Popconfirm, message } from "antd";
 
 const { Title, Text } = Typography;
 
@@ -39,6 +40,18 @@ const MyHotels: React.FC = () => {
 
     fetchHotels();
   }, []);
+
+  const handleDeleteHotel = async (hotelId: string) => {
+    try {
+      await api.patch(`/api/Hotels/${hotelId}/delete`);
+      message.success("Hotel deleted successfully!");
+      setHotels((prevHotels) =>
+        prevHotels.filter((hotel) => hotel.id !== hotelId)
+      );
+    } catch (error) {
+      console.error("Failed to delete hotel", error);
+    }
+  };
 
   return (
     <div style={{ display: "flex" }}>
@@ -142,7 +155,15 @@ const MyHotels: React.FC = () => {
                       icon={<EditOutlined />}
                       style={{ color: "#FB8500", marginRight: "0.5rem" }}
                     />
-                    <Button type="text" icon={<DeleteOutlined />} danger />
+                    <Popconfirm
+                      title="Are you sure you want to delete this hotel?"
+                      onConfirm={() => handleDeleteHotel(hotel.id)}
+                      okText="Yes"
+                      cancelText="No"
+                      placement="topRight"
+                    >
+                      <Button type="text" icon={<DeleteOutlined />} danger />
+                    </Popconfirm>
                   </div>
                 </div>
               </Card>

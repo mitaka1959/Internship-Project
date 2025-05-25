@@ -27,7 +27,9 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
 
         public async Task<List<HotelDto>> Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
         {
-            var hotels = await _context.Hotels.ToListAsync(cancellationToken);
+            var hotels = await _context.Hotels
+                .Where(h => h.IsDeleted == false)
+                .ToListAsync(cancellationToken);
             return _mapper.Map<List<HotelDto>>(hotels);
         }
     }

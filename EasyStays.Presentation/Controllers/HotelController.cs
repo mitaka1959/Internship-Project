@@ -98,6 +98,12 @@ namespace EasyStays.Presentation.Controllers
 
             return Ok(result); 
         }
+        [HttpPatch("{id}/delete")]
+        public async Task<IActionResult> DeleteHotel(Guid id)
+        {
+            await _mediator.Send(new DeleteHotelCommand(id));
+            return NoContent();
+        }
 
     }
 }
