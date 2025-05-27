@@ -12,7 +12,7 @@ namespace EasyStays.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class HotelsController: ControllerBase
+    public class HotelsController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly ILogger<HotelsController> _logger;
@@ -30,7 +30,8 @@ namespace EasyStays.Presentation.Controllers
             {
                 var errors = ModelState
                     .Where(e => e.Value.Errors.Count > 0)
-                    .Select(e => new {
+                    .Select(e => new
+                    {
                         Field = e.Key,
                         Errors = e.Value.Errors.Select(x => x.ErrorMessage)
                     });
@@ -50,10 +51,10 @@ namespace EasyStays.Presentation.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
-           
+
             return Ok();
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -96,8 +97,9 @@ namespace EasyStays.Presentation.Controllers
 
             var result = await _mediator.Send(command);
 
-            return Ok(result); 
+            return Ok(result);
         }
+
         [HttpPatch("{id}/delete")]
         public async Task<IActionResult> DeleteHotel(Guid id)
         {
@@ -105,5 +107,65 @@ namespace EasyStays.Presentation.Controllers
             return NoContent();
         }
 
+        [HttpGet("get-hotel-info/{id}")]
+        public async Task<IActionResult> GetHotelForEdit(Guid id)
+        {
+            var userIdString = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdString))
+            {
+                return Unauthorized();
+            }
+
+            if (!Guid.TryParse(userIdString, out var userId))
+            {
+                return BadRequest("Invalid user ID format");
+            }
+
+            var query = new GetHotelByIdQuery(id, userId);
+            var hotel = await _mediator.Send(query);
+
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(hotel);
+        }
+
+
+        [HttpPatch("update/{id}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateHotelCommand command)
+        {
+            if (id != command.HotelId)
+            {
+                return BadRequest("Hotel ID mismatch.");
+            }
+
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            command.UserId = new Guid(userId);
+
+            await _mediator.Send(command);
+            return NoContent();
+        }
+        [HttpGet("{hotelId}/rooms")]
+        public async Task<IActionResult> GetHotelRooms(Guid hotelId)
+        {
+            var query = new GetHotelRoomsQuery(hotelId);
+            var rooms = await _mediator.Send(query);
+
+            if (rooms == null || !rooms.Any())
+            {
+                return NotFound("No rooms found for the specified hotel.");
+            }
+
+            return Ok(rooms);
+
+        }
     }
 }

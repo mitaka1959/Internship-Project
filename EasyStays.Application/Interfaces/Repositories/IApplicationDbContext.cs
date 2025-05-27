@@ -15,6 +15,7 @@ namespace EasyStays.Application.Interfaces.Repositories
         DbSet<Hotel> Hotels { get; }
         public DbSet<Amenity> Amenities { get; }
         public DbSet<HotelImage> HotelImages { get; }
+        public DbSet<Room> Rooms { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 

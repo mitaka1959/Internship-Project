@@ -154,6 +154,9 @@ const MyHotels: React.FC = () => {
                       type="text"
                       icon={<EditOutlined />}
                       style={{ color: "#FB8500", marginRight: "0.5rem" }}
+                      onClick={() =>
+                        navigate(`/host/my_hotels/edit-hotel/${hotel.id}`)
+                      }
                     />
                     <Popconfirm
                       title="Are you sure you want to delete this hotel?"
