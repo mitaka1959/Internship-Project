@@ -7,6 +7,7 @@ import PrivateRoutes from "./features/auth/PrivateRoutes";
 import MyHotels from "./features/auth/pages/host/dashboard/my_hotels/MyHotels";
 import CreateHotelPage from "./features/auth/pages/host/CreateHotel/CreateHotelPage";
 import EditHotel from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/EditHotel";
+import RoomEditPage from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/RoomEdit";
 
 const App: React.FC = () => {
   return (
@@ -43,6 +44,14 @@ const App: React.FC = () => {
           element={
             <PrivateRoutes allowedRoles={["Host", "Admin"]}>
               <EditHotel />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/host/edit-room/:roomId"
+          element={
+            <PrivateRoutes allowedRoles={["Host", "Admin"]}>
+              <RoomEditPage />
             </PrivateRoutes>
           }
         />

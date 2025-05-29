@@ -167,5 +167,17 @@ namespace EasyStays.Presentation.Controllers
             return Ok(rooms);
 
         }
+        [HttpGet("{id}/edit-room")]
+        public async Task<IActionResult> GetRoomById(Guid id)
+        {
+            var room = await _mediator.Send(new GetRoomByIdQuery(id));
+
+            if (room == null)
+            {
+                return NotFound("Room not found");
+            }
+
+            return Ok(room);
+        }
     }
 }

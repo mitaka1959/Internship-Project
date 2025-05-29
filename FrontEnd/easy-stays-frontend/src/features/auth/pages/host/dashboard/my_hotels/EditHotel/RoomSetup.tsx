@@ -1,28 +1,30 @@
-import React from "react";
-import { Row, Col, Button, Card } from "antd";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Button, Card, Form, message } from "antd";
 import RoomCard from "./RoomCard";
-import { useNavigate } from "react-router-dom";
-
-const rooms = [
-  {
-    id: "1",
-    name: "King Suite",
-    description: "Spacious king-size room with balcony.",
-    image: "/images/room1.jpg",
-    priceRange: "$99.00 - $129.00 / night",
-  },
-  {
-    id: "2",
-    name: "Family Room",
-    description: "Ideal for families, spacious and comfortable.",
-    image: "/images/room2.jpg",
-    priceRange: "$80.00 - $110.00 / night",
-  },
-  // Add more rooms...
-];
+import { useNavigate, useParams } from "react-router-dom";
+import api from "../../../../../../../services/axios";
 
 const RoomSetup: React.FC = () => {
   const navigate = useNavigate();
+  const { hotelId } = useParams<{ hotelId: string }>();
+  const [form] = Form.useForm();
+
+  const [rooms, setRooms] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchHotelDetails = async () => {
+      try {
+        const res = await api.get(`/api/Hotels/${hotelId}/rooms`);
+        console.log("Room details fetched:", res.data);
+        setRooms(res.data);
+      } catch (error) {
+        console.error("Failed to fetch room details:", error);
+        message.error("Failed to load room data.");
+      }
+    };
+
+    fetchHotelDetails();
+  }, [hotelId]);
 
   return (
     <div>
@@ -31,7 +33,7 @@ const RoomSetup: React.FC = () => {
           <Col xs={24} sm={12} md={8} lg={6} key={room.id}>
             <RoomCard
               id={room.id}
-              name={room.name}
+              name={room.displayName}
               description={room.description}
               image={room.image}
               priceRange={room.priceRange}
@@ -39,7 +41,7 @@ const RoomSetup: React.FC = () => {
             />
           </Col>
         ))}
-        {/* Add "Add Room" card */}
+
         <Col xs={24} sm={12} md={8} lg={6}>
           <Card
             hoverable

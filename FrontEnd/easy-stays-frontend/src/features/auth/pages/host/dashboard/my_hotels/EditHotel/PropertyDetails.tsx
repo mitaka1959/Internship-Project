@@ -1,15 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Form,
-  Input,
-  Rate,
-  Button,
-  Select,
-  message,
-  Typography,
-  Radio,
-  Popconfirm,
-} from "antd";
+import { Form, Input, Rate, Button, Select, message, Typography } from "antd";
 import api from "../../../../../../../services/axios";
 import { useParams } from "react-router-dom";
 

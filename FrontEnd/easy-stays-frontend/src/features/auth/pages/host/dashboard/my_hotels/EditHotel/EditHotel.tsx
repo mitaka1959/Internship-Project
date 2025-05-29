@@ -28,15 +28,12 @@ const EditHotel: React.FC = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* Main Sidebar */}
       <Sider width={220} style={{ background: "#001529" }}>
         <Sidebar />
       </Sider>
 
-      {/* Secondary Sidebar + Content */}
       <Layout style={{ margin: 0 }}>
         {" "}
-        {/* Remove margin/padding here */}
         <Sider
           width={200}
           style={{
@@ -44,7 +41,7 @@ const EditHotel: React.FC = () => {
             borderRight: "1px solid #e0e0e0",
             marginTop: "64px",
             boxShadow: "2px 0 5px rgba(0,0,0,0.05)",
-            margin: 0, // remove any default margins
+            margin: 0,
           }}
         >
           <EditHotelSidebar
@@ -52,7 +49,6 @@ const EditHotel: React.FC = () => {
             setSelectedSection={setSelectedSection}
           />
         </Sider>
-        {/* Main Content */}
         <Layout style={{ margin: 0, padding: 0 }}>
           <Content
             style={{

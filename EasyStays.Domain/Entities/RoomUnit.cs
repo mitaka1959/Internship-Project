@@ -15,6 +15,7 @@ namespace EasyStays.Domain.Entities
         public string? Number { get; set; } 
 
         public bool IsAvailable { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
     }
 
 }

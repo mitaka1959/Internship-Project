@@ -4,10 +4,10 @@ import {
   Input,
   Select,
   Button,
-  Checkbox,
   Upload,
   Typography,
   message,
+  Space,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import api from "../../../../../../../services/axios";
@@ -20,24 +20,36 @@ const RoomEditPage: React.FC = () => {
   const { roomId } = useParams<{ roomId: string }>();
   const [form] = Form.useForm();
   const [roomImages, setRoomImages] = useState<any[]>([]);
-  const [amenityOptions, setAmenityOptions] = useState<string[]>([]);
+  const [amenityOptions, setAmenityOptions] = useState<
+    { value: string; label: string; emoji: string }[]
+  >([]);
 
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
-        const res = await api.get(`/api/Rooms/${roomId}`);
+        const res = await api.get(`/api/Hotels/${roomId}/edit-room`);
         const roomData = res.data;
-
+        console.log(roomData);
         form.setFieldsValue({
           ...roomData,
           roomId: roomData.id,
-          amenities: roomData.amenities.map((a: any) => a.amenity.name),
+          price: roomData.pricePerNight,
+          Quantity: roomData.roomCount,
+          amenities: roomData.amenities?.map((a: any) => a.amenity.name) || [],
         });
 
         setRoomImages(roomData.images || []);
 
-        const amenityNames = roomData.allAmenities.map((a: any) => a.name);
-        setAmenityOptions(amenityNames);
+        if (roomData.allAmenities) {
+          const options = roomData.allAmenities.map((a: any) => ({
+            value: a.id,
+            label: a.name,
+            emoji: a.emoji || "🏨",
+          }));
+          setAmenityOptions(options);
+        } else {
+          setAmenityOptions([]);
+        }
       } catch (error) {
         console.error("Failed to load room details:", error);
         message.error("Failed to load room data.");
@@ -57,13 +69,17 @@ const RoomEditPage: React.FC = () => {
     }
   };
 
+  const handleAmenityChange = (value: any) => {
+    console.log("Selected amenities:", value);
+  };
+
   return (
     <div style={{ background: "#fff", padding: "1rem", borderRadius: "8px" }}>
       <Title level={4}>Edit Room</Title>
 
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item name="roomId" label="Room ID">
-          <Select disabled>
+          <Select>
             <Option value={roomId}>{roomId}</Option>
           </Select>
         </Form.Item>
@@ -87,11 +103,8 @@ const RoomEditPage: React.FC = () => {
           <Input type="number" />
         </Form.Item>
 
-        <Form.Item name="roomStatus" label="Room Status">
-          <Select>
-            <Option value="Clean">Clean</Option>
-            <Option value="Dirty">Dirty</Option>
-          </Select>
+        <Form.Item name="Quantity" label="Quantity of that type rooms">
+          <Input type="number" />
         </Form.Item>
 
         <Form.Item name="capacity" label="Capacity">
@@ -107,13 +120,21 @@ const RoomEditPage: React.FC = () => {
         </Form.Item>
 
         <Form.Item name="amenities" label="Amenities">
-          <Checkbox.Group>
-            {amenityOptions.map((a) => (
-              <Checkbox key={a} value={a}>
-                {a}
-              </Checkbox>
-            ))}
-          </Checkbox.Group>
+          <Select
+            mode="multiple"
+            style={{ width: "100%" }}
+            placeholder="Select amenities"
+            onChange={handleAmenityChange}
+            options={amenityOptions}
+            optionRender={(option) => (
+              <Space>
+                <span role="img" aria-label={option.data.label}>
+                  {option.data.emoji}
+                </span>
+                {option.data.label}
+              </Space>
+            )}
+          />
         </Form.Item>
 
         <Form.Item>

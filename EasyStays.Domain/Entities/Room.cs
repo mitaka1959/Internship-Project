@@ -21,6 +21,8 @@ namespace EasyStays.Domain.Entities
         public int RoomCount { get; set; } 
         public int RoomSize { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
+
         public ICollection<RoomUnit> RoomUnits { get; set; } = new List<RoomUnit>();
         public ICollection<RoomAmenity> RoomAmenities { get; set; } = new List<RoomAmenity>();
         public ICollection<RoomImage> Images { get; set; } = new List<RoomImage>(); 
