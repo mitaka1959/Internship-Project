@@ -1,0 +1,30 @@
+.hotel-card {
+  width: 1000px;
+  height: 250px;
+  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+}
+.hotel-card-image {
+  width: 370px;
+  height: 250px;
+  margin-left: 0px;
+  background-size: cover;
+  background-position: center;
+  transition: background-size 1s ease-in-out;
+  transition: filter 0.5s ease-in-out;
+}
+
+.hotel-card-image:hover {
+  background-size: 120%;
+  filter: brightness(0.7);
+}
+.hotel-card-title {
+  margin: 10px 40px;
+}
