@@ -179,5 +179,57 @@ namespace EasyStays.Presentation.Controllers
 
             return Ok(room);
         }
+
+        [HttpPost("Rooms/{roomId}/images")]
+        public async Task<IActionResult> UploadRoomImages(Guid roomId, [FromForm] List<IFormFile> images)
+        {
+            if (images == null || !images.Any())
+            {
+                return BadRequest("No images provided.");
+            }
+
+            var command = new UploadRoomImagesCommand
+            {
+                RoomId = roomId,
+                Images = images.Select(img => new RoomImageUpload
+                {
+                    FileName = img.FileName,
+                    Content = img.OpenReadStream()
+                }).ToList()
+            };
+
+            _logger.LogInformation("Room image upload endpoint hit at {Time}", DateTime.UtcNow);
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpPatch("update-room/{roomId}")]
+        public async Task<IActionResult> UpdateRoom(Guid roomId, [FromBody] UpdateRoomCommand command)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid ModelState: {@ModelState}", ModelState);
+                return BadRequest(ModelState);
+            }
+
+            if (roomId != command.RoomId)
+            {
+                return BadRequest("Room ID mismatch.");
+            }
+
+            var result = await _mediator.Send(command);
+
+            if (!result)
+            {
+                return NotFound("Room not found or could not be updated.");
+            }
+
+            return NoContent();
+        }
+
+
     }
 }

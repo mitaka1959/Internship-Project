@@ -1,4 +1,5 @@
 import SearchBar from "../user/SearchBar";
+import FilterComponent from "./Filter";
 import HotelCard from "./HotelCard";
 
 const SearchPage: React.FC = () => {
@@ -10,12 +11,11 @@ const SearchPage: React.FC = () => {
       <div
         style={{
           marginTop: "200px",
-          marginLeft: "150px",
+          marginLeft: "200px",
           maxWidth: "80%",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
+        <FilterComponent />
         <HotelCard />
       </div>
     </div>

@@ -18,6 +18,7 @@ namespace EasyStays.Infrastructure.Persistence
         public DbSet<Amenity> Amenities { get; set; }
         public DbSet<HotelAmenity> HotelAmenities { get; set; }
         public DbSet<RoomAmenity> RoomAmenities { get; set; }
+        public DbSet<RoomImage> RoomImages { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Payment> Payments { get; set; }    
         public DbSet<Review> Reviews { get; set; }

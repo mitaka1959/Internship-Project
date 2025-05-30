@@ -9,6 +9,7 @@ import CreateHotelPage from "./features/auth/pages/host/CreateHotel/CreateHotelP
 import EditHotel from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/EditHotel";
 import RoomEditPage from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/RoomEdit";
 import SearchPage from "./features/auth/pages/user/SearchPage";
+import HotelPage from "./features/auth/pages/user/HotelPage";
 
 const App: React.FC = () => {
   return (
@@ -57,6 +58,7 @@ const App: React.FC = () => {
           }
         />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/hotel-page" element={<HotelPage />} />
 
         <Route
           path="*"

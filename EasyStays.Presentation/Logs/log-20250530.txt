@@ -1,0 +1,347 @@
+2025-05-30 13:33:48.211 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 13:33:48.240 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 13:33:48.242 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 13:33:48.243 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 13:33:54.954 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-30 13:33:54.963 +03:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 3.2967 ms
+2025-05-30 13:33:55.450 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 471.1934 ms
+2025-05-30 13:33:58.124 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.2987 ms
+2025-05-30 13:33:58.125 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0608 ms
+2025-05-30 13:33:58.222 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 13:33:58.402 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 265.3957 ms
+2025-05-30 13:33:58.460 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 53.5723 ms
+2025-05-30 13:34:03.943 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.0848 ms
+2025-05-30 13:34:03.944 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.2027 ms
+2025-05-30 13:34:04.020 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 13:34:04.134 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 168.8447 ms
+2025-05-30 13:34:04.208 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 72.7756 ms
+2025-05-30 13:34:05.060 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0989 ms
+2025-05-30 13:34:05.060 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0781 ms
+2025-05-30 13:34:05.080 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 13:34:05.093 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 28.1224 ms
+2025-05-30 13:34:05.104 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 7.8727 ms
+2025-05-30 13:45:11.158 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1091 ms
+2025-05-30 13:45:11.158 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1091 ms
+2025-05-30 13:45:11.181 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 13:45:11.196 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 33.2122 ms
+2025-05-30 13:45:11.200 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.5061 ms
+2025-05-30 13:45:15.651 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.0946 ms
+2025-05-30 13:45:15.651 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.0947 ms
+2025-05-30 13:45:15.709 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 52.4720 ms
+2025-05-30 13:45:15.738 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 28.6085 ms
+2025-05-30 13:45:17.895 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0966 ms
+2025-05-30 13:45:17.895 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.1249 ms
+2025-05-30 13:45:17.907 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 8.4559 ms
+2025-05-30 13:45:17.918 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 9.5797 ms
+2025-05-30 13:45:23.439 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1873 ms
+2025-05-30 13:45:23.439 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1101 ms
+2025-05-30 13:45:23.459 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.0332 ms
+2025-05-30 13:45:23.463 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.4297 ms
+2025-05-30 14:24:56.757 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 14:24:56.784 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 14:24:56.785 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 14:24:56.787 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 14:25:05.765 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-30 14:25:05.770 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 1.6719 ms
+2025-05-30 14:25:05.770 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 1.6792 ms
+2025-05-30 14:25:05.931 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 14:25:06.038 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 255.5610 ms
+2025-05-30 14:25:06.117 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 78.5173 ms
+2025-05-30 14:28:30.519 +03:00 [INF] HTTP OPTIONS /api/Rooms/update/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.2103 ms
+2025-05-30 14:28:30.525 +03:00 [INF] HTTP PATCH /api/Rooms/update/1dadd49b-a703-47de-945d-25002b8c943c responded 404 in 2.1692 ms
+2025-05-30 14:28:49.855 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1060 ms
+2025-05-30 14:28:49.856 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0924 ms
+2025-05-30 14:28:49.879 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 20.2419 ms
+2025-05-30 14:28:49.885 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.4460 ms
+2025-05-30 14:30:19.126 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.1205 ms
+2025-05-30 14:30:19.126 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.0467 ms
+2025-05-30 14:30:19.165 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 401 in 31.8728 ms
+2025-05-30 14:30:19.169 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 401 in 1.2819 ms
+2025-05-30 14:30:19.171 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.0821 ms
+2025-05-30 14:30:19.174 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.0559 ms
+2025-05-30 14:30:19.403 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 226.4977 ms
+2025-05-30 14:30:19.403 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 229.6948 ms
+2025-05-30 14:30:19.448 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 14:30:19.607 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 197.6580 ms
+2025-05-30 14:30:19.667 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 58.2675 ms
+2025-05-30 14:30:22.653 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0794 ms
+2025-05-30 14:30:22.653 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0795 ms
+2025-05-30 14:30:22.671 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 14:30:22.686 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 28.3504 ms
+2025-05-30 14:30:22.694 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 6.9241 ms
+2025-05-30 14:30:23.617 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1153 ms
+2025-05-30 14:30:23.617 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0458 ms
+2025-05-30 14:30:23.644 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 10.4459 ms
+2025-05-30 14:30:23.648 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.6625 ms
+2025-05-30 14:37:04.595 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0813 ms
+2025-05-30 14:37:04.629 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 29.7481 ms
+2025-05-30 14:37:11.783 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1427 ms
+2025-05-30 14:37:11.784 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0503 ms
+2025-05-30 14:37:11.790 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 2.9207 ms
+2025-05-30 14:37:11.796 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 5.2479 ms
+2025-05-30 14:37:14.525 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.1793 ms
+2025-05-30 14:37:14.525 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.0740 ms
+2025-05-30 14:37:14.594 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 63.9584 ms
+2025-05-30 14:37:14.641 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 46.0260 ms
+2025-05-30 14:37:16.869 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0872 ms
+2025-05-30 14:37:16.869 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0873 ms
+2025-05-30 14:37:16.905 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 11.3852 ms
+2025-05-30 14:37:16.910 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 4.5925 ms
+2025-05-30 14:37:17.901 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0802 ms
+2025-05-30 14:37:17.901 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0443 ms
+2025-05-30 14:37:17.907 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 2.7612 ms
+2025-05-30 14:37:17.911 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.7546 ms
+2025-05-30 14:37:25.693 +03:00 [INF] HTTP OPTIONS /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.0624 ms
+2025-05-30 14:37:25.696 +03:00 [INF] HTTP POST /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 404 in 0.7231 ms
+2025-05-30 14:37:38.357 +03:00 [INF] HTTP OPTIONS /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.0457 ms
+2025-05-30 14:37:38.361 +03:00 [INF] HTTP POST /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 404 in 0.5961 ms
+2025-05-30 14:37:45.215 +03:00 [INF] HTTP OPTIONS /api/Rooms/update/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.0628 ms
+2025-05-30 14:37:45.219 +03:00 [INF] HTTP PATCH /api/Rooms/update/1dadd49b-a703-47de-945d-25002b8c943c responded 404 in 0.2610 ms
+2025-05-30 14:39:42.474 +03:00 [INF] HTTP OPTIONS /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.1189 ms
+2025-05-30 14:39:42.587 +03:00 [INF] HTTP POST /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 404 in 0.5845 ms
+2025-05-30 14:40:25.824 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0848 ms
+2025-05-30 14:40:25.826 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0807 ms
+2025-05-30 14:40:25.852 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 22.9591 ms
+2025-05-30 14:40:25.857 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.1344 ms
+2025-05-30 14:40:49.219 +03:00 [INF] Room image upload endpoint hit at "2025-05-30T11:40:49.2183749Z"
+2025-05-30 14:40:49.733 +03:00 [INF] HTTP POST /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 200 in 541.8784 ms
+2025-05-30 14:44:03.673 +03:00 [INF] HTTP OPTIONS /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.1889 ms
+2025-05-30 14:44:03.678 +03:00 [INF] HTTP POST /api/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 404 in 0.5761 ms
+2025-05-30 14:47:59.763 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1197 ms
+2025-05-30 14:47:59.794 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 25.0671 ms
+2025-05-30 14:48:52.712 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0761 ms
+2025-05-30 14:48:52.724 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 6.3196 ms
+2025-05-30 14:49:02.160 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.3026 ms
+2025-05-30 14:49:02.161 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0437 ms
+2025-05-30 14:49:02.170 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.2050 ms
+2025-05-30 14:49:02.176 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.1137 ms
+2025-05-30 14:49:09.243 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.0902 ms
+2025-05-30 14:49:09.249 +03:00 [INF] Room image upload endpoint hit at "2025-05-30T11:49:09.2493079Z"
+2025-05-30 14:49:09.553 +03:00 [INF] HTTP POST /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 200 in 306.5894 ms
+2025-05-30 14:49:22.210 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.4994 ms
+2025-05-30 14:49:22.219 +03:00 [INF] Room image upload endpoint hit at "2025-05-30T11:49:22.2193950Z"
+2025-05-30 14:49:22.310 +03:00 [INF] HTTP POST /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 200 in 93.3682 ms
+2025-05-30 14:49:28.948 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 204 in 0.0844 ms
+2025-05-30 14:49:28.952 +03:00 [INF] Room image upload endpoint hit at "2025-05-30T11:49:28.9526362Z"
+2025-05-30 14:49:29.043 +03:00 [INF] HTTP POST /api/Hotels/Rooms/1dadd49b-a703-47de-945d-25002b8c943c/images responded 200 in 91.7631 ms
+2025-05-30 14:49:33.189 +03:00 [INF] HTTP OPTIONS /api/Rooms/update/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.0720 ms
+2025-05-30 14:49:33.193 +03:00 [INF] HTTP PATCH /api/Rooms/update/1dadd49b-a703-47de-945d-25002b8c943c responded 404 in 0.3290 ms
+2025-05-30 15:41:24.389 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:41:24.413 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:41:24.415 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:41:24.416 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:41:32.133 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - EasyStays.Presentation.Controllers.HotelsController.UpdateRoom (EasyStays.Presentation). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - EasyStays.Application.UseCases.Hotels.Commands.UpdateRoomCommand. See inner exception
+ ---> System.InvalidOperationException: Can't use schemaId "$BedConfigurationDto" for type "$EasyStays.Application.UseCases.Hotels.Commands.BedConfigurationDto". The same schemaId is already used for type "$EasyStays.Application.UseCases.Hotels.DTOs.BedConfigurationDto"
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaRepository.RegisterType(Type type, String schemaId)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateReferencedSchema(DataContract dataContract, SchemaRepository schemaRepository, Func`1 definitionFactory)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateConcreteSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForType(Type modelType, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.CreateArraySchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.<>c__DisplayClass12_0.<GenerateConcreteSchema>b__1()
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateConcreteSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForMember(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, DataProperty dataProperty)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.CreateObjectSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.<>c__DisplayClass12_0.<GenerateConcreteSchema>b__3()
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateReferencedSchema(DataContract dataContract, SchemaRepository schemaRepository, Func`1 definitionFactory)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateConcreteSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForParameter(Type modelType, SchemaRepository schemaRepository, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyFromBodyParameter(ApiDescription apiDescription, SchemaRepository schemaRepository, ApiParameterDescription bodyParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyAndFilterContext(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(OpenApiDocument document, ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(OpenApiDocument document, ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(OpenApiDocument document, ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-05-30 15:41:40.170 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - EasyStays.Presentation.Controllers.HotelsController.UpdateRoom (EasyStays.Presentation). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - EasyStays.Application.UseCases.Hotels.Commands.UpdateRoomCommand. See inner exception
+ ---> System.InvalidOperationException: Can't use schemaId "$BedConfigurationDto" for type "$EasyStays.Application.UseCases.Hotels.Commands.BedConfigurationDto". The same schemaId is already used for type "$EasyStays.Application.UseCases.Hotels.DTOs.BedConfigurationDto"
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaRepository.RegisterType(Type type, String schemaId)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateReferencedSchema(DataContract dataContract, SchemaRepository schemaRepository, Func`1 definitionFactory)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateConcreteSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForType(Type modelType, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.CreateArraySchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.<>c__DisplayClass12_0.<GenerateConcreteSchema>b__1()
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateConcreteSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForMember(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, DataProperty dataProperty)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.CreateObjectSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.<>c__DisplayClass12_0.<GenerateConcreteSchema>b__3()
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateReferencedSchema(DataContract dataContract, SchemaRepository schemaRepository, Func`1 definitionFactory)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateConcreteSchema(DataContract dataContract, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForParameter(Type modelType, SchemaRepository schemaRepository, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyFromBodyParameter(ApiDescription apiDescription, SchemaRepository schemaRepository, ApiParameterDescription bodyParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyAndFilterContext(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(OpenApiDocument document, ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(OpenApiDocument document, ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(OpenApiDocument document, ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-05-30 15:44:17.933 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:44:17.962 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:44:17.964 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:44:17.965 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:45:27.729 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-30 15:45:27.735 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 2.1208 ms
+2025-05-30 15:45:27.887 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 15:45:27.995 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 250.4743 ms
+2025-05-30 15:45:37.857 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0900 ms
+2025-05-30 15:45:37.857 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.8098 ms
+2025-05-30 15:45:37.880 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 17.6094 ms
+2025-05-30 15:45:37.888 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 6.4112 ms
+2025-05-30 15:45:51.330 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.3195 ms
+2025-05-30 15:45:51.372 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 400 in 37.8049 ms
+2025-05-30 15:50:20.200 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:50:20.222 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:50:20.224 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:50:20.226 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:50:32.420 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-30 15:50:32.424 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 1.5633 ms
+2025-05-30 15:50:32.546 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 400 in 110.3494 ms
+2025-05-30 15:53:21.785 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.2747 ms
+2025-05-30 15:53:21.893 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 15:53:21.989 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 197.1753 ms
+2025-05-30 15:54:05.519 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.0950 ms
+2025-05-30 15:54:05.527 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 400 in 3.6721 ms
+2025-05-30 15:58:01.291 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:58:01.314 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:58:01.317 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:58:01.319 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 15:58:18.890 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-30 15:58:18.895 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 1.9063 ms
+2025-05-30 15:58:18.895 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 1.9047 ms
+2025-05-30 15:58:19.074 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 15:58:19.212 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 301.7724 ms
+2025-05-30 15:58:19.233 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 20.5129 ms
+2025-05-30 15:58:29.107 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.5494 ms
+2025-05-30 15:58:29.158 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 400 in 43.6426 ms
+2025-05-30 15:58:54.655 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1032 ms
+2025-05-30 15:58:54.664 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.1503 ms
+2025-05-30 15:59:14.746 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0859 ms
+2025-05-30 15:59:14.746 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0859 ms
+2025-05-30 15:59:14.765 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 13.8254 ms
+2025-05-30 15:59:14.770 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.7392 ms
+2025-05-30 15:59:17.511 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.1413 ms
+2025-05-30 15:59:17.516 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 400 in 1.6229 ms
+2025-05-30 15:59:35.202 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 204 in 0.1034 ms
+2025-05-30 15:59:35.217 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/1dadd49b-a703-47de-945d-25002b8c943c responded 400 in 11.1875 ms
+2025-05-30 16:07:07.994 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1778 ms
+2025-05-30 16:07:08.034 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 35.7841 ms
+2025-05-30 16:07:12.617 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.0983 ms
+2025-05-30 16:07:12.619 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 204 in 0.1085 ms
+2025-05-30 16:07:12.631 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 401 in 8.3338 ms
+2025-05-30 16:07:12.634 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 401 in 1.1079 ms
+2025-05-30 16:07:12.667 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 1.0232 ms
+2025-05-30 16:07:12.668 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.0819 ms
+2025-05-30 16:07:12.874 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 202.9944 ms
+2025-05-30 16:07:12.874 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 204.0035 ms
+2025-05-30 16:07:12.919 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 16:07:13.101 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 220.0880 ms
+2025-05-30 16:07:13.203 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/5be7b3b1-022f-410f-b5cc-3ed1f3193b37 responded 200 in 100.5931 ms
+2025-05-30 16:07:14.339 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0747 ms
+2025-05-30 16:07:14.339 +03:00 [INF] HTTP OPTIONS /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 204 in 0.0747 ms
+2025-05-30 16:07:14.363 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 16:07:14.374 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 26.0485 ms
+2025-05-30 16:07:14.386 +03:00 [INF] HTTP GET /api/Hotels/5be7b3b1-022f-410f-b5cc-3ed1f3193b37/rooms responded 200 in 9.9012 ms
+2025-05-30 16:07:21.261 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1060 ms
+2025-05-30 16:07:21.261 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1272 ms
+2025-05-30 16:07:21.282 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.6123 ms
+2025-05-30 16:07:21.287 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.9323 ms
+2025-05-30 16:07:43.767 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0917 ms
+2025-05-30 16:07:43.787 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 16.3197 ms
+2025-05-30 16:10:20.025 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0883 ms
+2025-05-30 16:10:20.044 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 14.4673 ms
+2025-05-30 16:11:30.749 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0826 ms
+2025-05-30 16:11:30.758 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 6.7401 ms
+2025-05-30 16:14:31.753 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0790 ms
+2025-05-30 16:14:31.778 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 19.8008 ms
+2025-05-30 16:14:39.704 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0648 ms
+2025-05-30 16:14:39.712 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 2.4126 ms
+2025-05-30 16:15:18.757 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0727 ms
+2025-05-30 16:15:18.765 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 2.7881 ms
+2025-05-30 16:15:49.682 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0737 ms
+2025-05-30 16:15:49.704 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 18.2878 ms
+2025-05-30 16:16:14.732 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0771 ms
+2025-05-30 16:16:14.739 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 2.7007 ms
+2025-05-30 16:17:05.762 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0994 ms
+2025-05-30 16:17:05.786 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 19.6341 ms
+2025-05-30 16:19:16.708 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1130 ms
+2025-05-30 16:19:16.732 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 19.3551 ms
+2025-05-30 16:19:20.755 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.2824 ms
+2025-05-30 16:26:18.668 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1132 ms
+2025-05-30 16:26:18.705 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 30.9231 ms
+2025-05-30 16:28:12.424 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1019 ms
+2025-05-30 16:28:12.425 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0706 ms
+2025-05-30 16:28:12.446 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 13.8186 ms
+2025-05-30 16:28:12.452 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.4427 ms
+2025-05-30 16:28:39.681 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0920 ms
+2025-05-30 16:28:39.688 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.1142 ms
+2025-05-30 16:33:29.873 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 16:33:29.898 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 16:33:29.899 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 16:33:29.900 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-30 16:34:06.869 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-30 16:34:06.875 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 2.4935 ms
+2025-05-30 16:34:06.875 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 2.4980 ms
+2025-05-30 16:34:07.026 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-05-30 16:34:07.162 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 274.2874 ms
+2025-05-30 16:34:07.182 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 19.8187 ms
+2025-05-30 16:37:28.735 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1065 ms
+2025-05-30 16:37:28.754 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 15.5039 ms
+2025-05-30 16:38:19.699 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0954 ms
+2025-05-30 16:38:19.713 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 9.9624 ms
+2025-05-30 16:39:29.778 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0922 ms
+2025-05-30 16:39:29.796 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 12.5610 ms
+2025-05-30 16:39:41.869 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0756 ms
+2025-05-30 16:39:41.870 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0555 ms
+2025-05-30 16:39:41.877 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.2120 ms
+2025-05-30 16:39:41.883 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.4699 ms
+2025-05-30 16:46:28.017 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1119 ms
+2025-05-30 16:46:28.017 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1118 ms
+2025-05-30 16:46:28.061 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 40.3303 ms
+2025-05-30 16:46:28.070 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 6.6075 ms
+2025-05-30 16:47:02.673 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0894 ms
+2025-05-30 16:47:02.683 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.7324 ms
+2025-05-30 16:47:29.649 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0701 ms
+2025-05-30 16:47:29.672 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 19.6894 ms
+2025-05-30 16:47:40.625 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0818 ms
+2025-05-30 16:47:40.656 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 28.1620 ms
+2025-05-30 16:47:48.620 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0510 ms
+2025-05-30 16:47:48.626 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 2.4148 ms
+2025-05-30 16:47:56.627 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0572 ms
+2025-05-30 16:47:56.633 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.4904 ms
+2025-05-30 16:48:03.615 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0649 ms
+2025-05-30 16:48:03.621 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.6905 ms
+2025-05-30 16:48:12.610 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0561 ms
+2025-05-30 16:48:12.617 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.8056 ms
+2025-05-30 16:48:19.659 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1008 ms
+2025-05-30 16:48:19.668 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.2382 ms
+2025-05-30 16:48:28.612 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.0892 ms
+2025-05-30 16:48:28.624 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 4.3665 ms
+2025-05-30 16:52:39.460 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1111 ms
+2025-05-30 16:52:39.460 +03:00 [INF] HTTP OPTIONS /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 204 in 0.1111 ms
+2025-05-30 16:52:39.486 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 21.3715 ms
+2025-05-30 16:52:39.491 +03:00 [INF] HTTP GET /api/Hotels/1dadd49b-a703-47de-945d-25002b8c943c/edit-room responded 200 in 3.9223 ms
