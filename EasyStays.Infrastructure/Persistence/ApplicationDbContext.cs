@@ -25,6 +25,8 @@ namespace EasyStays.Infrastructure.Persistence
         public DbSet<Language> Languages { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<BedConfiguration> BedConfigurations { get; set; }
+        public DbSet<Policy> Policies { get; set; }
+        public DbSet<HotelPolicy> HotelPolicies { get; set; }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken) =>
        base.SaveChangesAsync(cancellationToken);
@@ -131,6 +133,21 @@ namespace EasyStays.Infrastructure.Persistence
                 .WithMany(r => r.RoomUnits)
                 .HasForeignKey(ru => ru.RoomId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<HotelPolicy>()
+                .HasKey(hp => new { hp.HotelId, hp.PolicyId });
+
+            modelBuilder.Entity<HotelPolicy>()
+                .HasOne(hp => hp.Hotel)
+                .WithMany(h => h.HotelPolicies)
+                .HasForeignKey(hp => hp.HotelId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<HotelPolicy>()
+                .HasOne(hp => hp.Policy)
+                .WithMany(p => p.HotelPolicies)
+                .HasForeignKey(hp => hp.PolicyId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
 

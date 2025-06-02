@@ -14,9 +14,10 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public int RoomQuantity { get; set; }          
         public int MaxGuests { get; set; }             
         public int RoomSize { get; set; }              
-        public decimal PricePerNight { get; set; }     
+        public decimal PricePerNight { get; set; }
 
-        public List<string> Amenities { get; set; }   
+        public List<Guid> AmenityIds { get; set; } = new();
+        public List<string> Amenities { get; set; } = new();
 
         public BedConfigurationDto BedConfiguration { get; set; } = new();
     }

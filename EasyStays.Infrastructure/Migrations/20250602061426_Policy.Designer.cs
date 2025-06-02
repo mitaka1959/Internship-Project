@@ -4,6 +4,7 @@ using EasyStays.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyStays.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250602061426_Policy")]
+    partial class Policy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,6 +120,10 @@ namespace EasyStays.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HouseRules")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
@@ -188,21 +195,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.ToTable("HotelImages");
                 });
 
-            modelBuilder.Entity("EasyStays.Domain.Entities.HotelPolicy", b =>
-                {
-                    b.Property<Guid>("HotelId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PolicyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("HotelId", "PolicyId");
-
-                    b.HasIndex("PolicyId");
-
-                    b.ToTable("HotelPolicies");
-                });
-
             modelBuilder.Entity("EasyStays.Domain.Entities.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -256,21 +248,6 @@ namespace EasyStays.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Payments");
-                });
-
-            modelBuilder.Entity("EasyStays.Domain.Entities.Policy", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Policies");
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.RefreshToken", b =>
@@ -752,25 +729,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Navigation("Hotel");
                 });
 
-            modelBuilder.Entity("EasyStays.Domain.Entities.HotelPolicy", b =>
-                {
-                    b.HasOne("EasyStays.Domain.Entities.Hotel", "Hotel")
-                        .WithMany("HotelPolicies")
-                        .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("EasyStays.Domain.Entities.Policy", "Policy")
-                        .WithMany("HotelPolicies")
-                        .HasForeignKey("PolicyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Hotel");
-
-                    b.Navigation("Policy");
-                });
-
             modelBuilder.Entity("EasyStays.Domain.Entities.Payment", b =>
                 {
                     b.HasOne("EasyStays.Domain.Entities.Reservation", "Reservation")
@@ -962,8 +920,6 @@ namespace EasyStays.Infrastructure.Migrations
                 {
                     b.Navigation("HotelAmenities");
 
-                    b.Navigation("HotelPolicies");
-
                     b.Navigation("Images");
 
                     b.Navigation("Reservations");
@@ -971,11 +927,6 @@ namespace EasyStays.Infrastructure.Migrations
                     b.Navigation("Reviews");
 
                     b.Navigation("Rooms");
-                });
-
-            modelBuilder.Entity("EasyStays.Domain.Entities.Policy", b =>
-                {
-                    b.Navigation("HotelPolicies");
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Reservation", b =>

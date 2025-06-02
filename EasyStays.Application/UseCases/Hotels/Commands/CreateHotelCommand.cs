@@ -21,10 +21,8 @@ public class CreateHotelCommand : IRequest<Guid>
     public string CheckInTime { get; set; }
     public string CheckOutTime { get; set; }
     public string CancelationPolicy { get; set; }
-    public List<string> HouseRules { get; set; }
-
-    
     public List<string> Languages { get; set; }
     public List<RoomGroupDto> RoomGroups { get; set; } = new();
+    public List<Guid> SelectedPolicyIds { get; set; } = new();
 }
 

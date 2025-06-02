@@ -30,7 +30,6 @@ namespace EasyStays.Domain.Entities
         public TimeOnly CheckInTime { get; set; } 
         public TimeOnly CheckOutTime { get; set; } 
         public CancelationPolicy CancellationPolicy { get; set; } 
-        public string HouseRules { get; set; } 
         public decimal? DamageDeposit { get; set; } 
         public string OwnerId { get; set; } = string.Empty;
         public bool IsApproved { get; set; } = false;
@@ -47,7 +46,9 @@ namespace EasyStays.Domain.Entities
         public ICollection<Room> Rooms { get; set; } = new List<Room>();
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
-        public ICollection<Language> Languages { get; set; } = new List<Language>(); 
+        public ICollection<Language> Languages { get; set; } = new List<Language>();
+        public ICollection<HotelPolicy> HotelPolicies { get; set; } = new List<HotelPolicy>();
+
     }
 
 

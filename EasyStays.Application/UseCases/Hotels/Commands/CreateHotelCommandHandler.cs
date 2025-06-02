@@ -42,19 +42,51 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
             CheckInTime = TimeOnly.Parse(request.CheckInTime),
             CheckOutTime = TimeOnly.Parse(request.CheckOutTime),
             CancellationPolicy = Enum.Parse<CancelationPolicy>(request.CancelationPolicy),
-            HouseRules = string.Join(";", request.HouseRules),
             Languages = request.Languages.Select(l => new Language { Name = l }).ToList()
         };
+        if (request.SelectedPolicyIds != null && request.SelectedPolicyIds.Any())
+        {
+            hotel.HotelPolicies = request.SelectedPolicyIds.Select(policyId => new HotelPolicy
+            {
+                HotelId = hotel.Id,
+                PolicyId = policyId
+            }).ToList();
+        }
 
-        var allAmenities = await _context.Amenities.ToListAsync(cancellationToken);
 
+
+        var existingAmenities = await _context.Amenities.ToListAsync(cancellationToken);
+
+        
         hotel.Rooms = request.RoomGroups.Select(group =>
         {
-            var matchedAmenities = allAmenities
-                .Where(a => group.Amenities.Contains(a.Name))
-                .Select(a => new RoomAmenity { AmenityId = a.Id })
-                .ToList();
+            
+            var roomAmenities = new List<RoomAmenity>();
 
+            foreach (var amenityName in group.Amenities)
+            {
+                var amenity = existingAmenities.FirstOrDefault(a => a.Name == amenityName);
+
+                if (amenity == null)
+                {
+                    
+                    amenity = new Amenity
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = amenityName,
+                        
+                    };
+                    _context.Amenities.Add(amenity);
+                    existingAmenities.Add(amenity); 
+                }
+
+                roomAmenities.Add(new RoomAmenity
+                {
+                    AmenityId = amenity.Id
+                });
+            }
+
+            
             var room = new Room
             {
                 Id = Guid.NewGuid(),
@@ -66,27 +98,24 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                 PricePerNight = group.PricePerNight,
                 RoomCount = group.RoomQuantity,
                 RoomSize = group.RoomSize,
-
                 BedConfigurations = new List<BedConfiguration>
-                {
-                    new() { BedType = BedType.singleBed, Quantity = group.BedConfiguration.Single },
-                    new() { BedType = BedType.queenSizeBed, Quantity = group.BedConfiguration.Queen },
-                    new() { BedType = BedType.kingSizeBed, Quantity = group.BedConfiguration.King },
-                }.Where(b => b.Quantity > 0).ToList(),
-
-                RoomAmenities = matchedAmenities
-            };
-
-            room.RoomUnits = Enumerable.Range(1, group.RoomQuantity)
-                .Select(i => new RoomUnit
+        {
+            new() { BedType = BedType.singleBed, Quantity = group.BedConfiguration.Single },
+            new() { BedType = BedType.queenSizeBed, Quantity = group.BedConfiguration.Queen },
+            new() { BedType = BedType.kingSizeBed, Quantity = group.BedConfiguration.King },
+        }.Where(b => b.Quantity > 0).ToList(),
+                RoomAmenities = roomAmenities,
+                RoomUnits = Enumerable.Range(1, group.RoomQuantity).Select(i => new RoomUnit
                 {
                     Id = Guid.NewGuid(),
                     IsAvailable = true,
                     Number = null
-                }).ToList();
+                }).ToList()
+            };
 
             return room;
         }).ToList();
+
 
         _context.Hotels.Add(hotel);
         await _context.SaveChangesAsync(cancellationToken);
