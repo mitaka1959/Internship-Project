@@ -17,7 +17,7 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public decimal PricePerNight { get; set; }
 
         public List<Guid> AmenityIds { get; set; } = new();
-        public List<string> Amenities { get; set; } = new();
+        public List<AmenityDto> Amenities { get; set; }
 
         public BedConfigurationDto BedConfiguration { get; set; } = new();
     }

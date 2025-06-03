@@ -18,6 +18,7 @@ using Azure.Storage.Blobs;
 using EasyStays.Domain.Interfaces;
 using EasyStays.Infrastructure.BlopStorage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using EasyStays.Application.Services;
 
 
 
@@ -58,7 +59,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
+builder.Services.AddScoped<IRoomMatchingService, RoomMatchingService>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();

@@ -17,29 +17,48 @@ const { Title } = Typography;
 const { TextArea } = Input;
 const { Option } = Select;
 
+const amenityOptions = [
+  { id: "1", name: "WiFi", emoji: "📶" },
+  { id: "2", name: "Air Conditioning", emoji: "❄️" },
+  { id: "3", name: "Heating", emoji: "🔥" },
+  { id: "4", name: "TV", emoji: "📺" },
+  { id: "5", name: "Mini Bar", emoji: "🍸" },
+  { id: "6", name: "Coffee/Tea Maker", emoji: "☕" },
+  { id: "7", name: "Hair Dryer", emoji: "💇‍♀️" },
+  { id: "8", name: "Safe Box", emoji: "🔒" },
+  { id: "9", name: "Room Service", emoji: "🛎️" },
+  { id: "10", name: "Iron", emoji: "🧺" },
+  { id: "11", name: "Balcony", emoji: "🏞️" },
+  { id: "12", name: "Terrace", emoji: "🏡" },
+  { id: "13", name: "Soundproofing", emoji: "🔇" },
+  { id: "14", name: "Private Bathroom", emoji: "🚿" },
+  { id: "15", name: "Desk", emoji: "📝" },
+  { id: "16", name: "Closet/Wardrobe", emoji: "👗" },
+  { id: "17", name: "Towels", emoji: "🛁" },
+  { id: "18", name: "Slippers", emoji: "🥿" },
+  { id: "19", name: "Bathrobe", emoji: "🛀" },
+];
+
 const RoomEditPage: React.FC = () => {
   const { roomId } = useParams<{ roomId: string }>();
   const [form] = Form.useForm();
   const [roomImages, setRoomImages] = useState<string[]>([]);
-  const [amenityOptions, setAmenityOptions] = useState<
-    { value: string; label: string; emoji: string }[]
-  >([]);
+  const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
         const res = await api.get(`/api/Hotels/${roomId}/edit-room`);
         const roomData = res.data;
-        console.log(roomData);
 
         form.setFieldsValue({
-          ...roomData,
           roomId: roomData.id,
           displayName: roomData.displayName,
           description: roomData.description,
           price: roomData.pricePerNight,
           Quantity: roomData.roomCount,
-          amenities: roomData.amenities?.map((a: any) => a.amenity.name) || [],
+          capacity: roomData.capacity,
+          amenities: roomData.roomAmenities?.map((a: any) => a.name) || [],
           bedConfigurations:
             roomData.bedConfigurations?.map((b: any) => ({
               bedType: b.bedType,
@@ -48,17 +67,12 @@ const RoomEditPage: React.FC = () => {
         });
 
         setRoomImages(roomData.images?.map((img: any) => img.imageUrl) || []);
-
-        if (roomData.allAmenities) {
-          const options = roomData.allAmenities.map((a: any) => ({
-            value: a.id,
-            label: a.name,
-            emoji: a.emoji || "🏨",
-          }));
-          setAmenityOptions(options);
-        } else {
-          setAmenityOptions([]);
-        }
+        setSelectedAmenities(
+          roomData.amenities?.map((a: any) => {
+            const found = amenityOptions.find((opt) => opt.name === a.name);
+            return found?.id || "";
+          }) || []
+        );
       } catch (error) {
         console.error("Failed to load room details:", error);
         message.error("Failed to load room data.");
@@ -69,17 +83,28 @@ const RoomEditPage: React.FC = () => {
   }, [roomId, form]);
 
   const onFinish = async (values: any) => {
+    const amenitiesPayload = selectedAmenities.map((id) => {
+      const amenity = amenityOptions.find((a) => a.id === id);
+      return { name: amenity?.name || "", emoji: amenity?.emoji || "" };
+    });
+
     const payload = {
-      roomId,
+      roomId: roomId,
       displayName: values.displayName,
       description: values.description,
       capacity: Number(values.capacity),
       pricePerNight: Number(values.price),
       roomCount: Number(values.Quantity),
-      amenityIds: values.amenities,
-      bedConfigurations: values.bedConfigurations || [],
+      roomSize: 100,
+      amenities: amenitiesPayload,
+      bedConfigurations:
+        values.bedConfigurations?.map((b: any) => ({
+          bedType: Number(b.bedType),
+          quantity: Number(b.quantity),
+        })) || [],
     };
-    console.log(payload);
+
+    console.log("Payload to Backend:", payload);
 
     try {
       await api.patch(`/api/Hotels/update-room/${roomId}`, payload);
@@ -90,21 +115,8 @@ const RoomEditPage: React.FC = () => {
     }
   };
 
-  const convertBedType = (bedType: string) => {
-    switch (bedType) {
-      case "King":
-        return "kingSizeBed";
-      case "Queen":
-        return "queenSizeBed";
-      case "Twin":
-        return "singleBed";
-      default:
-        return "singleBed";
-    }
-  };
-
-  const handleAmenityChange = (value: any) => {
-    console.log("Selected amenities:", value);
+  const handleAmenityChange = (values: string[]) => {
+    setSelectedAmenities(values);
   };
 
   const handleUpload = async (file: any) => {
@@ -133,7 +145,7 @@ const RoomEditPage: React.FC = () => {
 
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item name="roomId" label="Room ID">
-          <Select>
+          <Select disabled>
             <Option value={roomId}>{roomId}</Option>
           </Select>
         </Form.Item>
@@ -236,17 +248,18 @@ const RoomEditPage: React.FC = () => {
             mode="multiple"
             style={{ width: "100%" }}
             placeholder="Select amenities"
+            value={selectedAmenities}
             onChange={handleAmenityChange}
-            options={amenityOptions}
-            optionRender={(option) => (
-              <Space>
-                <span role="img" aria-label={option.data.label}>
-                  {option.data.emoji}
-                </span>
-                {option.data.label}
-              </Space>
-            )}
-          />
+          >
+            {amenityOptions.map((a) => (
+              <Option key={a.id} value={a.id}>
+                <span role="img" aria-label={a.name}>
+                  {a.emoji}
+                </span>{" "}
+                {a.name}
+              </Option>
+            ))}
+          </Select>
         </Form.Item>
 
         <Form.Item>

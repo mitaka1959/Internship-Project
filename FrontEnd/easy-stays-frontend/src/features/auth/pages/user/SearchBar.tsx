@@ -6,7 +6,11 @@ import logo from "../../../../assets/logo.png";
 
 const { RangePicker } = DatePicker;
 
-const SearchBar: React.FC = () => {
+type SearchBarProps = {
+  onSearch: (params: any) => void;
+};
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [location, setLocation] = useState<string>("");
   const [dates, setDates] = useState<[dayjs.Dayjs, dayjs.Dayjs] | null>(null);
   const [adults, setAdults] = useState<number>(1);
@@ -14,19 +18,22 @@ const SearchBar: React.FC = () => {
   const [rooms, setRooms] = useState<number>(1);
 
   const handleSearch = () => {
-    console.log({
+    const searchParams = {
       location,
-      dates,
+      dates: dates
+        ? [dates[0].format("YYYY-MM-DD"), dates[1].format("YYYY-MM-DD")]
+        : null,
       adults,
       children,
       rooms,
-    });
+    };
+    onSearch(searchParams);
   };
 
   const guestMenu = (
     <Menu>
       <Menu.Item key="adults">
-        Adults:{" "}
+        Adults:
         <Input
           type="number"
           min={1}
@@ -37,7 +44,7 @@ const SearchBar: React.FC = () => {
         />
       </Menu.Item>
       <Menu.Item key="children">
-        Children:{" "}
+        Children:
         <Input
           type="number"
           min={0}
@@ -48,7 +55,7 @@ const SearchBar: React.FC = () => {
         />
       </Menu.Item>
       <Menu.Item key="rooms">
-        Rooms:{" "}
+        Rooms:
         <Input
           type="number"
           min={1}
@@ -133,6 +140,7 @@ const SearchBar: React.FC = () => {
           type="primary"
           icon={<SearchOutlined />}
           style={{ height: "48px" }}
+          onClick={handleSearch}
         >
           Search
         </Button>

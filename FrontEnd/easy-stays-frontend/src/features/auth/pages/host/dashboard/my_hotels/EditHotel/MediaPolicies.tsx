@@ -24,7 +24,6 @@ const MediaPolicies: React.FC = () => {
     const fetchHotelData = async () => {
       try {
         const res = await api.get(`/api/Hotels/${hotelId}`);
-        // Assume API returns checkIn, checkOut as strings (e.g., "14:00")
         form.setFieldsValue({
           ...res.data,
           checkIn: dayjs(res.data.checkIn, "HH:mm"),

@@ -211,7 +211,8 @@ namespace EasyStays.Presentation.Controllers
 
             if (!ModelState.IsValid)
             {
-                _logger.LogError("Invalid ModelState: {@ModelState}", ModelState);
+                _logger.LogError("Invalid ModelState Errors: {@Errors}", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+
                 return BadRequest(ModelState);
             }
 
@@ -228,6 +229,14 @@ namespace EasyStays.Presentation.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("available-hotels")]
+        public async Task<IActionResult> SearchAvailableHotels([FromBody] SearchAvailableHotelsQuery query)
+        {
+            var hotels = await _mediator.Send(query);
+            return Ok(hotels);
         }
 
 

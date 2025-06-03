@@ -11,7 +11,7 @@ namespace EasyStays.Application.Interfaces.Repositories
     {
         Task AddAsync(Hotel hotel);
         Task<List<Hotel>> GetAllAsync();
-       
+        Task<List<Hotel>> GetHotelsByLocationWithImagesAsync(string destination);
 
     }
 

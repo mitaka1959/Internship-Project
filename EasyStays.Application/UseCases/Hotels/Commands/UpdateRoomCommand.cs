@@ -1,4 +1,5 @@
-﻿using EasyStays.Domain.Enums;
+﻿using EasyStays.Application.UseCases.Hotels.DTOs;
+using EasyStays.Domain.Enums;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,8 @@ namespace EasyStays.Application.UseCases.Hotels.Commands
         public string DisplayName { get; set; }
         public string Description { get; set; }
         public int RoomSize { get; set; }
-        public List<Guid> AmenityIds { get; set; } = new();
+        public List<AmenityDto> Amenities { get; set; } = new();
+
         public List<BedConfigurationUpdateDto> BedConfigurations { get; set; } = new();
     }
 

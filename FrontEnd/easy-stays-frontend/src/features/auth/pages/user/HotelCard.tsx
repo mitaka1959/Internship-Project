@@ -1,28 +1,41 @@
 import React from "react";
-import { Card, Typography, Tag, Rate, Divider } from "antd";
-import { StarFilled, HeartOutlined } from "@ant-design/icons";
-import hotelImage from "../../../../assets/hotel_card_image.webp";
-import "./HotelCard.css";
+import { Card, Typography, Rate, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
+import "./HotelCard.css";
+import placeholderImage from "../../../../assets/hotel_card_image.webp";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
-const HotelCard: React.FC = () => {
+export type BedTypeQuantity = {
+  bedType: string;
+  quantity: number;
+};
+
+export type HotelCardProps = {
+  hotel: {
+    hotelId: string;
+    name: string;
+    location: string;
+    imageUrl: string | null;
+    roomName: string;
+    bedTypes: BedTypeQuantity[];
+    quantity: number;
+    price: number;
+    stars: number;
+  };
+};
+
+export const formatBedType = (bedType: string) => {
+  return bedType
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/^./, (str) => str.toUpperCase());
+};
+
+const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
   const navigate = useNavigate();
 
-  const data = {
-    title: "W South Beach",
-    location: "South Beach, Miami, Florida",
-    description: "Fantastic One-Bedroom Suite, Ocean View, Balcony",
-    specialNote: "Only 5 rooms left at this price",
-    oldPrice: 3883,
-    newPrice: 3301,
-    rating: 8.5,
-    reviewCount: 435,
-  };
-
   const handleClick = () => {
-    navigate("/hotel-page");
+    navigate(`/hotel-page/${hotel.hotelId}`);
   };
 
   return (
@@ -54,7 +67,11 @@ const HotelCard: React.FC = () => {
       >
         <div
           className="hotel-card-image"
-          style={{ backgroundImage: `url(${hotelImage})` }}
+          style={{
+            backgroundImage: `url(${
+              hotel.imageUrl ? hotel.imageUrl : placeholderImage
+            })`,
+          }}
         ></div>
 
         <div className="hotel-card-content">
@@ -67,14 +84,12 @@ const HotelCard: React.FC = () => {
             }}
           >
             <Title style={{ marginRight: "10px", marginTop: "20px" }} level={3}>
-              {data.title}
+              {hotel.name}
             </Title>
-            <Rate style={{ marginTop: "25px" }} value={5} disabled />
+            <Rate style={{ marginTop: "25px" }} value={hotel.stars} disabled />
           </div>
           <div style={{ marginRight: "330px" }}>
-            <h3>
-              South Beach, Miami<br></br> Florida
-            </h3>
+            <h3>{hotel.location}</h3>
           </div>
           <div>
             <p
@@ -91,7 +106,7 @@ const HotelCard: React.FC = () => {
                 marginBottom: 0,
               }}
             >
-              1x
+              {hotel.quantity}x
             </p>
             <div
               style={{
@@ -110,12 +125,17 @@ const HotelCard: React.FC = () => {
                 Solid
               </Divider>
               <div style={{ display: "grid", marginBottom: "0" }}>
-                <h3>Standard Room</h3>
-
-                <p>1 Queen Size Bed</p>
+                <h3>{hotel.roomName}</h3>
+                <p>
+                  {hotel.bedTypes
+                    .map(
+                      (bt) => `${bt.quantity} x ${formatBedType(bt.bedType)}`
+                    )
+                    .join(", ")}
+                </p>
               </div>
               <div style={{ marginLeft: "300px", paddingTop: "40px" }}>
-                <h2>USD ${data.oldPrice}</h2>
+                <h2>USD ${hotel.price}</h2>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Card, Form, message } from "antd";
+import { Row, Col, Card, Form, message } from "antd";
 import RoomCard from "./RoomCard";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../../../../../../services/axios";
@@ -16,6 +16,7 @@ const RoomSetup: React.FC = () => {
       try {
         const res = await api.get(`/api/Hotels/${hotelId}/rooms`);
         console.log("Room details fetched:", res.data);
+
         setRooms(res.data);
       } catch (error) {
         console.error("Failed to fetch room details:", error);
@@ -35,7 +36,7 @@ const RoomSetup: React.FC = () => {
               id={room.id}
               name={room.displayName}
               description={room.description}
-              image={room.image}
+              image={room.roomImages?.[0]?.imageUrl || "/placeholder.jpg"}
               priceRange={room.priceRange}
               onClick={() => navigate(`/host/edit-room/${room.id}`)}
             />

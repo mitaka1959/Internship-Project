@@ -29,5 +29,13 @@ namespace EasyStays.Infrastructure.Repositories
             return await _context.Hotels.ToListAsync();
         }
 
+        public async Task<List<Hotel>> GetHotelsByLocationWithImagesAsync(string destination)
+        {
+            return await _context.Hotels
+                .Include(h => h.Images) 
+                .Where(h => h.City.Contains(destination) || h.Country.Contains(destination))
+                .ToListAsync();
+        }
+
     }
 }

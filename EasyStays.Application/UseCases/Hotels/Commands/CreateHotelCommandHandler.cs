@@ -4,7 +4,6 @@ using EasyStays.Domain.Entities;
 using EasyStays.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using EasyStays.Application.UseCases.Hotels.Commands;
 
 public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Guid>
 {
@@ -44,6 +43,7 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
             CancellationPolicy = Enum.Parse<CancelationPolicy>(request.CancelationPolicy),
             Languages = request.Languages.Select(l => new Language { Name = l }).ToList()
         };
+
         if (request.SelectedPolicyIds != null && request.SelectedPolicyIds.Any())
         {
             hotel.HotelPolicies = request.SelectedPolicyIds.Select(policyId => new HotelPolicy
@@ -53,31 +53,26 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
             }).ToList();
         }
 
-
-
         var existingAmenities = await _context.Amenities.ToListAsync(cancellationToken);
 
-        
         hotel.Rooms = request.RoomGroups.Select(group =>
         {
-            
             var roomAmenities = new List<RoomAmenity>();
 
-            foreach (var amenityName in group.Amenities)
+            foreach (var amenityDto in group.Amenities)
             {
-                var amenity = existingAmenities.FirstOrDefault(a => a.Name == amenityName);
+                var amenity = existingAmenities.FirstOrDefault(a => a.Name == amenityDto.Name);
 
                 if (amenity == null)
                 {
-                    
                     amenity = new Amenity
                     {
                         Id = Guid.NewGuid(),
-                        Name = amenityName,
-                        
+                        Name = amenityDto.Name,
+                        Emoji = amenityDto.Emoji
                     };
                     _context.Amenities.Add(amenity);
-                    existingAmenities.Add(amenity); 
+                    existingAmenities.Add(amenity);
                 }
 
                 roomAmenities.Add(new RoomAmenity
@@ -86,7 +81,6 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                 });
             }
 
-            
             var room = new Room
             {
                 Id = Guid.NewGuid(),
@@ -99,11 +93,11 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                 RoomCount = group.RoomQuantity,
                 RoomSize = group.RoomSize,
                 BedConfigurations = new List<BedConfiguration>
-        {
-            new() { BedType = BedType.singleBed, Quantity = group.BedConfiguration.Single },
-            new() { BedType = BedType.queenSizeBed, Quantity = group.BedConfiguration.Queen },
-            new() { BedType = BedType.kingSizeBed, Quantity = group.BedConfiguration.King },
-        }.Where(b => b.Quantity > 0).ToList(),
+                {
+                    new() { BedType = BedType.singleBed, Quantity = group.BedConfiguration.Single },
+                    new() { BedType = BedType.queenSizeBed, Quantity = group.BedConfiguration.Queen },
+                    new() { BedType = BedType.kingSizeBed, Quantity = group.BedConfiguration.King },
+                }.Where(b => b.Quantity > 0).ToList(),
                 RoomAmenities = roomAmenities,
                 RoomUnits = Enumerable.Range(1, group.RoomQuantity).Select(i => new RoomUnit
                 {
@@ -115,7 +109,6 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
 
             return room;
         }).ToList();
-
 
         _context.Hotels.Add(hotel);
         await _context.SaveChangesAsync(cancellationToken);

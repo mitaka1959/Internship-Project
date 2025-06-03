@@ -77,6 +77,7 @@ const PropertyDetails: React.FC = () => {
       const updatedValues = {
         ...values,
         hotelId: hotelId,
+        addressLine: values.address,
         amenities: updatedAmenities,
       };
 
