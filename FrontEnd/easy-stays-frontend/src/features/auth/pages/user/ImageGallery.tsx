@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { Modal, Button, Image } from "antd";
-import hotelImage from "../../../../assets/hotel_card_image.webp";
-import roomImage from "../../../../assets/room-image.jpg";
 
 interface HotelGalleryModalProps {
   isModalVisible: boolean;
   onClose: () => void;
+  hotelImages: string[];
+  roomGroups: {
+    roomName: string;
+    images: string[];
+  }[];
 }
 
 const HotelGalleryModal: React.FC<HotelGalleryModalProps> = ({
   isModalVisible,
   onClose,
+  hotelImages,
+  roomGroups,
 }) => {
-  const hotelImages = Array(8).fill(hotelImage);
-  const roomImages = Array(8).fill(roomImage);
+  const [selectedRoomIndex, setSelectedRoomIndex] = useState<number | null>(
+    null
+  );
 
-  const [showHotelImages, setShowHotelImages] = useState(true);
-
-  const imagesToShow = showHotelImages ? hotelImages : roomImages;
+  const imagesToShow =
+    selectedRoomIndex === null
+      ? hotelImages
+      : roomGroups[selectedRoomIndex].images;
 
   return (
     <Modal
@@ -41,27 +48,31 @@ const HotelGalleryModal: React.FC<HotelGalleryModalProps> = ({
           display: "flex",
           justifyContent: "center",
           marginBottom: "16px",
+          flexWrap: "wrap",
+          gap: "8px",
         }}
       >
         <Button
-          type={showHotelImages ? "primary" : "default"}
+          type={selectedRoomIndex === null ? "primary" : "default"}
           onClick={(e) => {
             e.stopPropagation();
-            setShowHotelImages(true);
+            setSelectedRoomIndex(null);
           }}
-          style={{ marginRight: "8px" }}
         >
           Hotel
         </Button>
-        <Button
-          type={!showHotelImages ? "primary" : "default"}
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowHotelImages(false);
-          }}
-        >
-          Room
-        </Button>
+        {roomGroups.map((room, index) => (
+          <Button
+            key={index}
+            type={selectedRoomIndex === index ? "primary" : "default"}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedRoomIndex(index);
+            }}
+          >
+            {room.roomName}
+          </Button>
+        ))}
       </div>
 
       <div

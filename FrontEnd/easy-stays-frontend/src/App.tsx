@@ -58,7 +58,7 @@ const App: React.FC = () => {
           }
         />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/hotel-page" element={<HotelPage />} />
+        <Route path="/hotel-page/:id" element={<HotelPage />} />
 
         <Route
           path="*"

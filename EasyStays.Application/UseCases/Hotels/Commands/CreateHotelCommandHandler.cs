@@ -44,13 +44,24 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
             Languages = request.Languages.Select(l => new Language { Name = l }).ToList()
         };
 
-        if (request.SelectedPolicyIds != null && request.SelectedPolicyIds.Any())
+        if (request.Policies != null && request.Policies.Any())
         {
-            hotel.HotelPolicies = request.SelectedPolicyIds.Select(policyId => new HotelPolicy
+            foreach (var description in request.Policies)
             {
-                HotelId = hotel.Id,
-                PolicyId = policyId
-            }).ToList();
+                var policy = new Policy
+                {
+                    Id = Guid.NewGuid(),
+                    Description = description
+                };
+
+                _context.Policies.Add(policy);
+
+                hotel.HotelPolicies.Add(new HotelPolicy
+                {
+                    HotelId = hotel.Id,
+                    PolicyId = policy.Id
+                });
+            }
         }
 
         var existingAmenities = await _context.Amenities.ToListAsync(cancellationToken);

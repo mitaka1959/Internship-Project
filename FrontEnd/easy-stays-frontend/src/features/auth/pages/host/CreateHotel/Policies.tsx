@@ -18,8 +18,8 @@ interface Step4Props {
 interface PoliciesFormData {
   checkInTime: string;
   checkOutTime: string;
-  cancelationPolicy: string;
-  houseRules: string[];
+  cancellationPolicy: string;
+  policies: string[];
 }
 const houseRules = [
   "No smoking inside the property.",
@@ -46,8 +46,8 @@ const Polisies: React.FC<Step4Props> = ({
   const [localData, setLocalData] = useState<PoliciesFormData>({
     checkInTime: formData.checkInTime || "",
     checkOutTime: formData.checkOutTime || "",
-    cancelationPolicy: formData.cancelationPolicy || "",
-    houseRules: formData.houseRules || [],
+    cancellationPolicy: formData.cancelationPolicy || "",
+    policies: formData.houseRules || [],
   });
 
   const combinedHandleChangeTime = (
@@ -130,8 +130,10 @@ const Polisies: React.FC<Step4Props> = ({
           <Select
             placeholder="Select Cancelation Policy"
             style={{ width: "100%" }}
-            value={localData.cancelationPolicy}
-            onChange={(value) => handleSelectChange("cancelationPolicy", value)}
+            value={localData.cancellationPolicy}
+            onChange={(value) =>
+              handleSelectChange("cancellationPolicy", value)
+            }
             options={[
               {
                 value: "Flexible",
@@ -146,13 +148,13 @@ const Polisies: React.FC<Step4Props> = ({
           />
         </Form.Item>
 
-        <Form.Item label="House Rules">
+        <Form.Item label="Policies">
           <Select
             mode="tags"
             style={{ width: "100%" }}
-            placeholder="House Rules"
-            value={localData.houseRules}
-            onChange={(value) => handleSelectChange("houseRules", value)}
+            placeholder="Policies"
+            value={localData.policies}
+            onChange={(value) => handleSelectChange("policies", value)}
             options={houseRules.map((rule) => ({ label: rule, value: rule }))}
           />
         </Form.Item>

@@ -19,7 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const handleSearch = () => {
     const searchParams = {
-      location,
+      destination: location,
       dates: dates
         ? [dates[0].format("YYYY-MM-DD"), dates[1].format("YYYY-MM-DD")]
         : null,
@@ -77,11 +77,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         alignItems: "center",
         justifyContent: "center",
         padding: "12px 24px",
-        position: "fixed",
+        position: "relative",
         top: 0,
         left: 0,
         zIndex: 1000,
         height: "130px",
+        marginBottom: "-150px",
       }}
     >
       <img

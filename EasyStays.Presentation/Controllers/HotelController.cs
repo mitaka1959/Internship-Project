@@ -238,6 +238,12 @@ namespace EasyStays.Presentation.Controllers
             var hotels = await _mediator.Send(query);
             return Ok(hotels);
         }
+        [HttpGet("page/{id}")]
+        public async Task<IActionResult> GetHotelDetails(Guid id)
+        {
+            var result = await _mediator.Send(new GetHotelByIdPageQuery(id));
+            return result == null ? NotFound() : Ok(result);
+        }
 
 
     }

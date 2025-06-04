@@ -89,7 +89,23 @@ const RoomConfiguration: React.FC<Step2Props> = ({
 
   const handleSelectChange = (index: number, name: string, value: any) => {
     const updatedGroups = [...roomGroups];
-    updatedGroups[index] = { ...updatedGroups[index], [name]: value };
+
+    if (name === "amenities") {
+      const selectedAmenities = value.map((val: string) => {
+        const match = roomAmenities.find((item) => item.value === val);
+        return {
+          name: match?.value || val,
+          emoji: match?.emoji || "",
+        };
+      });
+      updatedGroups[index] = {
+        ...updatedGroups[index],
+        amenities: selectedAmenities,
+      };
+    } else {
+      updatedGroups[index] = { ...updatedGroups[index], [name]: value };
+    }
+
     setRoomGroups(updatedGroups);
   };
 
@@ -244,7 +260,7 @@ const RoomConfiguration: React.FC<Step2Props> = ({
                 allowClear
                 style={{ width: "100%" }}
                 placeholder="Select amenities"
-                value={group.amenities}
+                value={group.amenities.map((a: any) => a.name)}
                 onChange={(value) =>
                   handleSelectChange(index, "amenities", value)
                 }

@@ -23,6 +23,7 @@ public class CreateHotelCommand : IRequest<Guid>
     public string CancelationPolicy { get; set; }
     public List<string> Languages { get; set; }
     public List<RoomGroupDto> RoomGroups { get; set; } = new();
-    public List<Guid> SelectedPolicyIds { get; set; } = new();
+    public List<string> Policies { get; set; } = new();
+
 }
 

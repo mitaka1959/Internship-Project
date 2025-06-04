@@ -23,8 +23,6 @@ interface Step3Props {
 }
 interface FormDataState {
   images: { name: string; url: string }[];
-  phoneNumber: string;
-  message: string;
 }
 
 const PhotosAndMedia: React.FC<Step3Props> = ({
@@ -35,8 +33,6 @@ const PhotosAndMedia: React.FC<Step3Props> = ({
 }) => {
   const [localData, setLocalData] = useState<FormDataState>({
     images: formData.images || [],
-    phoneNumber: formData.phoneNumber || "",
-    message: formData.message || "",
   });
 
   const [previewOpen, setPreviewOpen] = useState(false);

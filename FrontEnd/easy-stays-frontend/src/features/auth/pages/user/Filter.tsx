@@ -1,7 +1,41 @@
-import React from "react";
-import { Checkbox, Divider } from "antd";
+import React, { useState, useEffect } from "react";
+import { Checkbox, Divider, Slider, Rate } from "antd";
 
-const FilterComponent = () => {
+type FilterComponentProps = {
+  minPrice: number;
+  maxPrice: number;
+  onBudgetChange: (range: [number, number]) => void;
+  onStarChange?: (stars: number) => void;
+};
+
+const FilterComponent: React.FC<FilterComponentProps> = ({
+  minPrice,
+  maxPrice,
+  onBudgetChange,
+  onStarChange,
+}) => {
+  const [budgetRange, setBudgetRange] = useState<[number, number]>([
+    minPrice,
+    maxPrice,
+  ]);
+  const [starValue, setStarValue] = useState<number>(0);
+
+  useEffect(() => {
+    setBudgetRange([minPrice, maxPrice]);
+  }, [minPrice, maxPrice]);
+
+  const handleSliderChange = (value: number[]) => {
+    if (value.length === 2) {
+      setBudgetRange([value[0], value[1]]);
+      onBudgetChange([value[0], value[1]]);
+    }
+  };
+
+  const handleStarChange = (value: number) => {
+    setStarValue(value);
+    onStarChange?.(value);
+  };
+
   return (
     <div
       style={{
@@ -19,14 +53,23 @@ const FilterComponent = () => {
     >
       <h3>Your Budget (per night)</h3>
       <div style={{ marginBottom: "12px" }}>
-        <input
-          type="range"
-          min="50"
-          max="500"
-          step="10"
-          style={{ width: "100%" }}
+        <span>
+          USD {budgetRange[0]} - USD {budgetRange[1]}
+        </span>
+        <Slider
+          range
+          value={budgetRange}
+          min={minPrice}
+          max={maxPrice}
+          step={10}
+          onChange={handleSliderChange}
         />
       </div>
+
+      <Divider />
+
+      <h4>Star Rating</h4>
+      <Rate value={starValue} onChange={handleStarChange} />
 
       <Divider />
 
