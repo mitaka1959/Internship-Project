@@ -45,20 +45,20 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
       }
 
       const hotelPayload = {
-        name: formData.hotelName,
+        name: formData.name,
         hotelType: formData.hotelType,
         description: formData.description,
         addressLine: formData.addressLine,
         city: formData.city,
         country: formData.country,
         stars: formData.stars,
-        contactEmail: formData.email,
-        contactPhone: formData.phone,
+        contactEmail: formData.contactEmail,
+        contactPhone: formData.contactPhone,
         checkInTime: formData.checkInTime,
         checkOutTime: formData.checkOutTime,
         cancelationPolicy: formData.cancelationPolicy,
-        houseRules: formData.houseRules,
-        languages: formData.languagesSpoken,
+        policies: formData.policies,
+        languages: formData.languages,
         roomGroups: formData.roomGroups,
       };
 
@@ -106,15 +106,15 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
       >
         <Panel header="Basic Info" key="1">
           {renderDescriptions({
-            hotelName: formData.hotelName,
+            name: formData.name,
             stars: formData.stars,
             addressLine: formData.addressLine,
             city: formData.city,
             country: formData.country,
             description: formData.description,
-            languagesSpoken: formData.languagesSpoken?.join(", "),
-            email: formData.email,
-            phone: formData.phone,
+            languages: formData.languages?.join(", "),
+            contactEmail: formData.contactEmail,
+            contactPhone: formData.contactPhone,
           })}
         </Panel>
 
@@ -256,17 +256,17 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
               {formData.cancelationPolicy || "Not specified"}
             </Descriptions.Item>
             <Descriptions.Item label="House Rules">
-              {formData.houseRules && formData.houseRules.length > 0
-                ? formData.houseRules.map((rule: string, index: number) => (
+              {formData.policies && formData.policies.length > 0
+                ? formData.policies.map((rule: string, index: number) => (
                     <Tag
                       closable
                       color="blue"
                       key={index}
                       onClose={() => {
-                        const updatedRules = formData.houseRules.filter(
+                        const updatedRules = formData.policies.filter(
                           (_: string, i: number) => i !== index
                         );
-                        onChange({ houseRules: updatedRules });
+                        onChange({ policies: updatedRules });
                       }}
                     >
                       {rule}

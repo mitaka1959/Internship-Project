@@ -10,6 +10,8 @@ import {
   Row,
   Col,
   Spin,
+  Table,
+  Radio,
 } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 import HotelGalleryModal from "../user/ImageGallery";
@@ -40,6 +42,7 @@ const HotelPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [hotel, setHotel] = useState<any>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSearch = async (params: any) => {
@@ -56,7 +59,6 @@ const HotelPage: React.FC = () => {
       setMinPrice(min);
       setMaxPrice(max);
       setBudgetRange([min, max]);
-      setMinStars(0);
       setMaxStars(5);
       navigate("/search");
     } catch (error) {
@@ -69,7 +71,6 @@ const HotelPage: React.FC = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [budgetRange, setBudgetRange] = useState<[number, number]>([0, 1000]);
-  const [minStars, setMinStars] = useState<number>(0);
   const [maxStars, setMaxStars] = useState<number>(0);
 
   useEffect(() => {
@@ -93,6 +94,60 @@ const HotelPage: React.FC = () => {
       />
     );
   }
+
+  const roomColumns = [
+    {
+      title: "Room Name",
+      dataIndex: "displayName",
+      key: "name",
+      render: (text: string, record: any) => (
+        <strong
+          style={{
+            color: record.id === hotel.matchedRoomId ? "#FFB703" : undefined,
+          }}
+        >
+          {text}
+        </strong>
+      ),
+    },
+    {
+      title: "Quantity",
+      dataIndex: "quantity",
+      key: "quantity",
+      render: (_: any, record: any) => <span>{record.capacity}</span>,
+    },
+    {
+      title: "Amenities",
+      dataIndex: "amenities",
+      key: "amenities",
+      render: (amenities: string[]) =>
+        amenities
+          ?.filter((a) => a)
+          .map((amenity, idx) => (
+            <Tag key={idx} color="geekblue">
+              {amenity}
+            </Tag>
+          )),
+    },
+    {
+      title: "Total Price",
+      dataIndex: "pricePerNight",
+      key: "price",
+      render: (price: number) => `$${price}`,
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_: any, record: any) => (
+        <Radio
+          checked={selectedRoomId === record.id}
+          onChange={() => setSelectedRoomId(record.id)}
+        >
+          Select
+        </Radio>
+      ),
+    },
+  ];
 
   return (
     <div style={{ backgroundColor: "#eeeeee" }}>
@@ -247,6 +302,9 @@ const HotelPage: React.FC = () => {
           <br />
           Check-out: Until {hotel.checkOutTime}
         </Paragraph>
+        <Divider />
+        <Title level={4}>Rooms Available</Title>
+        <Table rowKey="id" columns={roomColumns} dataSource={hotel.rooms} />
       </div>
     </div>
   );

@@ -34,16 +34,16 @@ interface Step1Props {
 
 const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange, formData }) => {
   const [localData, setLocalData] = useState({
-    hotelName: formData.hotelName || "",
+    name: formData.name || "",
     hotelType: formData.hotelType || "",
     stars: formData.stars || 0,
     addressLine: formData.addressLine || "",
     city: formData.city || "",
     country: formData.country || "",
     description: formData.description || "",
-    languagesSpoken: formData.languagesSpoken || [],
-    email: formData.email || "",
-    phone: formData.phone || "",
+    languages: formData.languages || [],
+    contactEmail: formData.contactEmail || "",
+    contactPhone: formData.contactPhone || "",
   });
 
   const handleChange = (
@@ -88,9 +88,9 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange, formData }) => {
       >
         <Form.Item label="Hotel Name">
           <Input
-            name="hotelName"
+            name="name"
             placeholder="Hotel Name"
-            value={localData.hotelName}
+            value={localData.name}
             onChange={handleChange}
           />
         </Form.Item>
@@ -157,8 +157,8 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange, formData }) => {
             mode="multiple"
             allowClear
             placeholder="Please select"
-            value={localData.languagesSpoken}
-            onChange={(value) => handleSelectChange("languagesSpoken", value)}
+            value={localData.languages}
+            onChange={(value) => handleSelectChange("languages", value)}
             options={languageOptions}
             style={{ width: "100%" }}
           />
@@ -166,19 +166,19 @@ const BasicInfo: React.FC<Step1Props> = ({ onNext, onChange, formData }) => {
 
         <Form.Item label="Email">
           <Input
-            name="email"
+            name="contactEmail"
             type="email"
             placeholder="Email"
-            value={localData.email}
+            value={localData.contactEmail}
             onChange={handleChange}
           />
         </Form.Item>
 
         <Form.Item label="Phone">
           <Input
-            name="phone"
+            name="contactPhone"
             placeholder="Phone"
-            value={localData.phone}
+            value={localData.contactPhone}
             onChange={handleChange}
           />
         </Form.Item>

@@ -3,6 +3,8 @@ import { Input, DatePicker, Button, Dropdown, Menu } from "antd";
 import { SearchOutlined, DownOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import logo from "../../../../assets/logo.png";
+import { Card, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 const { RangePicker } = DatePicker;
 
@@ -138,14 +140,28 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         </Dropdown>
 
         <Button
-          type="primary"
-          icon={<SearchOutlined />}
-          style={{ height: "48px" }}
+          icon={
+            <SearchOutlined
+              style={{ fontWeight: "bolder", fontSize: "large" }}
+            />
+          }
+          style={{
+            height: "48px",
+            backgroundColor: "#91CAFF",
+            color: "#fff",
+            fontWeight: "bolder",
+          }}
           onClick={handleSearch}
         >
           Search
         </Button>
       </div>
+
+      <Avatar
+        size={64}
+        icon={<UserOutlined />}
+        style={{ backgroundColor: "#FFB703", color: "#000" }}
+      />
     </header>
   );
 };

@@ -18,7 +18,7 @@ interface Step4Props {
 interface PoliciesFormData {
   checkInTime: string;
   checkOutTime: string;
-  cancellationPolicy: string;
+  cancelationPolicy: string;
   policies: string[];
 }
 const houseRules = [
@@ -46,7 +46,7 @@ const Polisies: React.FC<Step4Props> = ({
   const [localData, setLocalData] = useState<PoliciesFormData>({
     checkInTime: formData.checkInTime || "",
     checkOutTime: formData.checkOutTime || "",
-    cancellationPolicy: formData.cancelationPolicy || "",
+    cancelationPolicy: formData.cancelationPolicy || "",
     policies: formData.houseRules || [],
   });
 
@@ -130,10 +130,8 @@ const Polisies: React.FC<Step4Props> = ({
           <Select
             placeholder="Select Cancelation Policy"
             style={{ width: "100%" }}
-            value={localData.cancellationPolicy}
-            onChange={(value) =>
-              handleSelectChange("cancellationPolicy", value)
-            }
+            value={localData.cancelationPolicy}
+            onChange={(value) => handleSelectChange("cancelationPolicy", value)}
             options={[
               {
                 value: "Flexible",

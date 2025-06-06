@@ -13,6 +13,6 @@ namespace EasyStays.Application.UseCases.Rooms.Commands
         public int Adults { get; set; }
         public int Children { get; set; }
         public int? RequestedRooms { get; set; }
-        public string HotelId { get; set; }
+        public string? HotelId { get; set; }
     }
 }

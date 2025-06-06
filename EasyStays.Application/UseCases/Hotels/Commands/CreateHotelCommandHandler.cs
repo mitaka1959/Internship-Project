@@ -46,20 +46,30 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
 
         if (request.Policies != null && request.Policies.Any())
         {
-            foreach (var description in request.Policies)
-            {
-                var policy = new Policy
-                {
-                    Id = Guid.NewGuid(),
-                    Description = description
-                };
+            var cleanedPolicies = request.Policies
+                .Where(p => !string.IsNullOrWhiteSpace(p))
+                .Select(p => p.Trim())
+                .ToList();
 
-                _context.Policies.Add(policy);
+            foreach (var description in cleanedPolicies)
+            {
+                var existingPolicy = await _context.Policies
+                    .FirstOrDefaultAsync(p => p.Description.ToLower() == description.ToLower(), cancellationToken);
+
+                if (existingPolicy == null)
+                {
+                    existingPolicy = new Policy
+                    {
+                        Id = Guid.NewGuid(),
+                        Description = description
+                    };
+                    _context.Policies.Add(existingPolicy);
+                }
 
                 hotel.HotelPolicies.Add(new HotelPolicy
                 {
                     HotelId = hotel.Id,
-                    PolicyId = policy.Id
+                    PolicyId = existingPolicy.Id
                 });
             }
         }
@@ -72,7 +82,8 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
 
             foreach (var amenityDto in group.Amenities)
             {
-                var amenity = existingAmenities.FirstOrDefault(a => a.Name == amenityDto.Name);
+                var amenity = existingAmenities
+                    .FirstOrDefault(a => a.Name.Equals(amenityDto.Name, StringComparison.OrdinalIgnoreCase));
 
                 if (amenity == null)
                 {
@@ -80,19 +91,23 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                     {
                         Id = Guid.NewGuid(),
                         Name = amenityDto.Name,
-                        Emoji = amenityDto.Emoji
+                        Emoji = amenityDto.Emoji,
+                        AmenityType = "Room",
+                        Value = amenityDto.Name 
                     };
                     _context.Amenities.Add(amenity);
                     existingAmenities.Add(amenity);
                 }
 
+
                 roomAmenities.Add(new RoomAmenity
                 {
-                    AmenityId = amenity.Id
+                    AmenityId = amenity.Id,
+                    Name = amenity.Name 
                 });
             }
 
-            var room = new Room
+            return new Room
             {
                 Id = Guid.NewGuid(),
                 HotelId = hotel.Id,
@@ -117,8 +132,6 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                     Number = null
                 }).ToList()
             };
-
-            return room;
         }).ToList();
 
         _context.Hotels.Add(hotel);

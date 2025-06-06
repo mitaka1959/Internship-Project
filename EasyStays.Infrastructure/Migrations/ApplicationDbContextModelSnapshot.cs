@@ -46,7 +46,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Amenities");
+                    b.ToTable("Amenities", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.BedConfiguration", b =>
@@ -68,7 +68,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("BedConfigurations");
+                    b.ToTable("BedConfigurations", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Hotel", b =>
@@ -144,7 +144,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Hotels");
+                    b.ToTable("Hotels", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.HotelAmenity", b =>
@@ -159,7 +159,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("AmenityId");
 
-                    b.ToTable("HotelAmenities");
+                    b.ToTable("HotelAmenities", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.HotelImage", b =>
@@ -185,7 +185,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelImages");
+                    b.ToTable("HotelImages", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.HotelPolicy", b =>
@@ -200,7 +200,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("PolicyId");
 
-                    b.ToTable("HotelPolicies");
+                    b.ToTable("HotelPolicies", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Language", b =>
@@ -217,7 +217,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Languages");
+                    b.ToTable("Languages", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Payment", b =>
@@ -255,7 +255,7 @@ namespace EasyStays.Infrastructure.Migrations
                     b.HasIndex("ReservationId")
                         .IsUnique();
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Policy", b =>
@@ -270,7 +270,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Policies");
+                    b.ToTable("Policies", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.RefreshToken", b =>
@@ -296,7 +296,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshTokens");
+                    b.ToTable("RefreshTokens", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Reservation", b =>
@@ -344,7 +344,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Review", b =>
@@ -373,7 +373,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.Room", b =>
@@ -416,7 +416,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Rooms", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.RoomAmenity", b =>
@@ -435,7 +435,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("AmenityId");
 
-                    b.ToTable("RoomAmenities");
+                    b.ToTable("RoomAmenities", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.RoomImage", b =>
@@ -461,7 +461,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomImages");
+                    b.ToTable("RoomImages", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Domain.Entities.RoomUnit", b =>
@@ -486,7 +486,7 @@ namespace EasyStays.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomUnit");
+                    b.ToTable("RoomUnit", (string)null);
                 });
 
             modelBuilder.Entity("EasyStays.Infrastructure.Identity.ApplicationUser", b =>

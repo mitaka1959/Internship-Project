@@ -24,11 +24,11 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public string CheckInTime { get; set; }
         public string CheckOutTime { get; set; }
 
-        public List<string> Images { get; set; } = new();
-        public List<string> Amenities { get; set; } = new();
-        public List<string> Policies { get; set; } = new();
+        public  IQueryable<string> Images { get; set; }
+        public IQueryable<string> Amenities { get; set; } //= new();
+        public IQueryable<string> Policies { get; set; }// = new();
 
-        public List<RoomDto> Rooms { get; set; } = new();
+        public IQueryable<RoomDto> Rooms { get; set; } //= new();
     }
 
     public class RoomDto
@@ -41,7 +41,7 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public decimal PricePerNight { get; set; }
         public int RoomSize { get; set; }
 
-        public List<string> Images { get; set; } = new();
-        public List<string> Amenities { get; set; } = new();
+        public IQueryable<string> Images { get; set; } //= new();
+        public IQueryable<string> Amenities { get; set; }// = new();
     }
 }

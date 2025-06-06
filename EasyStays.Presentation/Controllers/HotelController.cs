@@ -7,6 +7,7 @@ using EasyStays.Application.UseCases.Hotels.Commands;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace EasyStays.Presentation.Controllers
 {

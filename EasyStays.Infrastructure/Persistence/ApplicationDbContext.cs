@@ -13,14 +13,14 @@ namespace EasyStays.Infrastructure.Persistence
     {
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelImage> HotelImages { get; set; }
-        public DbSet<Room> Rooms { get; set; } 
+        public DbSet<Room> Rooms { get; set; }
         public DbSet<ApplicationUser> applicationUsers { get; set; }
         public DbSet<Amenity> Amenities { get; set; }
         public DbSet<HotelAmenity> HotelAmenities { get; set; }
         public DbSet<RoomAmenity> RoomAmenities { get; set; }
         public DbSet<RoomImage> RoomImages { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<Payment> Payments { get; set; }    
+        public DbSet<Payment> Payments { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
@@ -35,7 +35,7 @@ namespace EasyStays.Infrastructure.Persistence
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-            {
+        {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
@@ -66,7 +66,7 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasForeignKey(ha => ha.AmenityId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
+
             modelBuilder.Entity<RoomAmenity>()
                 .HasKey(ra => new { ra.RoomId, ra.AmenityId });
 
@@ -96,7 +96,7 @@ namespace EasyStays.Infrastructure.Persistence
                 .HasForeignKey(r => r.RoomId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
+
             modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.Hotel)
                 .WithMany(h => h.Reservations)
@@ -104,7 +104,7 @@ namespace EasyStays.Infrastructure.Persistence
                 .OnDelete(DeleteBehavior.Restrict);
 
 
-            modelBuilder.Entity<Reservation>()  
+            modelBuilder.Entity<Reservation>()
                 .HasOne<ApplicationUser>()
                 .WithMany()
                 .HasForeignKey(r => r.UserId)
@@ -124,10 +124,10 @@ namespace EasyStays.Infrastructure.Persistence
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<RefreshToken>()
-                .HasOne<ApplicationUser>() 
-                .WithMany()                
+                .HasOne<ApplicationUser>()
+                .WithMany()
                 .HasForeignKey(rt => rt.UserId);
-            
+
             modelBuilder.Entity<RoomUnit>()
                 .HasOne(ru => ru.Room)
                 .WithMany(r => r.RoomUnits)
@@ -153,4 +153,3 @@ namespace EasyStays.Infrastructure.Persistence
 
     }
 }
-

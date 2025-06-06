@@ -85,7 +85,7 @@ const HotelGalleryModal: React.FC<HotelGalleryModalProps> = ({
         {imagesToShow.map((img, index) => (
           <Image
             key={index}
-            src={img}
+            //src={img}
             alt={`Gallery image ${index + 1}`}
             width="100%"
             height="150px"

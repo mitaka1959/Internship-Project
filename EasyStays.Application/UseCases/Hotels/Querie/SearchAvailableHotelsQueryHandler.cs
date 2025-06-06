@@ -25,7 +25,7 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
         public async Task<List<HotelCardDto>> Handle(SearchAvailableHotelsQuery query, CancellationToken cancellationToken)
         {
             var hotels = await _hotelRepository.GetHotelsByLocationWithImagesAsync(query.Destination);
-
+            hotels = hotels.Where(h => !h.IsDeleted).ToList();
             var hotelCards = new List<HotelCardDto>();
             
             foreach (var hotel in hotels)
