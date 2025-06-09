@@ -14,6 +14,7 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public string ImageUrl { get; set; }
         public string RoomName { get; set; }
         public List<BedTypeQuantity> BedTypes { get; set; }
+        public string RoomId { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public int Stars { get; set; }

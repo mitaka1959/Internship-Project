@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, useParams } from "react-router-dom";
+import { Route, useParams, useLocation, useNavigate } from "react-router-dom";
 import {
   Typography,
   Divider,
@@ -12,12 +12,13 @@ import {
   Spin,
   Table,
   Radio,
+  InputNumber,
 } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 import HotelGalleryModal from "../user/ImageGallery";
 import SearchBar from "./SearchBar";
 import api from "../../../../services/axios";
-import { useNavigate } from "react-router-dom";
+import dayjs, { Dayjs } from "dayjs";
 
 const { Title, Paragraph } = Typography;
 
@@ -31,6 +32,7 @@ export type HotelType = {
   name: string;
   location: string;
   imageUrl: string | null;
+  roomId: string;
   roomName: string;
   bedTypes: BedTypeQuantity[];
   quantity: number;
@@ -40,10 +42,29 @@ export type HotelType = {
 
 const HotelPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const {
+    matchedRoomId,
+    matchedRoomQuantity,
+    dates: initialDates,
+  } = location.state || {};
+  const [dates, setDates] = useState<[Dayjs, Dayjs] | null>(
+    initialDates ? [dayjs(initialDates[0]), dayjs(initialDates[1])] : null
+  );
+
   const [hotel, setHotel] = useState<any>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const [selectedRoomQuantities, setSelectedRoomQuantities] = useState<{
+    [roomId: string]: number;
+  }>({});
+
+  const numberOfNights =
+    dates && dates.length === 2
+      ? dayjs(dates[1]).diff(dayjs(dates[0]), "day")
+      : 1;
 
   const handleSearch = async (params: any) => {
     try {
@@ -86,6 +107,18 @@ const HotelPage: React.FC = () => {
     fetchHotel();
   }, [id]);
 
+  useEffect(() => {
+    if (hotel) {
+      setSelectedRoomId(matchedRoomId || null);
+      const initialQuantities: { [roomId: string]: number } = {};
+      hotel.rooms.forEach((room: any) => {
+        initialQuantities[room.id] =
+          room.id === matchedRoomId ? matchedRoomQuantity || 1 : 0;
+      });
+      setSelectedRoomQuantities(initialQuantities);
+    }
+  }, [hotel, matchedRoomId, matchedRoomQuantity]);
+
   if (!hotel) {
     return (
       <Spin
@@ -94,6 +127,16 @@ const HotelPage: React.FC = () => {
       />
     );
   }
+
+  const selectedQuantity = selectedRoomId
+    ? selectedRoomQuantities[selectedRoomId] || 0
+    : 0;
+
+  const totalPrice = selectedRoomId
+    ? hotel.rooms.find((r: any) => r.id === selectedRoomId)?.pricePerNight *
+      selectedQuantity *
+      numberOfNights
+    : 0;
 
   const roomColumns = [
     {
@@ -111,9 +154,9 @@ const HotelPage: React.FC = () => {
       ),
     },
     {
-      title: "Quantity",
-      dataIndex: "quantity",
-      key: "quantity",
+      title: "Capacity",
+      dataIndex: "capacity",
+      key: "capacity",
       render: (_: any, record: any) => <span>{record.capacity}</span>,
     },
     {
@@ -130,10 +173,32 @@ const HotelPage: React.FC = () => {
           )),
     },
     {
+      title: "How Many Rooms",
+      key: "howManyRooms",
+      render: (_: any, record: any) => (
+        <div>
+          <InputNumber
+            min={1}
+            max={10}
+            value={selectedRoomQuantities[record.id] || 1}
+            onChange={(value) => {
+              setSelectedRoomQuantities((prev) => ({
+                ...prev,
+                [record.id]: value ?? 1,
+              }));
+            }}
+          />
+        </div>
+      ),
+    },
+    {
       title: "Total Price",
-      dataIndex: "pricePerNight",
-      key: "price",
-      render: (price: number) => `$${price}`,
+      key: "totalPrice",
+      render: (_: any, record: any) => {
+        const quantity = selectedRoomQuantities[record.id] || 0;
+        const totalPrice = record.pricePerNight * quantity * numberOfNights;
+        return `$${totalPrice}`;
+      },
     },
     {
       title: "Action",
@@ -148,10 +213,40 @@ const HotelPage: React.FC = () => {
       ),
     },
   ];
+  const roomGroups = hotel.rooms?.map((room: any) => ({
+    roomName: room.displayName,
+    images: room.images || [],
+  }));
+
+  const handleClick = () => {
+    if (!selectedRoomId || !dates) {
+      console.warn("Please select a room and dates first.");
+      return;
+    }
+
+    const selectedRoom = hotel.rooms.find((r: any) => r.id === selectedRoomId);
+    const selectedRoomQuantity = selectedRoomQuantities[selectedRoomId] || 1;
+
+    navigate("/reservation", {
+      state: {
+        hotelId: hotel.id,
+        hotelName: hotel.name,
+        country: hotel.country,
+        city: hotel.city,
+        address: hotel.address,
+        roomId: selectedRoomId,
+        roomName: selectedRoom?.displayName || "",
+        roomQuantity: selectedRoomQuantity,
+        dates: [dates[0].format("YYYY-MM-DD"), dates[1].format("YYYY-MM-DD")],
+        pricePerNight: selectedRoom?.pricePerNight || 0,
+      },
+    });
+  };
 
   return (
     <div style={{ backgroundColor: "#eeeeee" }}>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} dates={dates} setDates={setDates} />
+
       <div
         style={{
           marginTop: "230px",
@@ -168,6 +263,7 @@ const HotelPage: React.FC = () => {
         <Row justify="space-between" align="middle">
           <Col>
             <Title level={2}>{hotel.name}</Title>
+            <Rate disabled value={hotel.stars} style={{ marginTop: "-20px" }} />
             <Paragraph style={{ color: "#555" }}>
               {hotel.city}, {hotel.country}
             </Paragraph>
@@ -255,7 +351,7 @@ const HotelPage: React.FC = () => {
             isModalVisible={isModalVisible}
             onClose={() => setIsModalVisible(false)}
             hotelImages={hotel.images}
-            roomGroups={hotel.roomGroups || []}
+            roomGroups={roomGroups}
           />
         )}
 
@@ -273,12 +369,10 @@ const HotelPage: React.FC = () => {
             <Title level={4} style={{ margin: 0 }}>
               USD ${hotel.price}
             </Title>
-            {hotel.oldPrice && (
-              <Paragraph delete>USD ${hotel.oldPrice}</Paragraph>
-            )}
-            <Rate disabled value={hotel.stars} />
+            {totalPrice && <Paragraph delete>USD ${totalPrice}</Paragraph>}
+
             <div style={{ marginTop: "10px" }}>
-              <Button type="primary" size="large">
+              <Button type="primary" size="large" onClick={handleClick}>
                 Reserve
               </Button>
             </div>

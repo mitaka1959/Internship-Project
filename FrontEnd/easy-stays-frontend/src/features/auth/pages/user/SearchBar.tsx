@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { Input, DatePicker, Button, Dropdown, Menu } from "antd";
 import { SearchOutlined, DownOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import logo from "../../../../assets/logo.png";
-import { Card, Avatar } from "antd";
+import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
 const { RangePicker } = DatePicker;
 
 type SearchBarProps = {
   onSearch: (params: any) => void;
+  dates: [dayjs.Dayjs, dayjs.Dayjs] | null;
+  setDates: React.Dispatch<
+    React.SetStateAction<[dayjs.Dayjs, dayjs.Dayjs] | null>
+  >;
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [location, setLocation] = useState<string>("");
-  const [dates, setDates] = useState<[dayjs.Dayjs, dayjs.Dayjs] | null>(null);
-  const [adults, setAdults] = useState<number>(1);
-  const [children, setChildren] = useState<number>(0);
-  const [rooms, setRooms] = useState<number>(1);
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
+  const [location, setLocation] = React.useState<string>("");
+  const [adults, setAdults] = React.useState<number>(1);
+  const [children, setChildren] = React.useState<number>(0);
+  const [rooms, setRooms] = React.useState<number>(1);
 
   const handleSearch = () => {
     const searchParams = {
@@ -124,6 +127,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         />
 
         <RangePicker
+          value={dates ?? undefined}
           onChange={(dates) => setDates(dates as [dayjs.Dayjs, dayjs.Dayjs])}
           style={{
             maxWidth: "330px",

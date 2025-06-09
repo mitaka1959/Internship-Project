@@ -47,13 +47,23 @@ const HotelGalleryModal: React.FC<HotelGalleryModalProps> = ({
         style={{
           display: "flex",
           justifyContent: "center",
-          marginBottom: "16px",
           flexWrap: "wrap",
-          gap: "8px",
+          gap: "10px",
+          padding: "12px",
+          marginBottom: "16px",
+          borderBottom: "1px solid #eee",
+          background: "#fff",
+          position: "sticky",
+          top: 0,
+          zIndex: 10,
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
         }}
       >
         <Button
           type={selectedRoomIndex === null ? "primary" : "default"}
+          style={{
+            fontWeight: selectedRoomIndex === null ? "bold" : "normal",
+          }}
           onClick={(e) => {
             e.stopPropagation();
             setSelectedRoomIndex(null);
@@ -65,6 +75,9 @@ const HotelGalleryModal: React.FC<HotelGalleryModalProps> = ({
           <Button
             key={index}
             type={selectedRoomIndex === index ? "primary" : "default"}
+            style={{
+              fontWeight: selectedRoomIndex === index ? "bold" : "normal",
+            }}
             onClick={(e) => {
               e.stopPropagation();
               setSelectedRoomIndex(index);
@@ -78,26 +91,26 @@ const HotelGalleryModal: React.FC<HotelGalleryModalProps> = ({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-          gap: "8px",
+          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+          gap: "12px",
         }}
       >
         {imagesToShow.map((img, index) => (
           <Image
             key={index}
-            //src={img}
+            src={img}
             alt={`Gallery image ${index + 1}`}
             width="100%"
-            height="150px"
+            height="180px"
             style={{
               objectFit: "cover",
               borderRadius: "8px",
               transition: "transform 0.3s, filter 0.3s",
               cursor: "pointer",
             }}
-            preview={false}
+            preview={true}
             onMouseEnter={(e) => {
-              e.currentTarget.style.filter = "brightness(0.8)";
+              e.currentTarget.style.filter = "brightness(0.85)";
               e.currentTarget.style.transform = "scale(1.05)";
             }}
             onMouseLeave={(e) => {

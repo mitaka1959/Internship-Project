@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Reservations\" />
+    <Folder Include="UseCases\Reservations\DTOs\" />
+    <Folder Include="UseCases\Reservations\Queries\" />
     <Folder Include="UseCases\Rooms\Queries\" />
     <Folder Include="UseCases\Users\Queries\" />
 	<ProjectReference Include="..\EasyStays.Domain\EasyStays.Domain.csproj" />

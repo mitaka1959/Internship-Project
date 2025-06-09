@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EasyStays.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using EasyStays.Domain.Helpers;
 
 
 
@@ -73,7 +74,8 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                     RoomSize = r.RoomSize,
                     Images = r.Images.Select(i => i.ImageUrl).AsQueryable(),
                     Amenities = r.RoomAmenities.Select(ra => ra.Amenity.Name).AsQueryable(),
-                }).AsQueryable()
+                }).AsQueryable(),
+
             };
         }
     }

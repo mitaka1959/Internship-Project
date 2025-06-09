@@ -10,6 +10,8 @@ import EditHotel from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/
 import RoomEditPage from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/RoomEdit";
 import SearchPage from "./features/auth/pages/user/SearchPage";
 import HotelPage from "./features/auth/pages/user/HotelPage";
+import ReservationPage from "./features/auth/pages/user/ReservationPage";
+import Reservations from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/Reservations";
 
 const App: React.FC = () => {
   return (
@@ -57,9 +59,17 @@ const App: React.FC = () => {
             </PrivateRoutes>
           }
         />
+        <Route
+          path="/host/reservations"
+          element={
+            <PrivateRoutes allowedRoles={["Host", "Admin"]}>
+              <Reservations />
+            </PrivateRoutes>
+          }
+        />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/hotel-page/:id" element={<HotelPage />} />
-
+        <Route path="/reservation" element={<ReservationPage />} />
         <Route
           path="*"
           element={<div style={{ padding: "2rem" }}>Welcome to EasyStays</div>}

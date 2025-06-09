@@ -74,7 +74,7 @@ const Sidebar: React.FC = () => {
           My Hotels
         </Menu.Item>
         <Menu.Item
-          key="/reservations"
+          key="/host/reservations"
           icon={<CalendarOutlined style={{ fontSize: "20px" }} />}
           style={{ color: "white", fontSize: "18px", padding: "7px 24px" }}
         >

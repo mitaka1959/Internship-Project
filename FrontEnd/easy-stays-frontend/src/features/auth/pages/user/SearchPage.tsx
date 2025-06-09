@@ -4,6 +4,7 @@ import FilterComponent from "./Filter";
 import HotelCard from "./HotelCard";
 import api from "../../../../services/axios";
 import { useNavigate } from "react-router-dom";
+import dayjs, { Dayjs } from "dayjs";
 
 export type BedTypeQuantity = {
   bedType: string;
@@ -15,6 +16,7 @@ export type HotelType = {
   name: string;
   location: string;
   imageUrl: string | null;
+  roomId: string;
   roomName: string;
   bedTypes: BedTypeQuantity[];
   quantity: number;
@@ -30,6 +32,7 @@ const SearchPage: React.FC = () => {
   const [budgetRange, setBudgetRange] = useState<[number, number]>([0, 1000]);
   const [minStars, setMinStars] = useState<number>(0);
   const [maxStars, setMaxStars] = useState<number>(0);
+  const [dates, setDates] = useState<[Dayjs, Dayjs] | null>(null);
 
   let navigate = useNavigate();
 
@@ -67,7 +70,8 @@ const SearchPage: React.FC = () => {
 
   return (
     <div>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} dates={dates} setDates={setDates} />
+
       <div
         style={{
           marginTop: "200px",
@@ -82,7 +86,7 @@ const SearchPage: React.FC = () => {
           onStarChange={(stars) => setMaxStars(stars)}
         />
         {filteredHotels.map((hotel) => (
-          <HotelCard key={hotel.hotelId} hotel={hotel} />
+          <HotelCard key={hotel.hotelId} hotel={hotel} selectedDates={dates} />
         ))}
       </div>
     </div>

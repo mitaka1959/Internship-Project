@@ -85,7 +85,7 @@ const MyHotels: React.FC = () => {
           </Button>
         </div>
 
-        <Row gutter={[0, 25]} justify="center">
+        <Row gutter={[0, 25]} style={{ justifyContent: "left" }}>
           {hotels.map((hotel) => (
             <Col xs={24} md={20} key={hotel.id}>
               <Card
@@ -96,8 +96,14 @@ const MyHotels: React.FC = () => {
                   height: "200px",
                   padding: "0",
                   overflow: "hidden",
+                  width: "120%",
                 }}
-                bodyStyle={{ display: "flex", width: "100%", padding: 0 }}
+                bodyStyle={{
+                  display: "flex",
+                  width: "100%",
+                  padding: 0,
+                  justifyContent: "left",
+                }}
               >
                 <img
                   alt="hotel"

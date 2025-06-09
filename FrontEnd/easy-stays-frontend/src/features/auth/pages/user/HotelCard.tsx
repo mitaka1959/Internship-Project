@@ -3,6 +3,7 @@ import { Card, Typography, Rate, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./HotelCard.css";
 import placeholderImage from "../../../../assets/hotel_card_image.webp";
+import dayjs, { Dayjs } from "dayjs";
 
 const { Title } = Typography;
 
@@ -17,12 +18,14 @@ export type HotelCardProps = {
     name: string;
     location: string;
     imageUrl: string | null;
+    roomId: string;
     roomName: string;
     bedTypes: BedTypeQuantity[];
     quantity: number;
     price: number;
     stars: number;
   };
+  selectedDates: [Dayjs, Dayjs] | null;
 };
 
 export const formatBedType = (bedType: string) => {
@@ -31,11 +34,22 @@ export const formatBedType = (bedType: string) => {
     .replace(/^./, (str) => str.toUpperCase());
 };
 
-const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
+const HotelCard: React.FC<HotelCardProps> = ({ hotel, selectedDates }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/hotel-page/${hotel.hotelId}`);
+    navigate(`/hotel-page/${hotel.hotelId}`, {
+      state: {
+        matchedRoomId: hotel.roomId,
+        matchedRoomQuantity: hotel.quantity,
+        dates: selectedDates
+          ? [
+              selectedDates[0].format("YYYY-MM-DD"),
+              selectedDates[1].format("YYYY-MM-DD"),
+            ]
+          : null,
+      },
+    });
   };
 
   return (
