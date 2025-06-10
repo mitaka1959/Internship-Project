@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import logo from "../../../../assets/logo.png";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const { RangePicker } = DatePicker;
 
@@ -21,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
   const [adults, setAdults] = React.useState<number>(1);
   const [children, setChildren] = React.useState<number>(0);
   const [rooms, setRooms] = React.useState<number>(1);
-
+  const navigate = useNavigate();
   const handleSearch = () => {
     const searchParams = {
       destination: location,
@@ -160,11 +161,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
           Search
         </Button>
       </div>
-
       <Avatar
         size={64}
         icon={<UserOutlined />}
-        style={{ backgroundColor: "#FFB703", color: "#000" }}
+        style={{ backgroundColor: "#FFB703", color: "#000", cursor: "pointer" }}
+        onClick={() => navigate("/user/profile")}
       />
     </header>
   );

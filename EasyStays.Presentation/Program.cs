@@ -19,6 +19,8 @@ using EasyStays.Domain.Interfaces;
 using EasyStays.Infrastructure.BlopStorage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using EasyStays.Application.Services;
+using EasyStays.Infrastructure.GoogleMaps;
+using EasyStays.Application.Interfaces.GoogleMaps;
 
 
 
@@ -66,6 +68,8 @@ builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddHttpClient<IGeocodingService, GeocodingService>();
+
 builder.Services.AddScoped(
     typeof(IPipelineBehavior<,>),
     typeof(LoggingPipelineBehavior<,>)

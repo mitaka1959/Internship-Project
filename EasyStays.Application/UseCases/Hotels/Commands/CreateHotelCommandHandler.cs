@@ -4,18 +4,20 @@ using EasyStays.Domain.Entities;
 using EasyStays.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using EasyStays.Application.Interfaces.GoogleMaps;
 
 public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Guid>
 {
     private readonly IApplicationDbContext _context;
     private readonly ICurrentUserService _currentUser;
-
+    private readonly IGeocodingService _geocodingService;
     public CreateHotelCommandHandler(
         IApplicationDbContext context,
-        ICurrentUserService currentUser)
+        ICurrentUserService currentUser, IGeocodingService geocodingService)
     {
         _context = context;
         _currentUser = currentUser;
+        _geocodingService = geocodingService;
     }
 
     public async Task<Guid> Handle(CreateHotelCommand request, CancellationToken cancellationToken)
@@ -76,9 +78,18 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
 
         var existingAmenities = await _context.Amenities.ToListAsync(cancellationToken);
 
+        var fullAddress = $"{request.AddressLine}, {request.City}, {request.Country}";
+
+        var (lat, lng) = await _geocodingService.GeocodeAddressAsync(fullAddress);
+
+        hotel.Latitude = lat ?? 0;
+        hotel.Longitude = lng ?? 0;
+
         hotel.Rooms = request.RoomGroups.Select(group =>
         {
             var roomAmenities = new List<RoomAmenity>();
+
+            
 
             foreach (var amenityDto in group.Amenities)
             {

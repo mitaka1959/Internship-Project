@@ -141,7 +141,7 @@ const ReservationPage: React.FC = () => {
       });
 
       message.success("Reservation confirmed!");
-      navigate("/profile");
+      navigate("/user/profile");
     } catch (error: any) {
       message.error("Failed to confirm reservation.");
       console.error(error);

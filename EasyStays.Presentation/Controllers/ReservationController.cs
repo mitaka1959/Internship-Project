@@ -73,5 +73,35 @@ namespace EasyStays.Presentation.Controllers
 
             return Ok(new { ReservationNumber = reservationNumber });
         }
+
+        [Authorize(Policy = "RequireHostRole")]
+        [HttpGet("confirmed")]
+        public async Task<IActionResult> GetConfirmedReservations([FromQuery] Guid? hotelId)
+        {
+            var query = new GetConfirmedReservationsQuery
+            {
+                HotelId = hotelId
+            };
+
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+
+        [Authorize] 
+        [HttpGet("my-reservations")]
+        public async Task<IActionResult> GetMyReservations()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var query = new GetUserReservationsQuery
+            {
+                UserId = userId
+            };
+
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
     }
 }

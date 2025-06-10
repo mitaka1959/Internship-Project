@@ -7,6 +7,7 @@ import {
   message,
   Spin,
   Select,
+  Form,
 } from "antd";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -37,7 +38,7 @@ const HostReservationPage: React.FC = () => {
     setLoading(true);
     try {
       const response = await api.get(
-        `/api/reservation/${status.toLowerCase()}`,
+        `/api/Reservation/${status.toLowerCase()}`,
         {
           params: hotelId ? { hotelId } : {},
         }
@@ -203,7 +204,7 @@ const HostReservationPage: React.FC = () => {
         maxWidth: "1200px",
         margin: "40px auto",
         padding: "20px",
-        background: "#fff",
+        backgroundColor: "#fff",
         borderRadius: "8px",
       }}
     >
@@ -230,26 +231,44 @@ const HostReservationPage: React.FC = () => {
         ></Select>
 
         <Divider />
-        <Select
-          value={reservationStatus}
-          style={{ width: 200, marginBottom: "20px", marginLeft: "1rem" }}
-          onChange={(value) => handleStatusChange(value)}
-          options={[
-            { value: "Pending", label: "Pending" },
-            { value: "Confirmed", label: "Confirmed" },
-            { value: "Declined", label: "Declined" },
-          ]}
-        />
-        {loading ? (
-          <Spin size="large" style={{ display: "block", marginTop: 50 }} />
-        ) : (
-          <FullCalendar
-            plugins={[dayGridPlugin, interactionPlugin]}
-            initialView="dayGridMonth"
-            events={calendarEvents}
-            height="auto"
-          />
-        )}
+        <div
+          style={{
+            padding: "20px",
+            borderRadius: "8px",
+            marginBottom: "20px",
+          }}
+        >
+          <Form>
+            <Select
+              value={reservationStatus}
+              style={{ width: 200, marginBottom: "20px", marginLeft: "1rem" }}
+              onChange={(value) => handleStatusChange(value)}
+              options={[
+                { value: "Pending", label: "Pending" },
+                { value: "Confirmed", label: "Confirmed" },
+                { value: "Declined", label: "Declined" },
+              ]}
+            />
+
+            {loading ? (
+              <Spin
+                size="large"
+                style={{
+                  display: "block",
+                  marginTop: 50,
+                  backgroundColor: "#fff",
+                }}
+              />
+            ) : (
+              <FullCalendar
+                plugins={[dayGridPlugin, interactionPlugin]}
+                initialView="dayGridMonth"
+                events={calendarEvents}
+                height="auto"
+              />
+            )}
+          </Form>
+        </div>
 
         <Divider />
         <Title level={3}>
