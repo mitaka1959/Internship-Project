@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EasyStays.Domain.Entities
 {
@@ -34,9 +35,25 @@ namespace EasyStays.Domain.Entities
         public string OwnerId { get; set; } = string.Empty;
         public bool IsApproved { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
-        public int AvailableRooms => Rooms?
-            .SelectMany(r => r.RoomUnits)
-            .Count(ru => ru.IsAvailable) ?? 0;
+        public int GetAvailableRoomsCount(DateTime? targetDate = null)
+        {
+            var date = targetDate?.Date ?? DateTime.UtcNow.Date;
+
+            return Rooms?
+                .SelectMany(r => r.RoomUnits)
+                .Where(ru => !ru.IsDeleted)
+                .Count(ru => ru.RoomUnitReservations
+                    .Where(rur =>
+                        rur.Reservation != null &&
+                        (rur.Reservation.Status == ReservationStatus.Confirmed ||
+                         rur.Reservation.Status == ReservationStatus.CheckedIn))
+                    .All(rur => rur.EndDate <= date || rur.StartDate > date)
+                ) ?? 0;
+        }
+
+        [NotMapped]
+        public int AvailableRooms => GetAvailableRoomsCount();
+
         public int TotalRooms => Rooms?
             .SelectMany(r => r.RoomUnits)
             .Count() ?? 0;

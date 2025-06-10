@@ -17,7 +17,7 @@ interface Hotel {
   name: string;
   stars: number;
   IsActive: boolean;
-  AvailableRooms: number;
+  availableRooms: number;
   TotalRooms: number;
   totalRooms: number;
   images: { imageUrl: string }[];
@@ -138,14 +138,18 @@ const MyHotels: React.FC = () => {
                         {hotel.IsActive ? "Active" : "Inactive"}
                       </Tag>
                     </div>
-                    <Text>
-                      Available Rooms: {hotel.AvailableRooms} {""}
+                    <Text style={{ marginRight: "1rem" }}>
+                      Available Rooms: {hotel.availableRooms} /{" "}
                       {hotel.totalRooms}
                     </Text>
                     <Progress
                       percent={
-                        hotel.TotalRooms > 0
-                          ? (hotel.AvailableRooms / hotel.TotalRooms) * 100
+                        hotel.totalRooms > 0
+                          ? Math.round(
+                              ((hotel.totalRooms - hotel.availableRooms) /
+                                hotel.totalRooms) *
+                                100
+                            )
                           : 0
                       }
                       style={{

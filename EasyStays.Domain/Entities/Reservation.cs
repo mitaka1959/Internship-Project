@@ -29,6 +29,7 @@ namespace EasyStays.Domain.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         public Payment? Payment { get; set; }
+        public ICollection<RoomUnitReservation> RoomUnitReservations { get; set; } = new List<RoomUnitReservation>();
     }
 
 }

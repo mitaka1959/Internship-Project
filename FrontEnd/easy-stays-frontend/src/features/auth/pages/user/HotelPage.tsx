@@ -99,6 +99,7 @@ const HotelPage: React.FC = () => {
       try {
         const res = await api.get(`/api/hotels/page/${id}`);
         setHotel(res.data);
+        console.log("Hotel data:", res.data);
       } catch (err) {
         console.error("Failed to load hotel:", err);
       }
@@ -233,7 +234,7 @@ const HotelPage: React.FC = () => {
         hotelName: hotel.name,
         country: hotel.country,
         city: hotel.city,
-        address: hotel.address,
+        address: hotel.addressLine,
         roomId: selectedRoomId,
         roomName: selectedRoom?.displayName || "",
         roomQuantity: selectedRoomQuantity,
@@ -266,6 +267,7 @@ const HotelPage: React.FC = () => {
             <Rate disabled value={hotel.stars} style={{ marginTop: "-20px" }} />
             <Paragraph style={{ color: "#555" }}>
               {hotel.city}, {hotel.country}
+              <br></br> {hotel.addressLine}
             </Paragraph>
           </Col>
           <Col>

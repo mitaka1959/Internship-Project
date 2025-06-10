@@ -11,7 +11,7 @@ import {
   message,
 } from "antd";
 import dayjs from "dayjs";
-import dayjsGenerateConfig from "rc-picker/lib/generate/dayjs";
+import api from "../../../../services/axios";
 
 const { Title, Paragraph } = Typography;
 const { RangePicker } = DatePicker;
@@ -60,6 +60,8 @@ const ReservationPage: React.FC = () => {
 
   const totalPrice = pricePerNight * roomQuantity * numberOfNights;
 
+  const token = localStorage.getItem("access_token");
+
   const showConfirmation = (field: string, value: any) => {
     setPendingChange({ field, value });
     setIsModalVisible(true);
@@ -82,19 +84,68 @@ const ReservationPage: React.FC = () => {
     setPendingChange(null);
   };
 
-  const handleConfirmReservation = () => {
-    console.log("Reservation confirmed!", {
-      hotelId,
-      roomId,
-      firstName,
-      lastName,
-      phoneNumber,
-      roomQuantity,
-      dates,
-      totalPrice,
-    });
-    message.success("Reservation confirmed!");
-    navigate("/profile");
+  const handleConfirmReservation = async () => {
+    if (!token) {
+      message.info("Please log in to make a reservation.");
+      navigate("/login", {
+        state: {
+          redirectTo: "/reservation",
+          reservationData: {
+            hotelId,
+            hotelName,
+            roomId,
+            roomName,
+            roomQuantity,
+            dates,
+            pricePerNight,
+            country,
+            city,
+            address,
+            totalPrice,
+            firstName,
+            lastName,
+            phoneNumber,
+            email,
+          },
+        },
+      });
+      return;
+    }
+
+    try {
+      const reservationPayload = {
+        hotelId,
+        hotelName,
+        country,
+        city,
+        address,
+        roomGroupId: roomId,
+        roomName,
+        firstName,
+        lastName,
+        phoneNumber,
+        email,
+        roomQuantity,
+        checkInDate: dates[0],
+        checkOutDate: dates[1],
+        pricePerNight,
+        totalNights: numberOfNights,
+        totalPrice,
+      };
+      console.log("Reservation Payload:", reservationPayload);
+
+      await api.post("/api/Reservation", reservationPayload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      message.success("Reservation confirmed!");
+      navigate("/profile");
+    } catch (error: any) {
+      message.error("Failed to confirm reservation.");
+      console.error(error);
+    }
   };
 
   return (
@@ -193,7 +244,6 @@ const ReservationPage: React.FC = () => {
         <strong>Total Price:</strong> ${totalPrice}
       </Paragraph>
 
-      <Divider />
       <Button type="primary" onClick={handleConfirmReservation}>
         Confirm Reservation
       </Button>

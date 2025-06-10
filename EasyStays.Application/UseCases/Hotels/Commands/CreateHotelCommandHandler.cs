@@ -128,7 +128,6 @@ public class CreateHotelCommandHandler : IRequestHandler<CreateHotelCommand, Gui
                 RoomUnits = Enumerable.Range(1, group.RoomQuantity).Select(i => new RoomUnit
                 {
                     Id = Guid.NewGuid(),
-                    IsAvailable = true,
                     Number = null
                 }).ToList()
             };

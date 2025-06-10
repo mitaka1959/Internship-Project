@@ -21,7 +21,7 @@ using Microsoft.EntityFrameworkCore;
                 return await _context.Rooms
                     .Include(r => r.BedConfigurations)
                     .Include(r => r.RoomUnits) 
-                    .Where(r => r.HotelId == hotelId && r.RoomUnits.Any(unit => unit.IsAvailable))
+                    .Where(r => r.HotelId == hotelId)
                     .ToListAsync();
             }
         }

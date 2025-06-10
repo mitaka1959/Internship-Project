@@ -25,9 +25,12 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
         {
             return await _context.Hotels
                 .Include(h => h.Images)
-                .Include(h => h.Rooms).ThenInclude(r => r.RoomUnits)
+                .Include(h => h.Rooms)
+                .ThenInclude(r => r.RoomUnits)
+                .ThenInclude(ru => ru.RoomUnitReservations)
+                .ThenInclude(rur => rur.Reservation)
                 .Where(h => h.OwnerId == query.UserId && h.IsDeleted == false)
-                .ToListAsync(cancellationToken);
+                .ToListAsync();
         }
 
 

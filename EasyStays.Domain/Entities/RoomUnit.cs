@@ -13,9 +13,9 @@ namespace EasyStays.Domain.Entities
         public Room Room { get; set; }
 
         public string? Number { get; set; } 
-
-        public bool IsAvailable { get; set; } = true;
         public bool IsDeleted { get; set; } = false;
+
+        public ICollection<RoomUnitReservation> RoomUnitReservations { get; set; } = new List<RoomUnitReservation>();
     }
 
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, Input, Typography, Divider } from "antd";
 import { loginUser } from "../../../services/authService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { message } from "antd";
 import AuthLayout from "../../../layouts/AuthLayout";
 import FacebookLogo from "../../../assets/Facebook-logo.png";
@@ -12,6 +12,9 @@ const { Title, Paragraph } = Typography;
 const LoginPage: React.FC = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTo = location.state?.redirectTo;
+  const reservationData = location.state?.reservationData;
 
   const onFinish = async (values: any) => {
     try {
@@ -26,9 +29,11 @@ const LoginPage: React.FC = () => {
       if (role === "Host" || role === "Admin") {
         navigate("/dashboard");
       } else {
-        message.warning(
-          "You are logged in, but not authorized for dashboard access."
-        );
+        if (redirectTo) {
+          navigate(redirectTo, { state: reservationData });
+        } else {
+          navigate("/search");
+        }
       }
     } catch (error: any) {
       message.error(error.message || "Login failed");

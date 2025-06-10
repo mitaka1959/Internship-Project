@@ -13,6 +13,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayjs from "dayjs";
 import Sidebar from "../../sidebar/Sidebar";
+import api from "../../../../../../../services/axios";
 
 const { Title } = Typography;
 
@@ -24,41 +25,110 @@ const HostReservationPage: React.FC = () => {
     undefined
   );
   const [hotels, setHotels] = useState<any[]>([]);
+  const [loadingReservationId, setLoadingReservationId] = useState<
+    string | null
+  >(null);
+  const [reservationStatus, setReservationStatus] = useState<string>("Pending");
+
+  const fetchReservations = async (
+    hotelId?: string,
+    status: string = "Pending"
+  ) => {
+    setLoading(true);
+    try {
+      const response = await api.get(
+        `/api/reservation/${status.toLowerCase()}`,
+        {
+          params: hotelId ? { hotelId } : {},
+        }
+      );
+
+      const reservations = response.data;
+
+      setPendingRequests(
+        reservations.map((r: any) => ({
+          id: r.id,
+          guestName: r.guestName,
+          hotelName: r.hotelName,
+          roomName: r.roomName,
+          dates: [r.checkInDate, r.checkOutDate],
+          totalPrice: r.totalPrice,
+        }))
+      );
+
+      setCalendarEvents(
+        reservations.map((r: any) => ({
+          title: `${r.roomName} - ${r.guestName}`,
+          start: r.checkInDate,
+          end: dayjs(r.checkOutDate).add(1, "day").format("YYYY-MM-DD"),
+        }))
+      );
+    } catch (error) {
+      message.error("Failed to load reservations.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchHotels = async () => {
+    try {
+      const response = await api.get("/api/Hotels/my-hotels-dropdown");
+      setHotels(response.data);
+      console.log("Fetched hotels:", response.data);
+    } catch (error) {
+      message.error("Failed to load hotels.");
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    setHotels([
-      { id: "h1", name: "Grand Horizon Hotel" },
-      { id: "h2", name: "Sea Breeze Resort" },
-    ]);
+    fetchHotels();
+    fetchReservations(undefined, reservationStatus);
   }, []);
 
   const handleHotelChange = (hotelId: string) => {
     setSelectedHotelId(hotelId);
-    setCalendarEvents([
-      {
-        title: "Panoramic Suite - John Doe",
-        start: "2025-06-10",
-        end: "2025-06-15",
-      },
-    ]);
-    setPendingRequests([
-      {
-        id: "r1",
-        guestName: "Michael Johnson",
-        hotelName: "Grand Horizon Hotel",
-        roomName: "Panoramic View Suite",
-        dates: ["2025-06-20", "2025-06-25"],
-        totalPrice: 1500,
-      },
-    ]);
+    fetchReservations(hotelId, reservationStatus);
   };
 
-  const handleAccept = (reservationId: string) => {
-    message.success(`Accepted reservation ${reservationId}`);
+  const handleStatusChange = (status: string) => {
+    setReservationStatus(status);
+    fetchReservations(selectedHotelId, status);
   };
 
-  const handleDecline = (reservationId: string) => {
-    message.error(`Declined reservation ${reservationId}`);
+  const handleAccept = async (reservationId: string) => {
+    try {
+      setLoadingReservationId(reservationId);
+      console.log("Accepting reservation:", reservationId);
+      await api.post(`/api/Reservation/${reservationId}/accept`);
+
+      setPendingRequests((prev) => prev.filter((r) => r.id !== reservationId));
+
+      message.success("Reservation accepted!");
+    } catch (error) {
+      console.error(error);
+      message.error("Failed to accept reservation.");
+    } finally {
+      setLoadingReservationId(null);
+    }
+  };
+
+  const handleDecline = async (reservationId: string) => {
+    try {
+      setLoadingReservationId(reservationId);
+
+      await api.post(`/api/Reservation/${reservationId}/decline`);
+
+      setPendingRequests((prev) => prev.filter((r) => r.id !== reservationId));
+
+      message.success("Reservation declined!");
+    } catch (error) {
+      console.error(error);
+      message.error("Failed to decline reservation.");
+    } finally {
+      setLoadingReservationId(null);
+    }
   };
 
   const columns = [
@@ -95,20 +165,35 @@ const HostReservationPage: React.FC = () => {
     {
       title: "Actions",
       key: "actions",
-      render: (_: any, record: any) => (
-        <>
-          <Button
-            type="primary"
-            style={{ marginRight: "8px" }}
-            onClick={() => handleAccept(record.id)}
-          >
-            Accept
-          </Button>
-          <Button danger onClick={() => handleDecline(record.id)}>
-            Decline
-          </Button>
-        </>
-      ),
+      render: (_: any, record: any) =>
+        reservationStatus === "Pending" ? (
+          <>
+            <Button
+              type="primary"
+              style={{ marginRight: "8px" }}
+              onClick={() => handleAccept(record.id)}
+              loading={loadingReservationId === record.id}
+            >
+              Accept
+            </Button>
+
+            <Button
+              danger
+              onClick={() => handleDecline(record.id)}
+              loading={loadingReservationId === record.id}
+            >
+              Decline
+            </Button>
+          </>
+        ) : (
+          <span>
+            {reservationStatus === "Confirmed"
+              ? "Confirmed"
+              : reservationStatus === "Declined"
+              ? "Declined"
+              : ""}
+          </span>
+        ),
     },
   ];
 
@@ -129,20 +214,32 @@ const HostReservationPage: React.FC = () => {
         style={{ marginLeft: "150px", padding: "20px", marginRight: "-70px" }}
       >
         <Title level={2}>Reservations Calendar</Title>
+
         <Select
           placeholder="Select a Hotel"
           style={{ width: 300, marginBottom: "20px" }}
           onChange={handleHotelChange}
           value={selectedHotelId}
-        >
-          {hotels.map((hotel) => (
-            <Select.Option key={hotel.id} value={hotel.id}>
-              {hotel.name}
-            </Select.Option>
-          ))}
-        </Select>
-        <Divider />
+          showSearch={false}
+          allowClear={false}
+          options={hotels.map((hotel) => ({
+            key: hotel.id,
+            label: hotel.name,
+            value: hotel.id,
+          }))}
+        ></Select>
 
+        <Divider />
+        <Select
+          value={reservationStatus}
+          style={{ width: 200, marginBottom: "20px", marginLeft: "1rem" }}
+          onChange={(value) => handleStatusChange(value)}
+          options={[
+            { value: "Pending", label: "Pending" },
+            { value: "Confirmed", label: "Confirmed" },
+            { value: "Declined", label: "Declined" },
+          ]}
+        />
         {loading ? (
           <Spin size="large" style={{ display: "block", marginTop: 50 }} />
         ) : (
@@ -155,13 +252,19 @@ const HostReservationPage: React.FC = () => {
         )}
 
         <Divider />
-        <Title level={3}>Incoming Reservation Requests</Title>
+        <Title level={3}>
+          {reservationStatus === "Pending"
+            ? "Incoming Reservation Requests"
+            : reservationStatus === "Confirmed"
+            ? "Confirmed Reservation Requests"
+            : "Declined Reservation Requests"}
+        </Title>
 
         <Table
           rowKey="id"
           columns={columns}
           dataSource={pendingRequests}
-          pagination={false}
+          pagination={{ pageSize: 4 }}
           style={{ marginTop: "20px" }}
         />
       </div>

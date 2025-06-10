@@ -11,6 +11,7 @@ namespace EasyStays.Application.UseCases.Reservations.Commands
     public class CreateReservationRequestCommand: IRequest<Guid>
     {
         public Guid HotelId { get; set; }
+        public string? UserId { get; set; }
         public string HotelName { get; set; }    
         public string Country { get; set; }
         public string City { get; set; }

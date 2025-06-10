@@ -246,6 +246,28 @@ namespace EasyStays.Presentation.Controllers
             return result == null ? NotFound() : Ok(result);
         }
 
+        [Authorize(Policy = "RequireHostRole")]
+        [HttpGet("my-hotels-dropdown")]
+        public async Task<IActionResult> GetMyHotelsDropdown()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("Invalid user.");
+            }
+
+            var query = new GetMyHotelsDropdownQuery
+            {
+                UserId = userId
+            };
+
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+
+
 
     }
 }
