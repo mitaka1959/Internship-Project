@@ -17,6 +17,8 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public string AddressLine { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         public string ContactEmail { get; set; }
         public string ContactPhone { get; set; }
@@ -40,8 +42,11 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public int Capacity { get; set; }
         public decimal PricePerNight { get; set; }
         public int RoomSize { get; set; }
+        public BedConfigurationDto BedConfiguration { get; set; }
+
 
         public IQueryable<string> Images { get; set; } //= new();
         public IQueryable<string> Amenities { get; set; }// = new();
+
     }
 }

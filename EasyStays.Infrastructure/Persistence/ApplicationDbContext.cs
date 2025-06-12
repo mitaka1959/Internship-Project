@@ -28,7 +28,7 @@ namespace EasyStays.Infrastructure.Persistence
         public DbSet<Policy> Policies { get; set; }
         public DbSet<HotelPolicy> HotelPolicies { get; set; }
         public DbSet<RoomUnitReservation> RoomUnitReservations { get; set; }
-
+        public DbSet<ChatMessage> ChatMessages { get; set; }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken) =>
        base.SaveChangesAsync(cancellationToken);
@@ -170,6 +170,19 @@ namespace EasyStays.Infrastructure.Persistence
 
                 builder.Property(rur => rur.EndDate)
                     .IsRequired();
+            });
+            modelBuilder.Entity<ChatMessage>(entity =>
+            {
+                entity.HasKey(c => c.Id);
+
+                entity.Property(c => c.SenderId).IsRequired();
+                entity.Property(c => c.RecipientId).IsRequired();
+                entity.Property(c => c.Content).IsRequired();
+
+                entity.HasOne(c => c.Reservation)
+                    .WithMany()
+                    .HasForeignKey(c => c.ReservationId)
+                    .OnDelete(DeleteBehavior.Cascade); 
             });
 
         }

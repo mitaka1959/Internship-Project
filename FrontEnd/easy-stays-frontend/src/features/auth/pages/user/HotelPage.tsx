@@ -14,13 +14,18 @@ import {
   Radio,
   InputNumber,
 } from "antd";
-import { HeartOutlined } from "@ant-design/icons";
+import { HeartOutlined, CheckOutlined } from "@ant-design/icons";
 import HotelGalleryModal from "../user/ImageGallery";
 import SearchBar from "./SearchBar";
+import RoomDetailsModal from "./RoomDetailsModal";
 import api from "../../../../services/axios";
 import dayjs, { Dayjs } from "dayjs";
+import { HotelMap } from "./HotelMaps";
+import singleBedIcon from "../../../../assets/single-bed-icon.webp";
+import queenSizeBedIcon from "../../../../assets/quuen-size-bed-icon.png";
+import kingSizeBedIcon from "../../../../assets/king-size-bed-icon.png";
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 export type BedTypeQuantity = {
   bedType: string;
@@ -38,6 +43,11 @@ export type HotelType = {
   quantity: number;
   price: number;
   stars: number;
+};
+const bedIcons: { [key: string]: string } = {
+  singleBed: singleBedIcon,
+  queenSizeBed: queenSizeBedIcon,
+  kingSizeBed: kingSizeBedIcon,
 };
 
 const HotelPage: React.FC = () => {
@@ -93,6 +103,9 @@ const HotelPage: React.FC = () => {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [budgetRange, setBudgetRange] = useState<[number, number]>([0, 1000]);
   const [maxStars, setMaxStars] = useState<number>(0);
+  const [selectedRoomForDetails, setSelectedRoomForDetails] = useState<
+    any | null
+  >(null);
 
   useEffect(() => {
     const fetchHotel = async () => {
@@ -161,56 +174,128 @@ const HotelPage: React.FC = () => {
       render: (_: any, record: any) => <span>{record.capacity}</span>,
     },
     {
+      title: "Beds",
+      dataIndex: "bedConfiguration",
+      key: "bedConfiguration",
+      render: (bedConfig?: { king: number; queen: number; single: number }) => {
+        const beds = [];
+
+        if (bedConfig) {
+          beds.push(
+            ...Array.from({ length: bedConfig.single }).map((_, i) => (
+              <img
+                key={`single-${i}`}
+                src={bedIcons["singleBed"]}
+                alt="Single Bed"
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  objectFit: "contain",
+                  marginRight: "4px",
+                }}
+              />
+            ))
+          );
+
+          beds.push(
+            ...Array.from({ length: bedConfig.queen }).map((_, i) => (
+              <img
+                key={`queen-${i}`}
+                src={bedIcons["queenSizeBed"]}
+                alt="Queen Size Bed"
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  objectFit: "contain",
+                  marginRight: "4px",
+                }}
+              />
+            ))
+          );
+
+          beds.push(
+            ...Array.from({ length: bedConfig.king }).map((_, i) => (
+              <img
+                key={`king-${i}`}
+                src={bedIcons["kingSizeBed"]}
+                alt="King Size Bed"
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  objectFit: "contain",
+                  marginRight: "4px",
+                }}
+              />
+            ))
+          );
+        }
+
+        return (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px",
+              alignItems: "center",
+            }}
+          >
+            {beds}
+          </div>
+        );
+      },
+    },
+
+    {
       title: "Amenities",
       dataIndex: "amenities",
       key: "amenities",
-      render: (amenities: string[]) =>
-        amenities
-          ?.filter((a) => a)
-          .map((amenity, idx) => (
-            <Tag key={idx} color="geekblue">
-              {amenity}
-            </Tag>
-          )),
-    },
-    {
-      title: "How Many Rooms",
-      key: "howManyRooms",
-      render: (_: any, record: any) => (
-        <div>
-          <InputNumber
-            min={1}
-            max={10}
-            value={selectedRoomQuantities[record.id] || 1}
-            onChange={(value) => {
-              setSelectedRoomQuantities((prev) => ({
-                ...prev,
-                [record.id]: value ?? 1,
-              }));
-            }}
-          />
+      render: (amenities: string[]) => (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+          }}
+        >
+          {amenities
+            ?.filter((a) => a)
+            .slice(0, 6)
+            .map((amenity, idx) => (
+              <div
+                key={idx}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "4px 8px",
+                  background: "#fff",
+                  borderRadius: "16px",
+                  fontSize: "14px",
+                  color: "#555",
+                }}
+              >
+                <CheckOutlined
+                  style={{
+                    color: "#52c41a",
+                    marginRight: "6px",
+                    fontSize: "14px",
+                  }}
+                />
+                {amenity}
+              </div>
+            ))}
         </div>
       ),
     },
     {
-      title: "Total Price",
-      key: "totalPrice",
-      render: (_: any, record: any) => {
-        const quantity = selectedRoomQuantities[record.id] || 0;
-        const totalPrice = record.pricePerNight * quantity * numberOfNights;
-        return `$${totalPrice}`;
-      },
-    },
-    {
-      title: "Action",
-      key: "action",
+      title: "Details",
+      key: "details",
       render: (_: any, record: any) => (
-        <Radio
-          checked={selectedRoomId === record.id}
-          onChange={() => setSelectedRoomId(record.id)}
+        <Button
+          type="primary"
+          onClick={() => setSelectedRoomForDetails(record)}
         >
-          Select
-        </Radio>
+          Details
+        </Button>
       ),
     },
   ];
@@ -372,24 +457,39 @@ const HotelPage: React.FC = () => {
               USD ${hotel.price}
             </Title>
             {totalPrice && <Paragraph delete>USD ${totalPrice}</Paragraph>}
-
-            <div style={{ marginTop: "10px" }}>
-              <Button type="primary" size="large" onClick={handleClick}>
-                Reserve
-              </Button>
-            </div>
           </Col>
         </Row>
-
+        <Divider />
+        {hotel && hotel.latitude !== 0 && hotel.longitude !== 0 && (
+          <HotelMap lat={hotel.latitude} lng={hotel.longitude} />
+        )}
         <Divider />
         <Title level={4}>Facilities</Title>
-        <Row gutter={[16, 16]}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
           {hotel.amenities?.map((amenity: string, idx: number) => (
-            <Col key={idx}>
-              <Tag>{amenity}</Tag>
-            </Col>
+            <div
+              key={idx}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "4px 8px",
+                background: "#fff",
+                borderRadius: "16px",
+                fontSize: "14px",
+                color: "#555",
+              }}
+            >
+              <CheckOutlined
+                style={{
+                  color: "#52c41a",
+                  marginRight: "6px",
+                  fontSize: "14px",
+                }}
+              />
+              {amenity}
+            </div>
           ))}
-        </Row>
+        </div>
 
         <Divider />
         <Title level={4}>Check-in & Check-out</Title>
@@ -401,6 +501,37 @@ const HotelPage: React.FC = () => {
         <Divider />
         <Title level={4}>Rooms Available</Title>
         <Table rowKey="id" columns={roomColumns} dataSource={hotel.rooms} />
+        {selectedRoomForDetails && (
+          <RoomDetailsModal
+            visible={!!selectedRoomForDetails}
+            room={selectedRoomForDetails}
+            dates={dates}
+            matchedRoomQuantity={matchedRoomQuantity}
+            onClose={() => setSelectedRoomForDetails(null)}
+            onReserve={({
+              dates: newDates,
+              roomQuantity,
+            }: {
+              dates: string[];
+              roomQuantity: number;
+            }) => {
+              navigate("/reservation", {
+                state: {
+                  hotelId: hotel.id,
+                  hotelName: hotel.name,
+                  country: hotel.country,
+                  city: hotel.city,
+                  address: hotel.addressLine,
+                  roomId: selectedRoomForDetails.id,
+                  roomName: selectedRoomForDetails.displayName,
+                  roomQuantity: roomQuantity,
+                  dates: newDates,
+                  pricePerNight: selectedRoomForDetails.pricePerNight,
+                },
+              });
+            }}
+          />
+        )}
       </div>
     </div>
   );

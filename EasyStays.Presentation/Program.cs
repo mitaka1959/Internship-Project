@@ -21,6 +21,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using EasyStays.Application.Services;
 using EasyStays.Infrastructure.GoogleMaps;
 using EasyStays.Application.Interfaces.GoogleMaps;
+using EasyStays.Application.Interfaces.Email;
+using EasyStays.Infrastructure.Email;
 
 
 
@@ -69,6 +71,10 @@ builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddHttpClient<IGeocodingService, GeocodingService>();
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<IBookingConfirmationPdfGenerator, BookingConfirmationPdfGenerator>();
+
 
 builder.Services.AddScoped(
     typeof(IPipelineBehavior<,>),

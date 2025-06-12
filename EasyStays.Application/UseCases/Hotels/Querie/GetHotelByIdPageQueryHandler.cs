@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using EasyStays.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using EasyStays.Domain.Helpers;
+using EasyStays.Domain.Enums;
 
 
 
@@ -32,6 +33,7 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                 .Include(h => h.HotelAmenities).ThenInclude(ha => ha.Amenity)
                 .Include(h => h.HotelPolicies).ThenInclude(hp => hp.Policy)
                 .Include(h => h.Rooms).ThenInclude(r => r.Images)
+                .Include(h => h.Rooms).ThenInclude(r => r.BedConfigurations)
                 .Include(h => h.Rooms).ThenInclude(r => r.RoomAmenities).ThenInclude(ra => ra.Amenity)
                 .AsQueryable();   
 
@@ -56,6 +58,8 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                 AddressLine = hotel.AddressLine,
                 City = hotel.City,
                 Country = hotel.Country,
+                Latitude = hotel.Latitude,
+                Longitude = hotel.Longitude,
                 ContactEmail = hotel.ContactEmail,
                 ContactPhone = hotel.ContactPhone,
                 CheckInTime = hotel.CheckInTime.ToString("HH:mm"),
@@ -74,6 +78,20 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                     RoomSize = r.RoomSize,
                     Images = r.Images.Select(i => i.ImageUrl).AsQueryable(),
                     Amenities = r.RoomAmenities.Select(ra => ra.Amenity.Name).AsQueryable(),
+                    BedConfiguration = new BedConfigurationDto
+                    {
+                        Single = r.BedConfigurations
+                  .Where(bc => bc.BedType == BedType.singleBed)
+                  .Sum(bc => bc.Quantity),
+
+                        Queen = r.BedConfigurations
+                  .Where(bc => bc.BedType == BedType.queenSizeBed)
+                  .Sum(bc => bc.Quantity),
+
+                        King = r.BedConfigurations
+                  .Where(bc => bc.BedType == BedType.kingSizeBed)
+                  .Sum(bc => bc.Quantity)
+                    }
                 }).AsQueryable(),
 
             };

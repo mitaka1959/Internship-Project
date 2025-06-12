@@ -1,5 +1,14 @@
-import React, { useEffect } from "react";
-import { Form, Input, Rate, Button, Select, message, Typography } from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Form,
+  Input,
+  Rate,
+  Button,
+  Select,
+  message,
+  Typography,
+  Spin,
+} from "antd";
 import api from "../../../../../../../services/axios";
 import { useParams } from "react-router-dom";
 
@@ -47,12 +56,13 @@ const amenityOptions = [
 const PropertyDetails: React.FC = () => {
   const { hotelId } = useParams<{ hotelId: string }>();
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [saving, setSaving] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchHotelDetails = async () => {
       try {
         const res = await api.get(`/api/Hotels/get-hotel-info/${hotelId}`);
-        console.log("Hotel details fetched:", res.data);
         const hotelData = {
           ...res.data,
           address: res.data.addressLine,
@@ -60,8 +70,9 @@ const PropertyDetails: React.FC = () => {
         };
         form.setFieldsValue(hotelData);
       } catch (error) {
-        console.error("Failed to fetch hotel details:", error);
         message.error("Failed to load hotel data.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -70,6 +81,7 @@ const PropertyDetails: React.FC = () => {
 
   const onFinish = async (values: any) => {
     try {
+      setSaving(true);
       const updatedAmenities = (values.amenities || []).map((a: any) =>
         typeof a === "string" ? a : a?.value
       );
@@ -81,17 +93,23 @@ const PropertyDetails: React.FC = () => {
         amenities: updatedAmenities,
       };
 
-      const res = await api.patch(
-        `/api/Hotels/update/${hotelId}`,
-        updatedValues
-      );
+      await api.patch(`/api/Hotels/update/${hotelId}`, updatedValues);
       message.success("Property details updated successfully!");
-      console.log("Update response:", res.data);
     } catch (error) {
-      console.error("Failed to update hotel:", error);
       message.error("Failed to update hotel details. Please try again.");
+    } finally {
+      setSaving(false);
     }
   };
+
+  if (loading) {
+    return (
+      <Spin
+        size="large"
+        style={{ display: "block", marginTop: 200, textAlign: "center" }}
+      />
+    );
+  }
 
   return (
     <div style={{ background: "#fff", padding: "1rem", borderRadius: "8px" }}>
@@ -145,7 +163,8 @@ const PropertyDetails: React.FC = () => {
             type="primary"
             htmlType="submit"
             style={{ backgroundColor: "#FB8500", borderColor: "#FB8500" }}
-            onClick={onFinish}
+            loading={saving}
+            disabled={saving}
           >
             Save Changes
           </Button>
