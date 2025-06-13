@@ -1,0 +1,362 @@
+2025-06-13 09:05:55.757 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:05:55.797 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:05:55.799 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:05:55.800 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:06:39.808 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 09:06:42.644 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2829.1424 ms
+2025-06-13 09:16:42.102 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:16:42.131 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:16:42.133 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:16:42.135 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:17:09.401 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 09:17:13.079 +03:00 [INF] HTTP GET /api/Flights responded 200 in 3673.4946 ms
+2025-06-13 09:38:09.123 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:38:09.146 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:38:09.147 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:38:09.148 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 09:38:40.898 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 09:38:43.425 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 09:38:43.467 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 2564.8140 ms
+2025-06-13 09:42:52.866 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2833.9860 ms
+2025-06-13 11:47:54.630 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 4.5755 ms
+2025-06-13 11:47:54.883 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-13 11:47:54.950 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 314.1996 ms
+2025-06-13 13:14:46.441 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 0.2539 ms
+2025-06-13 13:14:46.506 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 62.0181 ms
+2025-06-13 14:25:07.232 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 14:25:07.263 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 14:25:07.265 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 14:25:07.266 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 14:45:21.055 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 14:45:21.061 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 1.5737 ms
+2025-06-13 14:45:21.061 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 1.6083 ms
+2025-06-13 14:45:21.603 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 14:45:21.653 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 578.2978 ms
+2025-06-13 14:45:21.670 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 14:45:21.676 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 601.9695 ms
+2025-06-13 14:50:04.012 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 14:50:04.020 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 502.7903 ms
+2025-06-13 14:50:32.719 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 14:50:32.726 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 283.6920 ms
+2025-06-13 15:33:07.062 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 15:33:07.076 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 559.6687 ms
+2025-06-13 15:35:14.922 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:35:14.948 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:35:14.950 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:35:14.951 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:35:55.646 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 15:35:56.393 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 15:35:56.418 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 766.6384 ms
+2025-06-13 15:36:10.847 +03:00 [ERR] Unhandled exception occurred
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at EasyStays.Infrastructure.Flights.FlightService.GetFlightOffersAsync(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Flights\FlightService.cs:line 61
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 25
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 15:36:10.854 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 273.0860 ms
+2025-06-13 15:38:44.058 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:38:44.084 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:38:44.085 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:38:44.086 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 15:39:14.439 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 15:39:16.698 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2238.6977 ms
+2025-06-13 15:40:11.874 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 1.6512 ms
+2025-06-13 15:40:14.038 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2153.2649 ms
+2025-06-13 15:50:53.007 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1269 ms
+2025-06-13 15:50:55.423 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2412.0553 ms
+2025-06-13 15:51:10.846 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0931 ms
+2025-06-13 15:51:12.706 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1852.0017 ms
+2025-06-13 15:51:30.134 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.7091 ms
+2025-06-13 15:51:32.592 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2453.6528 ms
+2025-06-13 15:51:41.718 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 0.3076 ms
+2025-06-13 15:51:41.902 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-13 15:51:41.963 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 240.5480 ms
+2025-06-13 15:54:16.245 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1357 ms
+2025-06-13 15:54:18.611 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2359.4198 ms
+2025-06-13 16:01:42.301 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1263 ms
+2025-06-13 16:01:53.988 +03:00 [INF] HTTP GET /api/Flights responded 200 in 11682.4296 ms
+2025-06-13 16:02:26.081 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0935 ms
+2025-06-13 16:02:28.296 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2209.7975 ms
+2025-06-13 16:07:34.614 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1062 ms
+2025-06-13 16:07:36.682 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 16:07:36.703 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 2080.3242 ms
+2025-06-13 16:08:22.026 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 16:08:22.034 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 1496.5132 ms
+2025-06-13 16:08:58.105 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 16:08:58.113 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 1630.9528 ms
+2025-06-13 16:09:28.784 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 16:09:28.793 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 1862.4637 ms
+2025-06-13 16:10:08.306 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 16:10:08.311 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 1602.6768 ms
+2025-06-13 16:10:34.537 +03:00 [ERR] Unhandled exception occurred
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at EasyStays.Application.UseCases.Flights.Queries.GetFlightOffersQueryHandler.Handle(GetFlightOffersQuery request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Flights\Queries\GetFlightOffersQueryHandler.cs:line 58
+   at EasyStays.Presentation.Controllers.FlightsController.GetFlights(String origin, String destination, String departureDate, Int32 adults) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\FlightsController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-13 16:10:34.543 +03:00 [ERR] HTTP GET /api/Flights responded 500 in 3632.5661 ms
+2025-06-13 16:17:40.688 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 16:17:40.715 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 16:17:40.716 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 16:17:40.718 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-13 16:18:26.290 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-13 16:18:28.883 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2575.5000 ms
+2025-06-13 16:18:53.470 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 1.1842 ms
+2025-06-13 16:18:55.422 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1946.9205 ms
+2025-06-13 16:25:39.290 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.2472 ms
+2025-06-13 16:25:41.198 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1904.8990 ms
+2025-06-13 16:30:03.292 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1241 ms
+2025-06-13 16:30:07.018 +03:00 [INF] HTTP GET /api/Flights responded 200 in 3722.6264 ms
+2025-06-13 16:42:03.062 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1901 ms
+2025-06-13 16:42:06.069 +03:00 [INF] HTTP GET /api/Flights responded 200 in 3002.0294 ms
+2025-06-13 16:42:14.017 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0635 ms
+2025-06-13 16:42:15.903 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1882.4855 ms
+2025-06-13 17:05:05.018 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0937 ms
+2025-06-13 17:05:07.688 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2664.6421 ms
+2025-06-13 17:08:36.382 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1084 ms
+2025-06-13 17:08:38.932 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2546.5830 ms
+2025-06-13 17:08:41.839 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0736 ms
+2025-06-13 17:08:44.401 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2557.6881 ms
+2025-06-13 17:08:49.018 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2471.0191 ms
+2025-06-13 17:08:51.240 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1246 ms
+2025-06-13 17:08:53.021 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1772.8752 ms
+2025-06-13 17:08:56.820 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1003 ms
+2025-06-13 17:08:58.609 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1783.0434 ms
+2025-06-13 17:09:02.289 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1944.1137 ms
+2025-06-13 17:11:19.158 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1066 ms
+2025-06-13 17:11:21.257 +03:00 [INF] HTTP GET /api/Flights responded 200 in 2095.0617 ms
+2025-06-13 17:11:42.589 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.9475 ms
+2025-06-13 17:11:42.591 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0731 ms
+2025-06-13 17:11:51.627 +03:00 [INF] HTTP GET /api/Flights responded 200 in 9028.9911 ms
+2025-06-13 17:11:55.481 +03:00 [INF] HTTP GET /api/Flights responded 200 in 3851.7192 ms
+2025-06-13 17:20:41.443 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1449 ms
+2025-06-13 17:20:41.443 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.3636 ms
+2025-06-13 17:20:43.081 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1631.6506 ms
+2025-06-13 17:20:44.605 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1522.2758 ms
+2025-06-13 17:20:59.085 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.0850 ms
+2025-06-13 17:21:00.786 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1681.1412 ms
+2025-06-13 17:21:14.026 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1477 ms
+2025-06-13 17:21:15.730 +03:00 [INF] HTTP GET /api/Flights responded 200 in 1700.2422 ms
+2025-06-13 17:21:42.011 +03:00 [INF] HTTP OPTIONS /api/Flights responded 204 in 0.1646 ms
+2025-06-13 17:21:53.157 +03:00 [INF] HTTP GET /api/Flights responded 200 in 11140.9224 ms

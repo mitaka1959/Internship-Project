@@ -23,9 +23,9 @@ using EasyStays.Infrastructure.GoogleMaps;
 using EasyStays.Application.Interfaces.GoogleMaps;
 using EasyStays.Application.Interfaces.Email;
 using EasyStays.Infrastructure.Email;
-
-
-
+using EasyStays.Infrastructure.SignalR;
+using EasyStays.Application.Interfaces.Flights;
+using EasyStays.Infrastructure.Flights;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -74,6 +74,8 @@ builder.Services.AddHttpClient<IGeocodingService, GeocodingService>();
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<IBookingConfirmationPdfGenerator, BookingConfirmationPdfGenerator>();
+builder.Services.AddSignalR();
+builder.Services.AddHttpClient<IFlightService, FlightService>();
 
 
 builder.Services.AddScoped(
@@ -206,6 +208,7 @@ app.UseCors(AllowFrontEnd);
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+app.MapHub<ChatHub>("/chathub");
 
 using (var scope = app.Services.CreateScope())
 {

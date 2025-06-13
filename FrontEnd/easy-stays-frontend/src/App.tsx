@@ -13,6 +13,7 @@ import HotelPage from "./features/auth/pages/user/HotelPage";
 import ReservationPage from "./features/auth/pages/user/ReservationPage";
 import Reservations from "./features/auth/pages/host/dashboard/my_hotels/EditHotel/Reservations";
 import UserProfilePage from "./features/auth/pages/user/UserProfilePage";
+import FlightsPage from "./features/auth/pages/user/FlightsPage";
 
 const App: React.FC = () => {
   return (
@@ -72,6 +73,7 @@ const App: React.FC = () => {
         <Route path="/hotel-page/:id" element={<HotelPage />} />
         <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/user/profile" element={<UserProfilePage />} />
+        <Route path="/user/flights" element={<FlightsPage />} />
 
         <Route
           path="*"

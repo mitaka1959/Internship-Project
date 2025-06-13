@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Button, Image } from "antd";
-import { CheckOutlined } from "@ant-design/icons";
 
 interface HotelGalleryModalProps {
   isModalVisible: boolean;

@@ -101,6 +101,36 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
           marginRight: "auto",
         }}
       />
+      <Button
+        style={{
+          flex: 1,
+          textAlign: "left",
+          color: "#fff",
+          marginLeft: "550px",
+          marginRight: "550px",
+          marginBottom: "20px",
+          marginTop: "50px",
+          borderRadius: "12px",
+          padding: "10px",
+          backgroundColor: "#023047",
+          border: "2px solid #fff",
+          fontSize: "20px",
+          fontWeight: "bold",
+          cursor: "pointer",
+        }}
+        onClick={() =>
+          navigate("/user/flights", {
+            state: {
+              destinationCity: location,
+              departureDate: dates ? dates[0].format("YYYY-MM-DD") : "",
+              adults: adults,
+            },
+          })
+        }
+      >
+        Book a Flight
+      </Button>
+
       <div
         style={{
           position: "absolute",

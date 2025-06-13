@@ -27,7 +27,7 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                 .Include(r => r.Images)
                 .Include(r => r.BedConfigurations)
                 .FirstOrDefaultAsync(r => r.Id == request.RoomId && !r.IsDeleted, cancellationToken);
-
+                
             return room;
         }
     }

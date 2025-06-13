@@ -31,13 +31,15 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                 .Include(h => h.Rooms).ThenInclude(r => r.Images)
                 .Include(h => h.Rooms).ThenInclude(r => r.RoomUnits)
                 .Include(h => h.HotelAmenities)
-                .ThenInclude(ha => ha.Amenity) 
+                .ThenInclude(ha => ha.Amenity)
+                .AsSplitQuery()
                 .FirstOrDefaultAsync(
                     h => h.Id == request.HotelId &&
                          !h.IsDeleted &&
                          h.OwnerId == request.UserId.ToString(),
                     cancellationToken);
 
+           
 
             return hotel ?? throw new KeyNotFoundException("Hotel not found");
         }
