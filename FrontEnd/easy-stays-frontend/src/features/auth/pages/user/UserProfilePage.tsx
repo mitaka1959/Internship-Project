@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Card, Row, Col, Typography, Tag, Spin, message } from "antd";
+import { Card, Row, Col, Typography, Tag, Spin, Button, message } from "antd";
 import api from "../../../../services/axios";
 import dayjs from "dayjs";
 import { Breadcrumb } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -19,6 +20,7 @@ interface UserReservation {
 const UserProfilePage: React.FC = () => {
   const [reservations, setReservations] = useState<UserReservation[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const fetchUserReservations = async () => {
     setLoading(true);
@@ -54,9 +56,10 @@ const UserProfilePage: React.FC = () => {
     <div
       style={{
         background: "#D9DDDC",
-        minHeight: "100vh",
-        position: "fixed",
+        minHeight: "110vh",
+        position: "relative",
         width: "100%",
+        marginTop: "-40px",
       }}
     >
       <div
@@ -69,9 +72,25 @@ const UserProfilePage: React.FC = () => {
         }}
       >
         <Breadcrumb style={{ marginBottom: "30px" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item onClick={() => navigate("/search")}>
+            Home
+          </Breadcrumb.Item>
+
           <Breadcrumb.Item>User Profile</Breadcrumb.Item>
         </Breadcrumb>
+        <Button
+          type="default"
+          onClick={() => navigate("/search")}
+          style={{
+            marginBottom: "20px",
+            borderRadius: "5px",
+            backgroundColor: "#ffffff",
+            color: "#333",
+            border: "1px solid #ccc",
+          }}
+        >
+          ← Back to Search
+        </Button>
         <Title level={2} style={{ marginBottom: "1rem" }}>
           My Reservations
         </Title>

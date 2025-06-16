@@ -267,7 +267,18 @@ namespace EasyStays.Presentation.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Host")]
+        [HttpGet("dashboard")]
+        public async Task<IActionResult> GetDashboardData()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+            if (userId == null)
+                return Unauthorized();
+
+            var result = await _mediator.Send(new GetDashboardDataQuery(userId));
+            return Ok(result);
+        }
 
     }
 }

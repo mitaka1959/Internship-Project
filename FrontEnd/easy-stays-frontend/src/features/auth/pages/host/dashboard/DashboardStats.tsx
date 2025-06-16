@@ -3,24 +3,42 @@ import { Card, Col, Row, Typography, Button } from "antd";
 
 const { Title, Text } = Typography;
 
-const DashboardStats: React.FC = () => {
+type DashboardStatsProps = {
+  bookingCount: number;
+  revenue: number;
+  reserved: number;
+  capacity: number;
+  changes: {
+    bookings: string;
+    revenue: string;
+    reserved: string;
+  };
+};
+
+const DashboardStats: React.FC<DashboardStatsProps> = ({
+  bookingCount,
+  revenue,
+  reserved,
+  capacity,
+  changes,
+}) => {
   const stats = [
     {
       title: "New Bookings",
-      value: 24,
-      change: "+20%",
+      value: bookingCount,
+      change: changes.bookings,
       badgeColor: "#FFB703",
     },
     {
       title: "Total Revenue",
-      value: "$13,450",
-      change: "-20%",
+      value: `$${revenue.toLocaleString()}`,
+      change: changes.revenue,
       badgeColor: "#FFB703",
     },
     {
       title: "Total Reserved",
-      value: "90 / 100",
-      change: "+20%",
+      value: `${reserved} / ${capacity}`,
+      change: changes.reserved,
       badgeColor: "#FFB703",
     },
   ];

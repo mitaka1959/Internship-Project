@@ -189,31 +189,29 @@ const FlightsPage: React.FC = () => {
         </div>
       </div>
 
-      {origin && destination && departureDate && (
-        <>
-          <FlightsWidget
-            origin={origin}
-            destination={destination}
-            departureDate={departureDate.format("YYYY-MM-DD")}
-            adults={adults}
-            type={tripType === "one-way" ? "one-way" : "round-trip-outbound"}
-            searchTriggered={searchTriggered}
-            cabinClass={cabinClass}
-            directOnly={directOnly}
-          />
-
-          {tripType === "round-trip" && returnDate && (
-            <FlightsWidget
-              origin={origin}
-              destination={destination}
-              departureDate={departureDate.format("YYYY-MM-DD")}
-              adults={adults}
-              searchTriggered={searchTriggered}
-              cabinClass={cabinClass}
-              directOnly={directOnly}
-            />
-          )}
-        </>
+      {tripType === "round-trip" && returnDate ? (
+        <FlightsWidget
+          origin={origin}
+          destination={destination}
+          departureDate={departureDate?.format("YYYY-MM-DD") || ""}
+          returnDate={returnDate.format("YYYY-MM-DD")}
+          adults={adults}
+          type="round-trip-return"
+          searchTriggered={searchTriggered}
+          cabinClass={cabinClass}
+          directOnly={directOnly}
+        />
+      ) : (
+        <FlightsWidget
+          origin={origin}
+          destination={destination}
+          departureDate={departureDate?.format("YYYY-MM-DD") || ""}
+          adults={adults}
+          type="one-way"
+          searchTriggered={searchTriggered}
+          cabinClass={cabinClass}
+          directOnly={directOnly}
+        />
       )}
     </>
   );

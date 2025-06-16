@@ -1,56 +1,100 @@
 import React from "react";
+import { Button, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import logo from "../../../../assets/logo.png";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const FlightsNavbar: React.FC = () => {
+  const navigate = useNavigate();
+  const route = useLocation();
+
+  const isHotels = route.pathname === "/search";
+  const isFlights = route.pathname === "/user/flights";
+
   return (
-    <div
+    <header
       style={{
         width: "100%",
-        height: "100px",
-        background: "#003580",
+        background: "#023047",
         display: "flex",
         alignItems: "center",
-        padding: "8px 24px",
-        color: "#fff",
-        fontWeight: "bold",
-        fontSize: "16px",
+        justifyContent: "center",
+        padding: "12px 24px",
+        position: "relative",
+        top: 0,
+        left: 0,
+        zIndex: 1000,
+        height: "130px",
       }}
     >
+      <img
+        src={logo}
+        alt="Logo"
+        style={{
+          height: "120px",
+          width: "120px",
+          objectFit: "contain",
+          marginRight: "auto",
+        }}
+      />
+
       <div
         style={{
-          marginRight: "24px",
-          cursor: "pointer",
-          marginLeft: "420px",
-          marginTop: "40px",
+          display: "flex",
+          justifyContent: "center",
+          gap: "24px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
         }}
       >
-        Flights
+        <Button
+          type="default"
+          style={{
+            color: "#fff",
+            backgroundColor: "#023047",
+            border: isHotels ? "2px solid #fff" : "none",
+            fontSize: "30px",
+            fontWeight: "bold",
+            borderRadius: "12px",
+            padding: "5px 20px",
+            height: "60px",
+          }}
+          onClick={() => navigate("/search")}
+        >
+          Hotels
+        </Button>
+
+        <Button
+          type="default"
+          style={{
+            color: "#fff",
+            backgroundColor: "#023047",
+            border: isFlights ? "2px solid #fff" : "none",
+            fontSize: "30px",
+            fontWeight: "bold",
+            borderRadius: "12px",
+            padding: "5px 20px",
+            height: "60px",
+          }}
+          onClick={() => navigate("/user/flights")}
+        >
+          Flights
+        </Button>
       </div>
-      <div
-        style={{ marginRight: "24px", cursor: "pointer", marginTop: "40px" }}
-      >
-        Hotels
-      </div>
-      <div
-        style={{ marginRight: "24px", cursor: "pointer", marginTop: "40px" }}
-      >
-        Flight + Hotel
-      </div>
-      <div
-        style={{ marginRight: "24px", cursor: "pointer", marginTop: "40px" }}
-      >
-        Car Rentals
-      </div>
-      <div
-        style={{ marginRight: "24px", cursor: "pointer", marginTop: "40px" }}
-      >
-        Attractions
-      </div>
-      <div
-        style={{ marginRight: "24px", cursor: "pointer", marginTop: "40px" }}
-      >
-        Airport Taxis
-      </div>
-    </div>
+
+      <Avatar
+        size={64}
+        icon={<UserOutlined />}
+        style={{
+          backgroundColor: "#FFB703",
+          color: "#000",
+          cursor: "pointer",
+        }}
+        onClick={() => navigate("/user/profile")}
+      />
+    </header>
   );
 };
 

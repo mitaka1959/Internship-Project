@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Spin, Alert } from "antd";
 import api from "../../../../services/axios";
 import FlightCard from "./FlightCard";
+import FlightCardRoundTrip from "./FlightCardRoundTrip";
 
 interface FlightOffer {
   departureAirport: string;
@@ -62,8 +63,6 @@ const FlightsWidget: React.FC<FlightsWidgetProps> = ({
         },
       });
 
-      console.log("Flights API Response:", response.data);
-
       const flightOffers = Array.isArray(response.data)
         ? response.data
         : response.data?.data ?? [];
@@ -118,26 +117,41 @@ const FlightsWidget: React.FC<FlightsWidgetProps> = ({
 
   return (
     <div className="p-4 bg-white shadow rounded mb-6">
-      <h2 className="text-2xl font-bold mb-4">
-        Flight Offers {type === "round-trip-return" ? "(Return)" : ""}
-      </h2>
+      {loading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "40px 0",
+          }}
+        >
+          <Spin size="large" />
+        </div>
+      )}
 
-      {loading && <Spin size="large" />}
       {error && <Alert message={error} type="error" showIcon />}
       {!loading && !error && flights.length === 0 && searchTriggered && (
-        <p>No flights found. Please adjust your search and try again.</p>
+        <p style={{ textAlign: "center" }}>
+          No flights found. Please adjust your search and try again.
+        </p>
       )}
 
       {!loading && !error && flights.length > 0 && (
         <div>
           {type?.startsWith("round-trip") && returnFlights.length > 0
-            ? flights.map((outboundFlight, index) => (
-                <FlightCard
-                  key={index}
-                  outboundFlight={outboundFlight}
-                  returnFlight={returnFlights[index]}
-                />
-              ))
+            ? flights.map((outboundFlight, index) => {
+                const returnFlight = returnFlights[index];
+                return returnFlight ? (
+                  <FlightCardRoundTrip
+                    key={index}
+                    outboundFlight={outboundFlight}
+                    returnFlight={returnFlight}
+                  />
+                ) : (
+                  <FlightCard key={index} outboundFlight={outboundFlight} />
+                );
+              })
             : flights.map((outboundFlight, index) => (
                 <FlightCard key={index} outboundFlight={outboundFlight} />
               ))}

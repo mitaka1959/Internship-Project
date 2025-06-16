@@ -31,7 +31,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     }
   };
 
-  const handleStarChange = (value: number) => {
+  const handleStarChange = (value: number | 5) => {
     setStarValue(value);
     onStarChange?.(value);
   };
@@ -69,7 +69,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
       <Divider />
 
       <h4>Star Rating</h4>
-      <Rate value={starValue} onChange={handleStarChange} />
+      <Rate value={starValue} onChange={handleStarChange} defaultValue={5} />
 
       <Divider />
 

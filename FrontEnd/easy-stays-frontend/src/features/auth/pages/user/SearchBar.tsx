@@ -1,11 +1,15 @@
 import React from "react";
-import { Input, DatePicker, Button, Dropdown, Menu } from "antd";
-import { SearchOutlined, DownOutlined } from "@ant-design/icons";
+import { Input, DatePicker, Button, Dropdown, Menu, Avatar } from "antd";
+import {
+  SearchOutlined,
+  DownOutlined,
+  UserOutlined,
+  HomeOutlined,
+  SendOutlined,
+} from "@ant-design/icons";
 import dayjs from "dayjs";
 import logo from "../../../../assets/logo.png";
-import { Avatar } from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const { RangePicker } = DatePicker;
 
@@ -23,6 +27,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
   const [children, setChildren] = React.useState<number>(0);
   const [rooms, setRooms] = React.useState<number>(1);
   const navigate = useNavigate();
+  const route = useLocation();
+
+  const isHotels = route.pathname === "/search";
+  const isFlights = route.pathname === "/user/flights";
+
   const handleSearch = () => {
     const searchParams = {
       destination: location,
@@ -74,6 +83,21 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
     </Menu>
   );
 
+  const isHost = localStorage.getItem("user_role") === "Host";
+
+  const dropdownMenu = (
+    <Menu>
+      {isHost && (
+        <Menu.Item key="hostPanel" onClick={() => navigate("/dashboard")}>
+          Host Panel
+        </Menu.Item>
+      )}
+      <Menu.Item key="profile" onClick={() => navigate("/user/profile")}>
+        Profile
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <header
       style={{
@@ -101,35 +125,60 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
           marginRight: "auto",
         }}
       />
-      <Button
+
+      <div
         style={{
-          flex: 1,
-          textAlign: "left",
-          color: "#fff",
-          marginLeft: "550px",
-          marginRight: "550px",
-          marginBottom: "20px",
-          marginTop: "50px",
-          borderRadius: "12px",
-          padding: "10px",
-          backgroundColor: "#023047",
-          border: "2px solid #fff",
-          fontSize: "20px",
-          fontWeight: "bold",
-          cursor: "pointer",
+          display: "flex",
+          justifyContent: "center",
+          gap: "24px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
         }}
-        onClick={() =>
-          navigate("/user/flights", {
-            state: {
-              destinationCity: location,
-              departureDate: dates ? dates[0].format("YYYY-MM-DD") : "",
-              adults: adults,
-            },
-          })
-        }
       >
-        Book a Flight
-      </Button>
+        <Button
+          type="default"
+          style={{
+            color: "#fff",
+            backgroundColor: "#023047",
+            border: isHotels ? "2px solid #fff" : "none",
+            fontSize: "30px",
+            fontWeight: "bold",
+            borderRadius: "12px",
+            padding: "5px 20px",
+            height: "60px",
+          }}
+          onClick={() => navigate("/search")}
+        >
+          Hotels
+        </Button>
+
+        <Button
+          type="default"
+          style={{
+            color: "#fff",
+            backgroundColor: "#023047",
+            border: isFlights ? "2px solid #fff" : "none",
+            fontSize: "30px",
+            fontWeight: "bold",
+            borderRadius: "12px",
+            padding: "5px 20px",
+            height: "60px",
+          }}
+          onClick={() =>
+            navigate("/user/flights", {
+              state: {
+                destinationCity: location,
+                departureDate: dates ? dates[0].format("YYYY-MM-DD") : "",
+                adults: adults,
+              },
+            })
+          }
+        >
+          Flights
+        </Button>
+      </div>
 
       <div
         style={{
@@ -191,12 +240,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, dates, setDates }) => {
           Search
         </Button>
       </div>
-      <Avatar
-        size={64}
-        icon={<UserOutlined />}
-        style={{ backgroundColor: "#FFB703", color: "#000", cursor: "pointer" }}
-        onClick={() => navigate("/user/profile")}
-      />
+
+      <Dropdown
+        overlay={dropdownMenu}
+        placement="bottomRight"
+        trigger={["click"]}
+      >
+        <Avatar
+          size={64}
+          icon={<UserOutlined />}
+          style={{
+            backgroundColor: "#FFB703",
+            color: "#000",
+            cursor: "pointer",
+          }}
+        />
+      </Dropdown>
     </header>
   );
 };

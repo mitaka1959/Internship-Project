@@ -27,6 +27,7 @@ namespace EasyStays.Infrastructure.Persistence
         public DbSet<BedConfiguration> BedConfigurations { get; set; }
         public DbSet<Policy> Policies { get; set; }
         public DbSet<HotelPolicy> HotelPolicies { get; set; }
+        public DbSet<RoomUnit> RoomUnits { get; set; }
         public DbSet<RoomUnitReservation> RoomUnitReservations { get; set; }
         public DbSet<ChatMessage> ChatMessages { get; set; }
 

@@ -12,25 +12,23 @@ import { Card, Typography } from "antd";
 
 const { Title } = Typography;
 
-const data = [
-  { name: "Jan", visitors: 30 },
-  { name: "Feb", visitors: 45 },
-  { name: "Mar", visitors: 60 },
-  { name: "Apr", visitors: 50 },
-  { name: "May", visitors: 80 },
-  { name: "Jun", visitors: 65 },
-  { name: "Jul", visitors: 90 },
-  { name: "Aug", visitors: 100 },
-];
+type ChartData = {
+  name: string;
+  visitors: number;
+};
 
-const DashboardChart: React.FC = () => {
+type DashboardChartProps = {
+  monthlyStats: ChartData[];
+};
+
+const DashboardChart: React.FC<DashboardChartProps> = ({ monthlyStats }) => {
   return (
     <Card style={{ marginBottom: "2rem", backgroundColor: "#ffffff" }}>
       <Title level={4} style={{ color: "#023047", marginBottom: 0 }}>
         Visitor Statistics
       </Title>
       <ResponsiveContainer width="100%" height={300}>
-        <AreaChart data={data}>
+        <AreaChart data={monthlyStats}>
           <defs>
             <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#FB8500" stopOpacity={0.8} />
