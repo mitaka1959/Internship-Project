@@ -25,6 +25,7 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
             var reservations = await _context.Reservations
                 .Where(r => hostHotelIds.Contains(r.HotelId))
                 .Include(r => r.Hotel)
+                .Include(r => r.Room)
                 .ToListAsync(cancellationToken);
 
             var now = DateTime.UtcNow;
@@ -83,9 +84,10 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                     Status = r.Status.ToString(),
                     Venue = r.Hotel.Name,
                     Date = r.CheckInDate.ToString("dd MMM yyyy"),
-                    Time = $"{r.CheckInDate:HH:mm} - {r.CheckOutDate:HH:mm}"
+                    RoomType = r.Room.DisplayName
                 })
                 .ToList();
+
 
             var startOfYear = new DateTime(DateTime.UtcNow.Year, 1, 1);
             var filteredReservations = reservations

@@ -82,10 +82,6 @@ const CreateHotelFlow: React.FC = () => {
           />
         )}
       </div>
-
-      <pre style={{ padding: "1rem", background: "#f5f5f5" }}>
-        {JSON.stringify(formData, null, 2)}
-      </pre>
     </div>
   );
 };

@@ -1,0 +1,278 @@
+2025-06-17 20:03:42.501 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:03:42.525 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:03:42.526 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:03:42.527 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:03:57.005 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-17 20:03:57.012 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 2.2640 ms
+2025-06-17 20:03:57.349 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:03:57.444 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 419.7142 ms
+2025-06-17 20:04:00.056 +03:00 [INF] HTTP OPTIONS /api/hotels/page/d9955dfd-f395-444c-a7ff-5f34e4855330 responded 204 in 0.2335 ms
+2025-06-17 20:04:00.226 +03:00 [INF] HTTP GET /api/hotels/page/d9955dfd-f395-444c-a7ff-5f34e4855330 responded 200 in 160.8641 ms
+2025-06-17 20:04:41.331 +03:00 [INF] HTTP OPTIONS /api/Hotels/dashboard responded 204 in 0.0759 ms
+2025-06-17 20:04:41.345 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 401 in 9.4979 ms
+2025-06-17 20:04:41.350 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.0824 ms
+2025-06-17 20:04:41.515 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 161.2798 ms
+2025-06-17 20:04:41.666 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 200 in 147.6281 ms
+2025-06-17 20:05:27.141 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0887 ms
+2025-06-17 20:05:27.192 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:05:27.387 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 242.1031 ms
+2025-06-17 20:23:36.196 +03:00 [INF] HTTP OPTIONS /api/Hotels responded 204 in 0.1479 ms
+2025-06-17 20:23:36.228 +03:00 [INF] Hotel creation endpoint hit at "2025-06-17T17:23:36.2271528Z"
+2025-06-17 20:23:36.813 +03:00 [INF] HTTP POST /api/Hotels responded 201 in 611.7377 ms
+2025-06-17 20:23:36.838 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/images responded 204 in 0.0708 ms
+2025-06-17 20:23:36.872 +03:00 [INF] Hotel image upload endpoint hit at "2025-06-17T17:23:36.8723819Z"
+2025-06-17 20:23:38.032 +03:00 [INF] HTTP POST /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/images responded 200 in 1189.0760 ms
+2025-06-17 20:23:39.988 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0687 ms
+2025-06-17 20:23:40.130 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 138.3758 ms
+2025-06-17 20:23:46.860 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0679 ms
+2025-06-17 20:23:46.928 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 65.1750 ms
+2025-06-17 20:24:04.891 +03:00 [INF] HTTP OPTIONS /api/Hotels/update/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0744 ms
+2025-06-17 20:24:04.955 +03:00 [INF] HTTP PATCH /api/Hotels/update/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 59.2902 ms
+2025-06-17 20:24:09.038 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0595 ms
+2025-06-17 20:24:09.055 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:24:09.072 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 30.9199 ms
+2025-06-17 20:24:10.377 +03:00 [INF] HTTP OPTIONS /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 204 in 0.0608 ms
+2025-06-17 20:24:10.403 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:24:10.422 +03:00 [INF] HTTP GET /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 200 in 41.8769 ms
+2025-06-17 20:24:39.628 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/7d99011b-93f2-4c51-b6e6-15b0633814b7 responded 204 in 0.0858 ms
+2025-06-17 20:24:39.650 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:24:39.688 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/7d99011b-93f2-4c51-b6e6-15b0633814b7 responded 204 in 56.8714 ms
+2025-06-17 20:24:43.613 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0743 ms
+2025-06-17 20:24:43.652 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 401 in 33.2924 ms
+2025-06-17 20:24:43.655 +03:00 [INF] HTTP OPTIONS /api/Auth/refresh responded 204 in 0.0583 ms
+2025-06-17 20:24:43.685 +03:00 [INF] HTTP POST /api/Auth/refresh responded 200 in 26.7762 ms
+2025-06-17 20:24:43.699 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 9.9119 ms
+2025-06-17 20:24:56.743 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 0.0982 ms
+2025-06-17 20:24:56.774 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 28.0911 ms
+2025-06-17 20:25:02.942 +03:00 [INF] HTTP OPTIONS /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0664 ms
+2025-06-17 20:25:02.971 +03:00 [INF] HTTP GET /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 25.7518 ms
+2025-06-17 20:26:22.514 +03:00 [INF] HTTP OPTIONS /api/Reservation/my-reservations responded 204 in 0.0830 ms
+2025-06-17 20:26:22.549 +03:00 [INF] HTTP GET /api/Reservation/my-reservations responded 200 in 31.2821 ms
+2025-06-17 20:26:26.582 +03:00 [INF] HTTP OPTIONS /api/Hotels/dashboard responded 204 in 0.0660 ms
+2025-06-17 20:26:26.658 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 200 in 72.5528 ms
+2025-06-17 20:26:28.082 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0964 ms
+2025-06-17 20:26:28.189 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 103.4975 ms
+2025-06-17 20:26:31.200 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0645 ms
+2025-06-17 20:26:31.226 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 23.8344 ms
+2025-06-17 20:26:32.585 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0622 ms
+2025-06-17 20:26:32.601 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 12.3468 ms
+2025-06-17 20:26:33.183 +03:00 [INF] HTTP OPTIONS /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 204 in 0.0549 ms
+2025-06-17 20:26:33.197 +03:00 [INF] HTTP GET /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 200 in 10.2258 ms
+2025-06-17 20:26:45.043 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 204 in 0.0639 ms
+2025-06-17 20:26:45.055 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:26:45.0550279Z"
+2025-06-17 20:26:45.327 +03:00 [INF] HTTP POST /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 200 in 278.9297 ms
+2025-06-17 20:26:54.002 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 204 in 0.0779 ms
+2025-06-17 20:26:54.008 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:26:54.0081695Z"
+2025-06-17 20:26:54.139 +03:00 [INF] HTTP POST /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 200 in 132.5959 ms
+2025-06-17 20:27:00.998 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 204 in 0.0843 ms
+2025-06-17 20:27:01.005 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:27:01.0059248Z"
+2025-06-17 20:27:01.112 +03:00 [INF] HTTP POST /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 200 in 107.2492 ms
+2025-06-17 20:27:09.716 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 204 in 0.0490 ms
+2025-06-17 20:27:09.727 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:27:09.7274125Z"
+2025-06-17 20:27:09.848 +03:00 [INF] HTTP POST /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 200 in 123.7607 ms
+2025-06-17 20:27:17.826 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 204 in 0.0568 ms
+2025-06-17 20:27:17.833 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:27:17.8333702Z"
+2025-06-17 20:27:17.933 +03:00 [INF] HTTP POST /api/Hotels/Rooms/7d99011b-93f2-4c51-b6e6-15b0633814b7/images responded 200 in 102.0708 ms
+2025-06-17 20:27:21.267 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/7d99011b-93f2-4c51-b6e6-15b0633814b7 responded 204 in 0.0856 ms
+2025-06-17 20:27:21.296 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/7d99011b-93f2-4c51-b6e6-15b0633814b7 responded 204 in 25.5685 ms
+2025-06-17 20:27:23.435 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0563 ms
+2025-06-17 20:27:23.473 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 35.4322 ms
+2025-06-17 20:27:30.271 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0672 ms
+2025-06-17 20:27:30.287 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 12.5906 ms
+2025-06-17 20:27:32.413 +03:00 [INF] HTTP OPTIONS /api/Hotels/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/edit-room responded 204 in 0.0574 ms
+2025-06-17 20:27:32.442 +03:00 [INF] HTTP GET /api/Hotels/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/edit-room responded 200 in 25.1894 ms
+2025-06-17 20:27:48.690 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 204 in 0.0578 ms
+2025-06-17 20:27:48.699 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:27:48.6995776Z"
+2025-06-17 20:27:48.799 +03:00 [INF] HTTP POST /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 200 in 101.1318 ms
+2025-06-17 20:27:55.657 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 204 in 0.0608 ms
+2025-06-17 20:27:55.664 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:27:55.6644538Z"
+2025-06-17 20:27:55.757 +03:00 [INF] HTTP POST /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 200 in 94.1294 ms
+2025-06-17 20:28:02.252 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 204 in 0.0602 ms
+2025-06-17 20:28:02.257 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:28:02.2574148Z"
+2025-06-17 20:28:02.353 +03:00 [INF] HTTP POST /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 200 in 98.3681 ms
+2025-06-17 20:28:08.937 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 204 in 0.0912 ms
+2025-06-17 20:28:08.943 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:28:08.9434641Z"
+2025-06-17 20:28:09.052 +03:00 [INF] HTTP POST /api/Hotels/Rooms/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/images responded 200 in 110.4329 ms
+2025-06-17 20:28:12.153 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/eb4c91fa-9e82-416f-b0e4-3648347c8d3f responded 204 in 0.0820 ms
+2025-06-17 20:28:12.200 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/eb4c91fa-9e82-416f-b0e4-3648347c8d3f responded 204 in 43.4383 ms
+2025-06-17 20:28:15.048 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0661 ms
+2025-06-17 20:28:15.087 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 34.4663 ms
+2025-06-17 20:28:16.972 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0681 ms
+2025-06-17 20:28:16.986 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 10.2876 ms
+2025-06-17 20:28:18.140 +03:00 [INF] HTTP OPTIONS /api/Hotels/9a259c5f-ddef-4f38-8003-457651211617/edit-room responded 204 in 0.0785 ms
+2025-06-17 20:28:18.171 +03:00 [INF] HTTP GET /api/Hotels/9a259c5f-ddef-4f38-8003-457651211617/edit-room responded 200 in 15.6348 ms
+2025-06-17 20:28:28.861 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 204 in 0.0709 ms
+2025-06-17 20:28:28.871 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:28:28.8716634Z"
+2025-06-17 20:28:28.972 +03:00 [INF] HTTP POST /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 200 in 102.6316 ms
+2025-06-17 20:28:39.901 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 204 in 0.0714 ms
+2025-06-17 20:28:39.910 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:28:39.9105866Z"
+2025-06-17 20:28:40.010 +03:00 [INF] HTTP POST /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 200 in 101.8238 ms
+2025-06-17 20:28:48.181 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 204 in 0.0559 ms
+2025-06-17 20:28:48.185 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:28:48.1858857Z"
+2025-06-17 20:28:48.286 +03:00 [INF] HTTP POST /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 200 in 101.9322 ms
+2025-06-17 20:28:57.117 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 204 in 0.0523 ms
+2025-06-17 20:28:57.125 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:28:57.1251548Z"
+2025-06-17 20:28:57.223 +03:00 [INF] HTTP POST /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 200 in 100.2718 ms
+2025-06-17 20:29:05.589 +03:00 [INF] HTTP OPTIONS /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 204 in 0.0761 ms
+2025-06-17 20:29:05.602 +03:00 [INF] Room image upload endpoint hit at "2025-06-17T17:29:05.6022914Z"
+2025-06-17 20:29:05.707 +03:00 [INF] HTTP POST /api/Hotels/Rooms/9a259c5f-ddef-4f38-8003-457651211617/images responded 200 in 111.3387 ms
+2025-06-17 20:29:08.376 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/9a259c5f-ddef-4f38-8003-457651211617 responded 204 in 0.3310 ms
+2025-06-17 20:29:08.397 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/9a259c5f-ddef-4f38-8003-457651211617 responded 204 in 17.7331 ms
+2025-06-17 20:29:10.779 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0544 ms
+2025-06-17 20:29:10.805 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 8.7288 ms
+2025-06-17 20:31:04.963 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0837 ms
+2025-06-17 20:31:05.000 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 32.0663 ms
+2025-06-17 20:31:05.883 +03:00 [INF] HTTP OPTIONS /api/Hotels/9a259c5f-ddef-4f38-8003-457651211617/edit-room responded 204 in 0.0834 ms
+2025-06-17 20:31:05.915 +03:00 [INF] HTTP GET /api/Hotels/9a259c5f-ddef-4f38-8003-457651211617/edit-room responded 200 in 29.6315 ms
+2025-06-17 20:31:08.685 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.2053 ms
+2025-06-17 20:31:08.736 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 33.0290 ms
+2025-06-17 20:31:19.318 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 0.0672 ms
+2025-06-17 20:31:19.346 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 25.5793 ms
+2025-06-17 20:31:21.540 +03:00 [INF] HTTP OPTIONS /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0501 ms
+2025-06-17 20:31:21.568 +03:00 [INF] HTTP GET /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 24.9083 ms
+2025-06-17 20:31:48.544 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 0.0674 ms
+2025-06-17 20:31:48.590 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 42.2960 ms
+2025-06-17 20:31:50.646 +03:00 [INF] HTTP OPTIONS /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0561 ms
+2025-06-17 20:31:50.676 +03:00 [INF] HTTP GET /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 26.7050 ms
+2025-06-17 20:31:57.474 +03:00 [INF] HTTP OPTIONS /api/Hotels/dashboard responded 204 in 0.0681 ms
+2025-06-17 20:31:57.551 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 200 in 73.9585 ms
+2025-06-17 20:31:59.846 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0556 ms
+2025-06-17 20:31:59.963 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 114.1495 ms
+2025-06-17 20:32:03.443 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0807 ms
+2025-06-17 20:32:03.471 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 25.5633 ms
+2025-06-17 20:32:05.036 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0553 ms
+2025-06-17 20:32:05.049 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 9.5690 ms
+2025-06-17 20:32:05.610 +03:00 [INF] HTTP OPTIONS /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 204 in 0.0724 ms
+2025-06-17 20:32:05.626 +03:00 [INF] HTTP GET /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 200 in 7.1166 ms
+2025-06-17 20:32:18.135 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/7d99011b-93f2-4c51-b6e6-15b0633814b7 responded 204 in 0.1163 ms
+2025-06-17 20:32:18.158 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/7d99011b-93f2-4c51-b6e6-15b0633814b7 responded 204 in 19.4288 ms
+2025-06-17 20:32:21.032 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0552 ms
+2025-06-17 20:32:21.043 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 7.7296 ms
+2025-06-17 20:32:22.228 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0816 ms
+2025-06-17 20:32:22.240 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 7.6770 ms
+2025-06-17 20:32:22.890 +03:00 [INF] HTTP OPTIONS /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 204 in 0.0689 ms
+2025-06-17 20:32:22.900 +03:00 [INF] HTTP GET /api/Hotels/7d99011b-93f2-4c51-b6e6-15b0633814b7/edit-room responded 200 in 7.3442 ms
+2025-06-17 20:32:25.520 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 7.6161 ms
+2025-06-17 20:32:27.050 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 11.5448 ms
+2025-06-17 20:32:27.981 +03:00 [INF] HTTP OPTIONS /api/Hotels/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/edit-room responded 204 in 0.0575 ms
+2025-06-17 20:32:27.986 +03:00 [INF] HTTP GET /api/Hotels/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/edit-room responded 200 in 2.4462 ms
+2025-06-17 20:32:43.883 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/eb4c91fa-9e82-416f-b0e4-3648347c8d3f responded 204 in 0.0852 ms
+2025-06-17 20:32:43.917 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/eb4c91fa-9e82-416f-b0e4-3648347c8d3f responded 204 in 29.1780 ms
+2025-06-17 20:32:45.721 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0685 ms
+2025-06-17 20:32:45.743 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 20.3236 ms
+2025-06-17 20:32:47.045 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0869 ms
+2025-06-17 20:32:47.061 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 11.1611 ms
+2025-06-17 20:32:47.702 +03:00 [INF] HTTP OPTIONS /api/Hotels/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/edit-room responded 204 in 0.0783 ms
+2025-06-17 20:32:47.717 +03:00 [INF] HTTP GET /api/Hotels/eb4c91fa-9e82-416f-b0e4-3648347c8d3f/edit-room responded 200 in 9.7617 ms
+2025-06-17 20:32:50.497 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 7.1374 ms
+2025-06-17 20:32:52.538 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0747 ms
+2025-06-17 20:32:52.551 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 8.9425 ms
+2025-06-17 20:32:53.398 +03:00 [INF] HTTP OPTIONS /api/Hotels/9a259c5f-ddef-4f38-8003-457651211617/edit-room responded 204 in 0.0777 ms
+2025-06-17 20:32:53.408 +03:00 [INF] HTTP GET /api/Hotels/9a259c5f-ddef-4f38-8003-457651211617/edit-room responded 200 in 3.7918 ms
+2025-06-17 20:33:18.085 +03:00 [INF] HTTP OPTIONS /api/Hotels/update-room/9a259c5f-ddef-4f38-8003-457651211617 responded 204 in 0.1577 ms
+2025-06-17 20:33:18.108 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/9a259c5f-ddef-4f38-8003-457651211617 responded 204 in 16.1300 ms
+2025-06-17 20:33:19.173 +03:00 [INF] HTTP PATCH /api/Hotels/update-room/9a259c5f-ddef-4f38-8003-457651211617 responded 204 in 32.6300 ms
+2025-06-17 20:33:21.117 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0581 ms
+2025-06-17 20:33:21.129 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 8.8339 ms
+2025-06-17 20:33:23.120 +03:00 [INF] HTTP OPTIONS /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 204 in 0.0524 ms
+2025-06-17 20:33:23.131 +03:00 [INF] HTTP GET /api/Hotels/9adcdd42-1d58-435d-b0df-7cf0f90083f4/rooms responded 200 in 7.6872 ms
+2025-06-17 20:33:34.877 +03:00 [INF] HTTP OPTIONS /api/Hotels/available-hotels responded 204 in 0.2040 ms
+2025-06-17 20:33:34.910 +03:00 [INF] HTTP POST /api/Hotels/available-hotels responded 200 in 30.0281 ms
+2025-06-17 20:33:38.163 +03:00 [INF] HTTP OPTIONS /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0598 ms
+2025-06-17 20:33:38.194 +03:00 [INF] HTTP GET /api/hotels/page/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 28.4282 ms
+2025-06-17 20:35:00.832 +03:00 [INF] HTTP OPTIONS /api/Reservation responded 204 in 0.1437 ms
+2025-06-17 20:35:00.878 +03:00 [INF] HTTP POST /api/Reservation responded 200 in 43.4210 ms
+2025-06-17 20:35:00.915 +03:00 [INF] HTTP OPTIONS /api/Reservation/my-reservations responded 204 in 0.0578 ms
+2025-06-17 20:35:00.925 +03:00 [INF] HTTP GET /api/Reservation/my-reservations responded 200 in 6.1559 ms
+2025-06-17 20:35:06.298 +03:00 [INF] HTTP OPTIONS /api/Hotels/dashboard responded 204 in 0.0747 ms
+2025-06-17 20:35:06.373 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 200 in 68.8227 ms
+2025-06-17 20:35:07.734 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0860 ms
+2025-06-17 20:35:07.826 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 88.4838 ms
+2025-06-17 20:35:08.720 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels-dropdown responded 204 in 0.0855 ms
+2025-06-17 20:35:08.721 +03:00 [INF] HTTP OPTIONS /api/Reservation/pending responded 204 in 0.0589 ms
+2025-06-17 20:35:08.747 +03:00 [INF] HTTP GET /api/Hotels/my-hotels-dropdown responded 200 in 23.6363 ms
+2025-06-17 20:35:08.787 +03:00 [INF] HTTP GET /api/Reservation/pending responded 200 in 63.1366 ms
+2025-06-17 20:35:13.081 +03:00 [INF] HTTP OPTIONS /api/Reservation/pending responded 204 in 0.0584 ms
+2025-06-17 20:35:13.100 +03:00 [INF] HTTP GET /api/Reservation/pending responded 200 in 16.1684 ms
+2025-06-17 20:35:16.548 +03:00 [INF] HTTP OPTIONS /api/Reservation/pending responded 204 in 0.0550 ms
+2025-06-17 20:35:16.556 +03:00 [INF] HTTP GET /api/Reservation/pending responded 200 in 3.7043 ms
+2025-06-17 20:35:19.984 +03:00 [INF] HTTP OPTIONS /api/Reservation/0cceeadd-37dc-46d4-b7b0-4110dedffe77/accept responded 204 in 0.1016 ms
+2025-06-17 20:35:20.013 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:35:20.761 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:35:21.086 +03:00 [ERR] Unhandled exception occurred
+System.Exception: 
+
+
+
+Welcome to QuestPDF! 👋 
+
+QuestPDF is an open-source library committed to long-term sustainability and continuous improvement. 
+
+To maintain high-quality development and support while keeping the library free for most users, we use a fair pricing model where only larger organizations help by providing necessary funding for the project. 
+
+If your organization’s annual gross revenue exceeds $1M USD, a Commercial License is required for production use (you can freely evaluate and test QuestPDF in non-production environments at no cost). In that case, please share this information with your team or management. By purchasing a license, you directly contribute to the ongoing development and reliability of QuestPDF. 
+
+For details on the license types and determining which applies to you, please visit: https://www.questpdf.com/license/ 
+
+We trust our users. To continue, no license key is needed. Instead, simply select and configure the appropriate license in your code. For example, if you qualify for the Community license, add: 
+
+> QuestPDF.Settings.License = LicenseType.Community; 
+
+Thank you for supporting QuestPDF! ❤️ By choosing the right license, you help ensure that our project remains transparent, sustainable, and continuously improving for everyone. 🚀 
+
+
+
+
+   at QuestPDF.Drawing.DocumentGenerator.ValidateLicense()
+   at QuestPDF.Drawing.DocumentGenerator.GeneratePdf(SkWriteStream stream, IDocument document)
+   at QuestPDF.Fluent.GenerateExtensions.GeneratePdf(IDocument document, Stream stream)
+   at QuestPDF.Fluent.GenerateExtensions.GeneratePdf(IDocument document)
+   at EasyStays.Infrastructure.Email.BookingConfirmationPdfGenerator.Generate(BookingConfirmationDto dto) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Infrastructure\Email\BookingConfirmationPdfGenerator.cs:line 107
+   at EasyStays.Application.UseCases.Reservations.Commands.AcceptReservationCommandHandler.Handle(AcceptReservationCommand request, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Application\UseCases\Reservations\Commands\AcceptReservationCommandHandler.cs:line 101
+   at EasyStays.Presentation.Controllers.ReservationController.AcceptReservation(Guid reservationId, CancellationToken cancellationToken) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Controllers\ReservationController.cs:line 61
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at EasyStays.Presentation.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\dimit\source\repos\easy-stays-3\Internship-Project\EasyStays.Presentation\Middleware\ExceptionHandlingMiddleware.cs:line 22
+2025-06-17 20:35:21.119 +03:00 [ERR] HTTP POST /api/Reservation/0cceeadd-37dc-46d4-b7b0-4110dedffe77/accept responded 500 in 1130.4641 ms
+2025-06-17 20:35:24.401 +03:00 [INF] HTTP OPTIONS /api/Reservation/confirmed responded 204 in 0.0877 ms
+2025-06-17 20:35:24.422 +03:00 [INF] HTTP GET /api/Reservation/confirmed responded 200 in 19.3625 ms
+2025-06-17 20:35:27.342 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0572 ms
+2025-06-17 20:35:27.407 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 62.5423 ms
+2025-06-17 20:35:28.381 +03:00 [INF] HTTP OPTIONS /api/Hotels/dashboard responded 204 in 0.0680 ms
+2025-06-17 20:35:28.391 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 200 in 7.9214 ms
+2025-06-17 20:35:34.739 +03:00 [INF] HTTP OPTIONS /api/Reservation/my-reservations responded 204 in 0.0981 ms
+2025-06-17 20:35:34.745 +03:00 [INF] HTTP GET /api/Reservation/my-reservations responded 200 in 3.8231 ms
+2025-06-17 20:38:07.873 +03:00 [WRN] No store type was specified for the decimal property 'DamageDeposit' on entity type 'Hotel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:38:07.901 +03:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:38:07.902 +03:00 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'Reservation'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:38:07.903 +03:00 [WRN] No store type was specified for the decimal property 'PricePerNight' on entity type 'Room'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 20:38:44.151 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-06-17 20:38:44.155 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 1.5101 ms
+2025-06-17 20:38:44.301 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-17 20:38:44.661 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 494.7107 ms
+2025-06-17 20:41:27.579 +03:00 [INF] HTTP POST /api/Auth/login responded 200 in 234.4821 ms
+2025-06-17 20:42:08.274 +03:00 [INF] HTTP GET /api/Hotels/9C696E0A-C537-450E-9777-41C7C2099126 responded 200 in 13.1137 ms
+2025-06-17 20:42:20.398 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 188.7873 ms
+2025-06-17 20:43:30.068 +03:00 [INF] HTTP OPTIONS /api/Hotels/dashboard responded 204 in 0.1471 ms
+2025-06-17 20:43:30.254 +03:00 [INF] HTTP GET /api/Hotels/dashboard responded 200 in 181.1645 ms
+2025-06-17 20:43:31.472 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels responded 204 in 0.0588 ms
+2025-06-17 20:43:31.597 +03:00 [INF] HTTP GET /api/Hotels/my-hotels responded 200 in 122.6655 ms
+2025-06-17 20:43:43.778 +03:00 [INF] HTTP OPTIONS /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 204 in 0.0688 ms
+2025-06-17 20:43:43.879 +03:00 [INF] HTTP GET /api/Hotels/get-hotel-info/9adcdd42-1d58-435d-b0df-7cf0f90083f4 responded 200 in 96.9028 ms
+2025-06-17 20:43:46.143 +03:00 [INF] HTTP OPTIONS /api/Hotels/my-hotels-dropdown responded 204 in 0.0693 ms
+2025-06-17 20:43:46.144 +03:00 [INF] HTTP OPTIONS /api/Reservation/pending responded 204 in 0.0453 ms
+2025-06-17 20:43:46.165 +03:00 [INF] HTTP GET /api/Hotels/my-hotels-dropdown responded 200 in 18.7572 ms
+2025-06-17 20:43:46.172 +03:00 [INF] HTTP GET /api/Reservation/pending responded 200 in 23.5157 ms
+2025-06-17 20:43:48.171 +03:00 [INF] HTTP OPTIONS /api/Reservation/pending responded 204 in 0.0721 ms
+2025-06-17 20:43:48.200 +03:00 [INF] HTTP GET /api/Reservation/pending responded 200 in 26.1454 ms
+2025-06-17 20:43:50.626 +03:00 [INF] HTTP OPTIONS /api/Reservation/confirmed responded 204 in 0.0788 ms
+2025-06-17 20:43:50.648 +03:00 [INF] HTTP GET /api/Reservation/confirmed responded 200 in 18.9769 ms

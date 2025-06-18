@@ -29,6 +29,9 @@ const HostReservationPage: React.FC = () => {
   const [loadingReservationId, setLoadingReservationId] = useState<
     string | null
   >(null);
+  const [loadingButtonType, setLoadingButtonType] = useState<
+    "accept" | "decline" | null
+  >(null);
   const [reservationStatus, setReservationStatus] = useState<string>("Pending");
 
   const fetchReservations = async (
@@ -76,7 +79,6 @@ const HostReservationPage: React.FC = () => {
     try {
       const response = await api.get("/api/Hotels/my-hotels-dropdown");
       setHotels(response.data);
-      console.log("Fetched hotels:", response.data);
     } catch (error) {
       message.error("Failed to load hotels.");
       console.error(error);
@@ -101,34 +103,32 @@ const HostReservationPage: React.FC = () => {
   const handleAccept = async (reservationId: string) => {
     try {
       setLoadingReservationId(reservationId);
-      console.log("Accepting reservation:", reservationId);
+      setLoadingButtonType("accept");
       await api.post(`/api/Reservation/${reservationId}/accept`);
-
       setPendingRequests((prev) => prev.filter((r) => r.id !== reservationId));
-
       message.success("Reservation accepted!");
     } catch (error) {
       console.error(error);
       message.error("Failed to accept reservation.");
     } finally {
       setLoadingReservationId(null);
+      setLoadingButtonType(null);
     }
   };
 
   const handleDecline = async (reservationId: string) => {
     try {
       setLoadingReservationId(reservationId);
-
+      setLoadingButtonType("decline");
       await api.post(`/api/Reservation/${reservationId}/decline`);
-
       setPendingRequests((prev) => prev.filter((r) => r.id !== reservationId));
-
       message.success("Reservation declined!");
     } catch (error) {
       console.error(error);
       message.error("Failed to decline reservation.");
     } finally {
       setLoadingReservationId(null);
+      setLoadingButtonType(null);
     }
   };
 
@@ -173,7 +173,10 @@ const HostReservationPage: React.FC = () => {
               type="primary"
               style={{ marginRight: "8px" }}
               onClick={() => handleAccept(record.id)}
-              loading={loadingReservationId === record.id}
+              loading={
+                loadingReservationId === record.id &&
+                loadingButtonType === "accept"
+              }
             >
               Accept
             </Button>
@@ -181,19 +184,16 @@ const HostReservationPage: React.FC = () => {
             <Button
               danger
               onClick={() => handleDecline(record.id)}
-              loading={loadingReservationId === record.id}
+              loading={
+                loadingReservationId === record.id &&
+                loadingButtonType === "decline"
+              }
             >
               Decline
             </Button>
           </>
         ) : (
-          <span>
-            {reservationStatus === "Confirmed"
-              ? "Confirmed"
-              : reservationStatus === "Declined"
-              ? "Declined"
-              : ""}
-          </span>
+          <span>{reservationStatus}</span>
         ),
     },
   ];
@@ -208,9 +208,8 @@ const HostReservationPage: React.FC = () => {
         borderRadius: "8px",
       }}
     >
-      <div>
-        <Sidebar />
-      </div>
+      <Sidebar />
+
       <div
         style={{ marginLeft: "150px", padding: "20px", marginRight: "-70px" }}
       >
@@ -221,56 +220,48 @@ const HostReservationPage: React.FC = () => {
           style={{ width: 300, marginBottom: "20px" }}
           onChange={handleHotelChange}
           value={selectedHotelId}
-          showSearch={false}
-          allowClear={false}
           options={hotels.map((hotel) => ({
             key: hotel.id,
             label: hotel.name,
             value: hotel.id,
           }))}
-        ></Select>
+        />
 
         <Divider />
-        <div
-          style={{
-            padding: "20px",
-            borderRadius: "8px",
-            marginBottom: "20px",
-          }}
-        >
-          <Form>
-            <Select
-              value={reservationStatus}
-              style={{ width: 200, marginBottom: "20px", marginLeft: "1rem" }}
-              onChange={(value) => handleStatusChange(value)}
-              options={[
-                { value: "Pending", label: "Pending" },
-                { value: "Confirmed", label: "Confirmed" },
-                { value: "Declined", label: "Declined" },
-              ]}
+
+        <Form>
+          <Select
+            value={reservationStatus}
+            style={{ width: 200, marginBottom: "20px", marginLeft: "1rem" }}
+            onChange={handleStatusChange}
+            options={[
+              { value: "Pending", label: "Pending" },
+              { value: "Confirmed", label: "Confirmed" },
+              { value: "Declined", label: "Declined" },
+            ]}
+          />
+
+          {loading ? (
+            <Spin
+              size="large"
+              style={{
+                display: "block",
+                marginTop: 50,
+                backgroundColor: "#fff",
+              }}
             />
-
-            {loading ? (
-              <Spin
-                size="large"
-                style={{
-                  display: "block",
-                  marginTop: 50,
-                  backgroundColor: "#fff",
-                }}
-              />
-            ) : (
-              <FullCalendar
-                plugins={[dayGridPlugin, interactionPlugin]}
-                initialView="dayGridMonth"
-                events={calendarEvents}
-                height="auto"
-              />
-            )}
-          </Form>
-        </div>
+          ) : (
+            <FullCalendar
+              plugins={[dayGridPlugin, interactionPlugin]}
+              initialView="dayGridMonth"
+              events={calendarEvents}
+              height="auto"
+            />
+          )}
+        </Form>
 
         <Divider />
+
         <Title level={3}>
           {reservationStatus === "Pending"
             ? "Incoming Reservation Requests"

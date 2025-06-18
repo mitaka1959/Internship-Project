@@ -36,7 +36,7 @@ const RoomSetup: React.FC = () => {
               id={room.id}
               name={room.displayName}
               description={room.description}
-              image={room.roomImages?.[0]?.imageUrl || "/placeholder.jpg"}
+              image={room.images?.[0]?.imageUrl || "/placeholder.jpg"}
               priceRange={room.priceRange}
               onClick={() => navigate(`/host/edit-room/${room.id}`)}
             />

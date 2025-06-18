@@ -1,4 +1,4 @@
-import { Menu, Divider, Card, Avatar } from "antd";
+import { Menu, Divider, Card, Avatar, Dropdown } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import logo from "C:/Users/dimit/source/repos/easy-stays-3/Internship-Project/FrontEnd/easy-stays-frontend/src/assets/logo.png";
@@ -11,6 +11,14 @@ import {
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
+
+  const dropdownMenu = (
+    <Menu>
+      <Menu.Item key="hostPanel" onClick={() => navigate("/search")}>
+        Host Panel
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div
@@ -56,50 +64,63 @@ const Sidebar: React.FC = () => {
           color: "white",
           width: "100%",
           borderInlineEnd: "none",
+          justifyContent: "center",
         }}
         onClick={({ key }) => navigate(key)}
       >
         <Menu.Item
           key="/dashboard"
           icon={<HomeOutlined style={{ fontSize: "20px" }} />}
-          style={{ color: "white", fontSize: "18px", padding: "7px 24px" }}
+          style={{
+            color: "white",
+            fontSize: "18px",
+            padding: "5px 24px",
+          }}
         >
           Dashboard
         </Menu.Item>
         <Menu.Item
           key="/my_hotels"
           icon={<PlusOutlined style={{ fontSize: "20px" }} />}
-          style={{ color: "white", fontSize: "18px", padding: "7px 24px" }}
+          style={{
+            color: "white",
+            fontSize: "18px",
+            padding: "5px 24px",
+          }}
         >
           My Hotels
         </Menu.Item>
         <Menu.Item
           key="/host/reservations"
           icon={<CalendarOutlined style={{ fontSize: "20px" }} />}
-          style={{ color: "white", fontSize: "18px", padding: "7px 24px" }}
+          style={{
+            color: "white",
+            fontSize: "18px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+            paddingTop: "5px",
+            paddingBottom: "5px",
+            marginBottom: "290px",
+
+            justifyContent: "center",
+          }}
         >
           Reservations
         </Menu.Item>
-        <Menu.Item
-          key="/earnings"
-          icon={<DollarOutlined style={{ fontSize: "20px" }} />}
-          style={{ color: "white", fontSize: "18px", padding: "7px 24px" }}
-        >
-          Earnings
-        </Menu.Item>
       </Menu>
-
-      <Divider
-        style={{ backgroundColor: "white", width: "80%", margin: "1rem auto" }}
-      />
-
-      <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-        <Avatar
-          size={64}
-          icon={<AntDesignOutlined />}
-          style={{ backgroundColor: "#FB8500" }}
-        />
-      </div>
+      <Dropdown
+        overlay={dropdownMenu}
+        placement="bottomRight"
+        trigger={["click"]}
+      >
+        <div style={{ textAlign: "center", marginBottom: "1rem" }}>
+          <Avatar
+            size={80}
+            icon={<AntDesignOutlined />}
+            style={{ backgroundColor: "#FB8500" }}
+          />
+        </div>
+      </Dropdown>
     </div>
   );
 };

@@ -26,9 +26,14 @@ using EasyStays.Infrastructure.Email;
 using EasyStays.Infrastructure.SignalR;
 using EasyStays.Application.Interfaces.Flights;
 using EasyStays.Infrastructure.Flights;
+using QuestPDF.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+QuestPDF.Settings.License = LicenseType.Community;
+QuestPDF.Settings.EnableDebugging = true;
 
 
 var AllowFrontEnd = "_allowFrontEnd";

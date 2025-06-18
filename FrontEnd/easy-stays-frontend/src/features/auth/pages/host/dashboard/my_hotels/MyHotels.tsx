@@ -61,7 +61,7 @@ const MyHotels: React.FC = () => {
           marginLeft: 220,
           padding: "2rem",
           width: "100%",
-          backgroundColor: "#8ECAE6",
+          backgroundColor: "#eeeeee",
           minHeight: "100vh",
         }}
       >

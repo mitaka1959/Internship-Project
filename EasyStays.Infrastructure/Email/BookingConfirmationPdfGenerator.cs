@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 using EasyStays.Application.Interfaces.Email;
+using EasyStays.Application.UseCases.Reservations.DTOs;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-using System.Net.Http;
-using EasyStays.Application.UseCases.Reservations.DTOs;
-using System.ComponentModel;
-using QuestPDF.Previewer;
 
 namespace EasyStays.Infrastructure.Email
 {
@@ -56,7 +49,13 @@ namespace EasyStays.Infrastructure.Email
 
                         if (hotelImageBytes != null)
                         {
-                            header.Item().Height(200).Image(hotelImageBytes).FitWidth();
+                            header.Item().Element(container =>
+                            {
+                                container
+                                    .ScaleToFit()
+                                    .Image(hotelImageBytes);
+                            });
+
                         }
                     });
 
@@ -101,8 +100,6 @@ namespace EasyStays.Infrastructure.Email
                     page.Footer().AlignCenter().Text("Thank you for booking with EasyStays!").FontSize(14).Italic();
                 });
             });
-
-           
 
             return document.GeneratePdf();
         }

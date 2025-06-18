@@ -9,7 +9,7 @@ type Booking = {
   status: string;
   venue: string;
   date: string;
-  time: string;
+  roomType: string;
 };
 
 type RecentBookingsTableProps = {
@@ -55,9 +55,9 @@ const columns = [
     key: "date",
   },
   {
-    title: "Time",
-    dataIndex: "time",
-    key: "time",
+    title: "Room",
+    dataIndex: "roomType",
+    key: "roomType",
   },
 ];
 

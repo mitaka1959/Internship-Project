@@ -355,11 +355,6 @@ const HotelPage: React.FC = () => {
               <br></br> {hotel.addressLine}
             </Paragraph>
           </Col>
-          <Col>
-            <Button icon={<HeartOutlined />} type="default">
-              Save
-            </Button>
-          </Col>
         </Row>
 
         <Divider />
@@ -451,12 +446,6 @@ const HotelPage: React.FC = () => {
             <Title level={4}>About this hotel</Title>
             <Paragraph style={{ color: "#555" }}>{hotel.description}</Paragraph>
             {hotel.specialNote && <Tag color="red">{hotel.specialNote}</Tag>}
-          </Col>
-          <Col xs={24} md={8} style={{ textAlign: "right" }}>
-            <Title level={4} style={{ margin: 0 }}>
-              USD ${hotel.price}
-            </Title>
-            {totalPrice && <Paragraph delete>USD ${totalPrice}</Paragraph>}
           </Col>
         </Row>
         <Divider />

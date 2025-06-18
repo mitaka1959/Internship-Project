@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyStays.Application.UseCases.Hotels.DTOs
 {
@@ -30,7 +27,7 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
 
     public class MonthlyStatDto
     {
-        public string Name { get; set; } 
+        public string Name { get; set; }
         public int Visitors { get; set; }
     }
 
@@ -40,7 +37,6 @@ namespace EasyStays.Application.UseCases.Hotels.DTOs
         public string Status { get; set; }
         public string Venue { get; set; }
         public string Date { get; set; }
-        public string Time { get; set; }
+        public string RoomType { get; set; }
     }
-
 }

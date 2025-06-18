@@ -15,6 +15,7 @@ const Dashboard: React.FC = () => {
     const fetchDashboardData = async () => {
       try {
         const response = await api.get("/api/Hotels/dashboard");
+        console.log("Dashboard data fetched:", response.data);
         const data = response.data;
 
         const [reservedStr, capacityStr] = data.stats.totalReserved
@@ -44,7 +45,7 @@ const Dashboard: React.FC = () => {
       style={{
         marginLeft: "220px",
         padding: "1rem",
-        backgroundColor: "#8ECAE6",
+        backgroundColor: "#eeeeee",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",

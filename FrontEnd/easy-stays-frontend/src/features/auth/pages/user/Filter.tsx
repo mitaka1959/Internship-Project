@@ -47,7 +47,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         background: "#fff",
         borderRadius: "8px",
         boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-        padding: "16px",
+        padding: "14px",
         zIndex: 900,
       }}
     >
@@ -70,11 +70,6 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
       <h4>Star Rating</h4>
       <Rate value={starValue} onChange={handleStarChange} defaultValue={5} />
-
-      <Divider />
-
-      <h4>Offers</h4>
-      <Checkbox>All offers</Checkbox>
 
       <Divider />
 
