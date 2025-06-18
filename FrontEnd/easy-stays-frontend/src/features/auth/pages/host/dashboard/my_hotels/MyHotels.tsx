@@ -134,8 +134,8 @@ const MyHotels: React.FC = () => {
                     </Title>
                     <Rate disabled defaultValue={hotel.stars} />
                     <div style={{ margin: "0.5rem 0" }}>
-                      <Tag color={hotel.IsActive ? "green" : "red"}>
-                        {hotel.IsActive ? "Active" : "Inactive"}
+                      <Tag color={hotel.IsActive ? "red" : "green"}>
+                        {hotel.IsActive ? "Inactive" : "Active"}
                       </Tag>
                     </div>
                     <Text style={{ marginRight: "1rem" }}>
