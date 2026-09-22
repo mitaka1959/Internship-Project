@@ -206,6 +206,20 @@ namespace EasyStays.Presentation.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("Rooms/images/{imageId}")]
+        public async Task<IActionResult> DeleteRoomImage(Guid imageId)
+        {
+            await _mediator.Send(new DeleteRoomImageCommand(imageId));
+            return NoContent();
+        }
+
+        [HttpDelete("images/{imageId}")]
+        public async Task<IActionResult> DeleteHotelImage(Guid imageId)
+        {
+            await _mediator.Send(new DeleteHotelImageCommand(imageId));
+            return NoContent();
+        }
+
         [HttpPatch("update-room/{roomId}")]
         public async Task<IActionResult> UpdateRoom(Guid roomId, [FromBody] UpdateRoomCommand command)
         {

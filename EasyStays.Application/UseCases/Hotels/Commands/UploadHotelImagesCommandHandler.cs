@@ -30,9 +30,7 @@ namespace EasyStays.Application.UseCases.Hotels.Commands
             foreach (var image in request.Images)
             {
                 var fileName = $"{Guid.NewGuid()}_{image.FileName}";
-                await _storageService.UploadFileAsync(image.Content, fileName, "hotel-container");
-
-                var imageUrl = $"https://easystays.blob.core.windows.net/hotel-container/{fileName}";
+                var imageUrl = await _storageService.UploadFileAsync(image.Content, fileName, "hotel-container");
                 uploadedUrls.Add(imageUrl);
 
                 _context.HotelImages.Add(new HotelImage

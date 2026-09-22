@@ -7,15 +7,20 @@ import {
   Upload,
   Typography,
   message,
-  Space,
+  Popconfirm,
 } from "antd";
-import { UploadOutlined, PlusOutlined } from "@ant-design/icons";
+import { UploadOutlined, PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import api from "../../../../../../../services/axios";
 import { useParams } from "react-router-dom";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 const { Option } = Select;
+
+interface RoomImage {
+  id: string;
+  imageUrl: string;
+}
 
 const amenityOptions = [
   { id: "1", name: "WiFi", emoji: "📶" },
@@ -42,44 +47,50 @@ const amenityOptions = [
 const RoomEditPage: React.FC = () => {
   const { roomId } = useParams<{ roomId: string }>();
   const [form] = Form.useForm();
-  const [roomImages, setRoomImages] = useState<string[]>([]);
+  const [roomImages, setRoomImages] = useState<RoomImage[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
+  const fetchRoomDetails = async () => {
+    try {
+      const res = await api.get(`/api/Hotels/${roomId}/edit-room`);
+      const roomData = res.data;
+
+      form.setFieldsValue({
+        roomId: roomData.id,
+        displayName: roomData.displayName,
+        description: roomData.description,
+        price: roomData.pricePerNight,
+        Quantity: roomData.roomCount,
+        capacity: roomData.capacity,
+        amenities: roomData.roomAmenities?.map((a: any) => a.name) || [],
+        bedConfigurations:
+          roomData.bedConfigurations?.map((b: any) => ({
+            bedType: b.bedType,
+            quantity: b.quantity,
+          })) || [],
+      });
+
+      setRoomImages(
+        roomData.images?.map((img: any) => ({
+          id: img.id,
+          imageUrl: img.imageUrl,
+        })) || []
+      );
+      setSelectedAmenities(
+        roomData.amenities?.map((a: any) => {
+          const found = amenityOptions.find((opt) => opt.name === a.name);
+          return found?.id || "";
+        }) || []
+      );
+    } catch (error) {
+      console.error("Failed to load room details:", error);
+      message.error("Failed to load room data.");
+    }
+  };
+
   useEffect(() => {
-    const fetchRoomDetails = async () => {
-      try {
-        const res = await api.get(`/api/Hotels/${roomId}/edit-room`);
-        const roomData = res.data;
-
-        form.setFieldsValue({
-          roomId: roomData.id,
-          displayName: roomData.displayName,
-          description: roomData.description,
-          price: roomData.pricePerNight,
-          Quantity: roomData.roomCount,
-          capacity: roomData.capacity,
-          amenities: roomData.roomAmenities?.map((a: any) => a.name) || [],
-          bedConfigurations:
-            roomData.bedConfigurations?.map((b: any) => ({
-              bedType: b.bedType,
-              quantity: b.quantity,
-            })) || [],
-        });
-
-        setRoomImages(roomData.images?.map((img: any) => img.imageUrl) || []);
-        setSelectedAmenities(
-          roomData.amenities?.map((a: any) => {
-            const found = amenityOptions.find((opt) => opt.name === a.name);
-            return found?.id || "";
-          }) || []
-        );
-      } catch (error) {
-        console.error("Failed to load room details:", error);
-        message.error("Failed to load room data.");
-      }
-    };
-
     fetchRoomDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId, form]);
 
   const onFinish = async (values: any) => {
@@ -124,18 +135,26 @@ const RoomEditPage: React.FC = () => {
     formData.append("images", file);
 
     try {
-      const res = await api.post(
-        `/api/Hotels/Rooms/${roomId}/images`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      await api.post(`/api/Hotels/Rooms/${roomId}/images`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       message.success("Image uploaded successfully!");
-      setRoomImages((prev) => [...prev, ...res.data]);
+      // Re-fetch so the new image carries its DB id (needed for deletion).
+      await fetchRoomDetails();
     } catch (error) {
       console.error("Failed to upload image:", error);
       message.error("Failed to upload image. Please try again.");
+    }
+  };
+
+  const handleDeleteImage = async (imageId: string) => {
+    try {
+      await api.delete(`/api/Hotels/Rooms/images/${imageId}`);
+      message.success("Image deleted.");
+      setRoomImages((prev) => prev.filter((img) => img.id !== imageId));
+    } catch (error) {
+      console.error("Failed to delete image:", error);
+      message.error("Failed to delete image. Please try again.");
     }
   };
 
@@ -158,14 +177,47 @@ const RoomEditPage: React.FC = () => {
 
         <div style={{ marginBottom: "1rem" }}>
           <Title level={5}>Room Pictures</Title>
-          <div style={{ marginBottom: "0.5rem" }}>
-            {roomImages.map((imgUrl, index) => (
-              <img
-                key={index}
-                src={imgUrl}
-                alt={`Room ${index}`}
-                style={{ width: "80px", marginRight: "8px" }}
-              />
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px",
+              marginBottom: "0.5rem",
+            }}
+          >
+            {roomImages.map((img, index) => (
+              <div
+                key={img.id}
+                style={{ position: "relative", display: "inline-block" }}
+              >
+                <img
+                  src={img.imageUrl}
+                  alt={`Room ${index}`}
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    objectFit: "cover",
+                    borderRadius: "4px",
+                    border: "1px solid #f0f0f0",
+                  }}
+                />
+                <Popconfirm
+                  title="Delete this image?"
+                  okText="Delete"
+                  okButtonProps={{ danger: true }}
+                  cancelText="Cancel"
+                  onConfirm={() => handleDeleteImage(img.id)}
+                >
+                  <Button
+                    type="primary"
+                    danger
+                    size="small"
+                    shape="circle"
+                    icon={<DeleteOutlined />}
+                    style={{ position: "absolute", top: "-8px", right: "-8px" }}
+                  />
+                </Popconfirm>
+              </div>
             ))}
           </div>
           <Upload
