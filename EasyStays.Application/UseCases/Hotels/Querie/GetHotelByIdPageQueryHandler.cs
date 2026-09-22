@@ -65,7 +65,12 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                 CheckInTime = hotel.CheckInTime.ToString("HH:mm"),
                 CheckOutTime = hotel.CheckOutTime.ToString("HH:mm"),
                 Images = hotel.Images.Select(img => img.ImageUrl).AsQueryable(),
-                Amenities = hotel.HotelAmenities.Select(ha => ha.Amenity.Name).AsQueryable(),
+                Amenities = hotel.HotelAmenities
+                    .Select(ha => ha.Amenity.Name)
+                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                    .GroupBy(name => name.Trim().ToLowerInvariant())
+                    .Select(g => g.First().Trim())
+                    .AsQueryable(),
                 Policies = hotel.HotelPolicies.Select(p => p.Policy.Description).AsQueryable(),
                 Rooms = hotel.Rooms.Select(r => new RoomDto
                 {
@@ -77,7 +82,12 @@ namespace EasyStays.Application.UseCases.Hotels.Querie
                     PricePerNight = r.PricePerNight,
                     RoomSize = r.RoomSize,
                     Images = r.Images.Select(i => i.ImageUrl).AsQueryable(),
-                    Amenities = r.RoomAmenities.Select(ra => ra.Amenity.Name).AsQueryable(),
+                    Amenities = r.RoomAmenities
+                        .Select(ra => ra.Amenity.Name)
+                        .Where(name => !string.IsNullOrWhiteSpace(name))
+                        .GroupBy(name => name.Trim().ToLowerInvariant())
+                        .Select(g => g.First().Trim())
+                        .AsQueryable(),
                     BedConfiguration = new BedConfigurationDto
                     {
                         Single = r.BedConfigurations
