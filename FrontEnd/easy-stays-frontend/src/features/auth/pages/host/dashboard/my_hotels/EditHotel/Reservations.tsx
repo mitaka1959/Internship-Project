@@ -107,9 +107,12 @@ const HostReservationPage: React.FC = () => {
       await api.post(`/api/Reservation/${reservationId}/accept`);
       setPendingRequests((prev) => prev.filter((r) => r.id !== reservationId));
       message.success("Reservation accepted!");
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      message.error("Failed to accept reservation.");
+      // e.g. "Not enough free rooms for the selected dates."
+      message.error(
+        error?.response?.data?.message ?? "Failed to accept reservation."
+      );
     } finally {
       setLoadingReservationId(null);
       setLoadingButtonType(null);
@@ -123,9 +126,11 @@ const HostReservationPage: React.FC = () => {
       await api.post(`/api/Reservation/${reservationId}/decline`);
       setPendingRequests((prev) => prev.filter((r) => r.id !== reservationId));
       message.success("Reservation declined!");
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      message.error("Failed to decline reservation.");
+      message.error(
+        error?.response?.data?.message ?? "Failed to decline reservation."
+      );
     } finally {
       setLoadingReservationId(null);
       setLoadingButtonType(null);

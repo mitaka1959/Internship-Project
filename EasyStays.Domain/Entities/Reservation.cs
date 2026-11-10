@@ -28,6 +28,12 @@ namespace EasyStays.Domain.Entities
         public string? SpecialRequests { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
+
+        // SQL Server rowversion (configured in ApplicationDbContext), set by the
+        // database on every insert/update. Stops Accept and Decline from silently
+        // overwriting each other's status change.
+        public byte[] RowVersion { get; set; } = null!;
+
         public Payment? Payment { get; set; }
         public ICollection<RoomUnitReservation> RoomUnitReservations { get; set; } = new List<RoomUnitReservation>();
     }

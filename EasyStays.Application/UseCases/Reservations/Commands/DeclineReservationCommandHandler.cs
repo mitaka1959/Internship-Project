@@ -25,14 +25,24 @@ namespace EasyStays.Application.UseCases.Reservations.Commands
                 .FirstOrDefaultAsync(r => r.Id == request.ReservationId, cancellationToken);
 
             if (reservation == null)
-                throw new InvalidOperationException("Reservation not found.");
+                throw new KeyNotFoundException("Reservation not found.");
 
             if (reservation.Status != ReservationStatus.Pending)
                 throw new InvalidOperationException("Only pending reservations can be declined.");
 
             reservation.Status = ReservationStatus.Cancelled;
 
-            await _context.SaveChangesAsync(cancellationToken);
+            try
+            {
+                // Reservation.RowVersion makes this fail if the reservation was
+                // accepted (or declined) after we loaded it.
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new InvalidOperationException(
+                    "This reservation was changed at the same time. Refresh and try again.");
+            }
 
             return reservation.ReservationNumber;
         }
