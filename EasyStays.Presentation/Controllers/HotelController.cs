@@ -76,6 +76,9 @@ namespace EasyStays.Presentation.Controllers
             return Ok(result);
         }
 
+        // Host/Admin matches the frontend route guard for the hotel pages;
+        // the handler additionally checks that the current user owns the hotel.
+        [Authorize(Roles = "Host,Admin")]
         [HttpPost("{hotelId}/images")]
         public async Task<IActionResult> UploadImages(Guid hotelId, [FromForm] List<IFormFile> images)
         {
@@ -96,9 +99,15 @@ namespace EasyStays.Presentation.Controllers
 
             _logger.LogInformation("Hotel image upload endpoint hit at {Time}", DateTime.UtcNow);
 
-            var result = await _mediator.Send(command);
-
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpPatch("{id}/delete")]
@@ -181,6 +190,7 @@ namespace EasyStays.Presentation.Controllers
             return Ok(room);
         }
 
+        [Authorize(Roles = "Host,Admin")]
         [HttpPost("Rooms/{roomId}/images")]
         public async Task<IActionResult> UploadRoomImages(Guid roomId, [FromForm] List<IFormFile> images)
         {
@@ -201,23 +211,45 @@ namespace EasyStays.Presentation.Controllers
 
             _logger.LogInformation("Room image upload endpoint hit at {Time}", DateTime.UtcNow);
 
-            var result = await _mediator.Send(command);
-
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
+        [Authorize(Roles = "Host,Admin")]
         [HttpDelete("Rooms/images/{imageId}")]
         public async Task<IActionResult> DeleteRoomImage(Guid imageId)
         {
-            await _mediator.Send(new DeleteRoomImageCommand(imageId));
-            return NoContent();
+            try
+            {
+                await _mediator.Send(new DeleteRoomImageCommand(imageId));
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
+        [Authorize(Roles = "Host,Admin")]
         [HttpDelete("images/{imageId}")]
         public async Task<IActionResult> DeleteHotelImage(Guid imageId)
         {
-            await _mediator.Send(new DeleteHotelImageCommand(imageId));
-            return NoContent();
+            try
+            {
+                await _mediator.Send(new DeleteHotelImageCommand(imageId));
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpPatch("update-room/{roomId}")]

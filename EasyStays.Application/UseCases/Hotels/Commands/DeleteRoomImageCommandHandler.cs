@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyStays.Application.Interfaces.Auth;
 using EasyStays.Application.Interfaces.Repositories;
 using EasyStays.Domain.Interfaces;
 using MediatR;
@@ -13,19 +14,25 @@ namespace EasyStays.Application.UseCases.Hotels.Commands
     {
         private readonly IApplicationDbContext _context;
         private readonly IStorageService _storageService;
+        private readonly ICurrentUserService _currentUser;
 
         public DeleteRoomImageCommandHandler(
             IApplicationDbContext context,
-            IStorageService storageService)
+            IStorageService storageService,
+            ICurrentUserService currentUser)
         {
             _context = context;
             _storageService = storageService;
+            _currentUser = currentUser;
         }
 
         public async Task<Unit> Handle(DeleteRoomImageCommand request, CancellationToken cancellationToken)
         {
+            // Only the owner of the room's hotel may delete it; anyone else gets "not found".
+            var userId = _currentUser.UserId;
             var image = await _context.RoomImages
-                .FirstOrDefaultAsync(i => i.Id == request.ImageId, cancellationToken);
+                .FirstOrDefaultAsync(i => i.Id == request.ImageId
+                                          && i.Room.Hotel.OwnerId == userId, cancellationToken);
 
             if (image == null)
                 throw new KeyNotFoundException("Room image not found.");

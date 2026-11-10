@@ -2,6 +2,7 @@
 using EasyStays.Application.UseCases.Hotels.Commands;
 using EasyStays.Domain.Entities;
 using EasyStays.Domain.Interfaces;
+using EasyStays.Application.Interfaces.Auth;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,19 +17,26 @@ namespace EasyStays.Application.UseCases.Rooms.Commands
     {
         private readonly IApplicationDbContext _context;
         private readonly IStorageService _storageService;
+        private readonly ICurrentUserService _currentUser;
 
         public UploadRoomImagesCommandHandler(
             IApplicationDbContext context,
-            IStorageService storageService)
+            IStorageService storageService,
+            ICurrentUserService currentUser)
         {
             _context = context;
             _storageService = storageService;
+            _currentUser = currentUser;
         }
 
         public async Task<List<string>> Handle(UploadRoomImagesCommand request, CancellationToken cancellationToken)
         {
+            // Only the owner of the room's hotel may upload; anyone else gets "not found".
+            var userId = _currentUser.UserId;
             var room = await _context.Rooms
-                .FirstOrDefaultAsync(r => r.Id == request.RoomId && !r.IsDeleted, cancellationToken);
+                .FirstOrDefaultAsync(r => r.Id == request.RoomId
+                                          && !r.IsDeleted
+                                          && r.Hotel.OwnerId == userId, cancellationToken);
 
             if (room == null)
                 throw new KeyNotFoundException("Room not found.");
