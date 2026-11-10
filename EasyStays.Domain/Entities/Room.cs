@@ -23,6 +23,11 @@ namespace EasyStays.Domain.Entities
 
         public bool IsDeleted { get; set; } = false;
 
+        // Concurrency token (configured in ApplicationDbContext). It is changed
+        // every time a reservation for this room type is accepted, so two accepts
+        // running at the same moment can't both grab the same free room unit.
+        public Guid Version { get; set; }
+
         public ICollection<RoomUnit> RoomUnits { get; set; } = new List<RoomUnit>();
         public ICollection<RoomAmenity> RoomAmenities { get; set; } = new List<RoomAmenity>();
         public ICollection<RoomImage> Images { get; set; } = new List<RoomImage>(); 

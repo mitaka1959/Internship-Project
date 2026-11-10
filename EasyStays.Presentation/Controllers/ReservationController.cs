@@ -58,9 +58,20 @@ namespace EasyStays.Presentation.Controllers
         {
             var command = new AcceptReservationCommand(reservationId);
 
-            var reservationNumber = await _mediator.Send(command, cancellationToken);
-
-            return Ok(new { ReservationNumber = reservationNumber });
+            try
+            {
+                var reservationNumber = await _mediator.Send(command, cancellationToken);
+                return Ok(new { ReservationNumber = reservationNumber });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                // e.g. not enough free rooms, already handled, or changed at the same time
+                return Conflict(new { message = ex.Message });
+            }
         }
 
         [Authorize(Policy = "RequireHostRole")]
@@ -69,9 +80,19 @@ namespace EasyStays.Presentation.Controllers
         {
             var command = new DeclineReservationCommand(reservationId);
 
-            var reservationNumber = await _mediator.Send(command, cancellationToken);
-
-            return Ok(new { ReservationNumber = reservationNumber });
+            try
+            {
+                var reservationNumber = await _mediator.Send(command, cancellationToken);
+                return Ok(new { ReservationNumber = reservationNumber });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(new { message = ex.Message });
+            }
         }
 
         [Authorize(Policy = "RequireHostRole")]

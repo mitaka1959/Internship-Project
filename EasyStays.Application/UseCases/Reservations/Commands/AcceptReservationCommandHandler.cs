@@ -35,7 +35,7 @@ namespace EasyStays.Application.UseCases.Reservations.Commands
                 .FirstOrDefaultAsync(r => r.Id == request.ReservationId, cancellationToken);
 
             if (reservation == null)
-                throw new InvalidOperationException("Reservation not found.");
+                throw new KeyNotFoundException("Reservation not found.");
 
             if (reservation.Status != ReservationStatus.Pending)
                 throw new InvalidOperationException("Only pending reservations can be accepted.");
@@ -43,29 +43,51 @@ namespace EasyStays.Application.UseCases.Reservations.Commands
             var checkInDate = reservation.CheckInDate.Date;
             var checkOutDate = reservation.CheckOutDate.Date;
 
-            var availableRoomUnit = reservation.Room.RoomUnits
+            // Block one room unit for every room the guest asked for
+            // (before, only one unit was blocked even for multi-room bookings).
+            var roomsNeeded = Math.Max(1, reservation.RoomCount);
+
+            var freeRoomUnits = reservation.Room.RoomUnits
                 .Where(ru => !ru.IsDeleted)
-                .FirstOrDefault(ru => ru.RoomUnitReservations.All(rur =>
+                .Where(ru => ru.RoomUnitReservations.All(rur =>
                     rur.EndDate <= checkInDate || rur.StartDate >= checkOutDate
-                ));
+                ))
+                .Take(roomsNeeded)
+                .ToList();
 
-            if (availableRoomUnit == null)
-                throw new InvalidOperationException("No available room unit found for the selected dates.");
+            if (freeRoomUnits.Count < roomsNeeded)
+                throw new InvalidOperationException("Not enough free rooms for the selected dates.");
 
-            var roomUnitReservation = new RoomUnitReservation
+            foreach (var roomUnit in freeRoomUnits)
             {
-                Id = Guid.NewGuid(),
-                RoomUnitId = availableRoomUnit.Id,
-                ReservationId = reservation.Id,
-                StartDate = checkInDate,
-                EndDate = checkOutDate
-            };
-
-            _context.RoomUnitReservations.Add(roomUnitReservation);
+                _context.RoomUnitReservations.Add(new RoomUnitReservation
+                {
+                    Id = Guid.NewGuid(),
+                    RoomUnitId = roomUnit.Id,
+                    ReservationId = reservation.Id,
+                    StartDate = checkInDate,
+                    EndDate = checkOutDate
+                });
+            }
 
             reservation.Status = ReservationStatus.Confirmed;
 
-            await _context.SaveChangesAsync(cancellationToken);
+            // Changing the room type's concurrency token makes EF run
+            // "UPDATE Rooms ... WHERE Version = <value we loaded>". If another accept
+            // for this room type saved after we loaded, that matches no rows and the
+            // whole save is rolled back, so the same unit can't be booked twice.
+            // Reservation.RowVersion does the same for a parallel Decline.
+            reservation.Room.Version = Guid.NewGuid();
+
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new InvalidOperationException(
+                    "This room or reservation was changed at the same time. Refresh and try again.");
+            }
 
             await _emailService.SendEmailAsync(
                 reservation.Email,

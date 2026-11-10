@@ -183,8 +183,19 @@ namespace EasyStays.Infrastructure.Persistence
                 entity.HasOne(c => c.Reservation)
                     .WithMany()
                     .HasForeignKey(c => c.ReservationId)
-                    .OnDelete(DeleteBehavior.Cascade); 
+                    .OnDelete(DeleteBehavior.Cascade);
             });
+
+            // Optimistic concurrency: if two requests change the same row at the
+            // same time, the second SaveChanges throws DbUpdateConcurrencyException
+            // instead of silently succeeding (see AcceptReservationCommandHandler).
+            modelBuilder.Entity<Room>()
+                .Property(r => r.Version)
+                .IsConcurrencyToken();
+
+            modelBuilder.Entity<Reservation>()
+                .Property(r => r.RowVersion)
+                .IsRowVersion();
 
         }
 
